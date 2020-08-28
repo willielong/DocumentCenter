@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DocumentServer.Core</name>
+    </assembly>
+    <members>
+        <member name="M:DocumentServer.Core.Comm.ApiVersionConfig.AddApiVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置api的版本
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.AddJWTAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置JWT授权
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.AddDBContext(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加数据库链接全局服务
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.GetAssmenBlys">
+            <summary>
+            返回需要依赖注入的接口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.GetDbBaseConnection">
+            <summary>
+            读取配置文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.GetTokenHelper">
+            <summary>
+            获取生成Token的配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.RegisterAutoFacController(Autofac.ContainerBuilder,Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            进行控制器依赖注入
+            </summary>
+            <param name="builder"></param>
+            <param name="services"></param>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.RegisterSpecial(Autofac.ContainerBuilder)">
+            <summary>
+            特殊注入
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.SwaggerConfig.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置Swagger
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.SwaggerConfig.AddSecurityDefinition(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            添加定义
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.SwaggerConfig.AddSecurityRequirement(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            添加认证
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:DocumentServer.Core.Comm.SwaggerConfig.DocInclusionPredicate(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            加载多版本
+            </summary>
+            <param name="option"></param>
+        </member>
+        <member name="P:DocumentServer.Core.Filter.CustomAuthorize.Schemes">
+            <summary>
+            验证方案提供对象
+            </summary>
+        </member>
+        <member name="P:DocumentServer.Core.Filter.CustomAauthorizeRequirement.ClaimType">
+            <summary>
+            认证授权类型
+            </summary>
+        </member>
+        <member name="P:DocumentServer.Core.Filter.CustomAauthorizeRequirement.Issuer">
+            <summary>
+            发行人
+            </summary>
+        </member>
+        <member name="P:DocumentServer.Core.Filter.CustomAauthorizeRequirement.Audience">
+            <summary>
+            订阅人
+            </summary>
+        </member>
+        <member name="P:DocumentServer.Core.Filter.CustomAauthorizeRequirement.Expiration">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="P:DocumentServer.Core.Filter.CustomAauthorizeRequirement.SigningCredentials">
+            <summary>
+            签名验证
+            </summary>
+        </member>
+    </members>
+</doc>

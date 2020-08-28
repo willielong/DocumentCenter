@@ -1,0 +1,8 @@
+E:\Project\DocumentServer.Core\DocumentServer.Core.Model\bin\Debug\netcoreapp3.0\DocumentServer.Core.Model.deps.json
+E:\Project\DocumentServer.Core\DocumentServer.Core.Model\bin\Debug\netcoreapp3.0\DocumentServer.Core.Model.dll
+E:\Project\DocumentServer.Core\DocumentServer.Core.Model\bin\Debug\netcoreapp3.0\DocumentServer.Core.Model.pdb
+E:\Project\DocumentServer.Core\DocumentServer.Core.Model\obj\Debug\netcoreapp3.0\DocumentServer.Core.Model.csprojAssemblyReference.cache
+E:\Project\DocumentServer.Core\DocumentServer.Core.Model\obj\Debug\netcoreapp3.0\DocumentServer.Core.Model.AssemblyInfoInputs.cache
+E:\Project\DocumentServer.Core\DocumentServer.Core.Model\obj\Debug\netcoreapp3.0\DocumentServer.Core.Model.AssemblyInfo.cs
+E:\Project\DocumentServer.Core\DocumentServer.Core.Model\obj\Debug\netcoreapp3.0\DocumentServer.Core.Model.dll
+E:\Project\DocumentServer.Core\DocumentServer.Core.Model\obj\Debug\netcoreapp3.0\DocumentServer.Core.Model.pdb
