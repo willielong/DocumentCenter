@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ONLYOFFICECONFIG xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VERSION>2.0.0.0</VERSION>
+  <ENABLED>false</ENABLED>
+  <PRESERVELOGINURL>true</PRESERVELOGINURL>
+  <CLIENTVALIDATIONENABLED>true</CLIENTVALIDATIONENABLED>
+  <UNOBTRUSIVEJAVASCRIPTENABLED>true</UNOBTRUSIVEJAVASCRIPTENABLED>
+  <SIZEMAX>5242880</SIZEMAX>
+  <VIEWED>.pdf|.djvu|.xps</VIEWED>
+  <EDITED>.docx|.xlsx|.csv|.pptx|.txt</EDITED>
+  <CONVERT>.docm|.dotx|.dotm|.dot|.doc|.odt|.fodt|.ott|.xlsm|.xltx|.xltm|.xlt|.xls|.ods|.fods|.ots|.pptm|.ppt|.ppsx|.ppsm|.pps|.potx|.potm|.pot|.odp|.fodp|.otp|.rtf|.mht|.html|.htm|.epub</CONVERT>
+  <TIMEOUT>120000</TIMEOUT>
+  <SECRET></SECRET>
+  <CONVERTERURL>http://10.55.165.50:801/ConvertService.ashx</CONVERTERURL>
+  <APIURL>http://10.55.165.50:801/web-apps/apps/api/documents/api.js</APIURL>
+  <PRELOADERURL>http://10.55.165.50:801/web-apps/apps/api/documents/cache-scripts.html</PRELOADERURL>
+</ONLYOFFICECONFIG>
