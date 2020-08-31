@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumetCenter.Core.Enum;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -103,13 +104,5 @@ namespace DocumentServer.Core.Comm
             }
         }
     }
-    /// <summary>
-    /// OnlyOffice 识别文档的类型
-    /// </summary>
-    public enum FileType
-    {
-        Text,
-        Spreadsheet,
-        Presentation
-    }
+    
 }

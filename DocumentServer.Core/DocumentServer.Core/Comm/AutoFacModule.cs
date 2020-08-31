@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DocumentServer.Core.Comm
 {
-    public class AutoFacModule: Module
+    public class AutoFacModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-           // builder.RegisterAssemblyModules(AutoFacConfig.GetAssmenBlys());
+           // AutoFacConfig.RegisterAutoFacController(builder: builder);
+            builder.RegisterAssemblyModules(AutoFacConfig.GetAssmenBlys());
             AutoFacConfig.RegisterSpecial(builder);
-            base.Load(builder);
         }
     }
 }

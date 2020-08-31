@@ -151,14 +151,14 @@ namespace DocumentServer.Core.Comm
         /// </summary>
         /// <param name="builder"></param>
         /// <param name="services"></param>
-        public static void RegisterAutoFacController(ContainerBuilder builder, IServiceCollection services)
+        public static void RegisterAutoFacController(ContainerBuilder builder)
         {
-            //var manager = new ApplicationPartManager();
-            //manager.ApplicationParts.Add(new AssemblyPart(Assembly.Load("Bbface.WF.Core")));
-            //manager.FeatureProviders.Add(new ControllerFeatureProvider());
-            //var feature = new ControllerFeature();
-            //manager.PopulateFeature(feature);
-            //builder.RegisterTypes(feature.Controllers.Select(ti => ti.AsType()).ToArray()).PropertiesAutowired();
+            var manager = new ApplicationPartManager();
+            manager.ApplicationParts.Add(new AssemblyPart(Assembly.Load("DocumentServer.Core")));
+            manager.FeatureProviders.Add(new ControllerFeatureProvider());
+            var feature = new ControllerFeature();
+            manager.PopulateFeature(feature);
+            builder.RegisterTypes(feature.Controllers.Select(ti => ti.AsType()).ToArray()).PropertiesAutowired();
         }
 
         /// <summary>

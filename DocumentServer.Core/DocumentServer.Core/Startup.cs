@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text.Encodings.Web;
@@ -22,6 +23,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 
 namespace DocumentServer.Core
 {
@@ -59,6 +61,7 @@ namespace DocumentServer.Core
             ///注入log4net
             var repository = LogManager.CreateRepository(ServiceLocator.log4netRepositoryName);
             XmlConfigurator.Configure(repository, new FileInfo("Config\\log4net.config"));
+            services.AddScoped<IDbConnection, MySqlConnection>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -97,7 +100,13 @@ namespace DocumentServer.Core
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterModule(new AutoFacModule());
+            builder.RegisterAssemblyTypes(AutoFacConfig.GetAssmenBlys()).InstancePerLifetimeScope()
+                .AsImplementedInterfaces();
+            //注册仓储，所有IRepository接口到Repository的映射
+            //builder.RegisterGeneric(typeof(Repository<>))
+            //    //InstancePerDependency：默认模式，每次调用，都会重新实例化对象；每次请求都创建一个新的对象；
+            //    .As(typeof(IRepository<>)).InstancePerDependency();
+            //builder.RegisterModule(new AutoFacModule());
         }
     }
 }

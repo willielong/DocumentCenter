@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.35" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocumentServer.Core.Comm\DocumentServer.Core.Comm.csproj" />
+    <ProjectReference Include="..\DocumentServer.Core.Model\DocumentServer.Core.Model.csproj" />
+    <ProjectReference Include="..\DocumetCenter.Core.Enum\DocumetCenter.Core.Enum.csproj" />
+  </ItemGroup>
+
+</Project>

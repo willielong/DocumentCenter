@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Project\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {}
+    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {}
   },
   "projects": {
-    "E:\\Project\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {
+    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
+        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
         "projectName": "DocumentServer.Core.Model",
-        "projectPath": "E:\\Project\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
+        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
         "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\DocumentServer.Core\\DocumentServer.Core.Model\\obj\\",
+        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,6 +41,16 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
+            "Dapper.Contrib": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

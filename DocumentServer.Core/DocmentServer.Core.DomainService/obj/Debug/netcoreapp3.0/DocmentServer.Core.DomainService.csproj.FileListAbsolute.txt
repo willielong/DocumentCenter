@@ -1,0 +1,17 @@
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocmentServer.Core.DomainService.deps.json
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocmentServer.Core.DomainService.dll
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocmentServer.Core.DomainService.pdb
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocmentServer.Core.Business.dll
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocumentServer.Core.Comm.dll
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocumentServer.Core.Model.dll
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.dll
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocmentServer.Core.Business.pdb
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocumentServer.Core.Model.pdb
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocumentServer.Core.Comm.pdb
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\bin\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.pdb
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\obj\Debug\netcoreapp3.0\DocmentServer.Core.DomainService.csprojAssemblyReference.cache
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\obj\Debug\netcoreapp3.0\DocmentServer.Core.DomainService.AssemblyInfoInputs.cache
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\obj\Debug\netcoreapp3.0\DocmentServer.Core.DomainService.AssemblyInfo.cs
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\obj\Debug\netcoreapp3.0\DocmentServer.Core.DomainService.csproj.CopyComplete
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\obj\Debug\netcoreapp3.0\DocmentServer.Core.DomainService.dll
+E:\Project\DocumentCenter\DocumentServer.Core\DocmentServer.Core.DomainService\obj\Debug\netcoreapp3.0\DocmentServer.Core.DomainService.pdb

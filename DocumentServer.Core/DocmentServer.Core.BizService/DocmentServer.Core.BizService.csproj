@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocmentServer.Core.DomainService\DocmentServer.Core.DomainService.csproj" />
+    <ProjectReference Include="..\DocumentServer.Core.Model\DocumentServer.Core.Model.csproj" />
+  </ItemGroup>
+
+</Project>

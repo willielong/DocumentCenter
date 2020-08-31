@@ -1,0 +1,355 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.DomainService\\DocmentServer.Core.DomainService.csproj": {}
+  },
+  "projects": {
+    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.Business\\DocmentServer.Core.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.Business\\DocmentServer.Core.Business.csproj",
+        "projectName": "DocmentServer.Core.Business",
+        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.Business\\DocmentServer.Core.Business.csproj",
+        "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wenlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.knxdevelop.com:8888/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {
+              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj": {
+                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj"
+              },
+              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {
+                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj"
+              },
+              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
+                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
+            "Dapper.Contrib": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.DomainService\\DocmentServer.Core.DomainService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.DomainService\\DocmentServer.Core.DomainService.csproj",
+        "projectName": "DocmentServer.Core.DomainService",
+        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.DomainService\\DocmentServer.Core.DomainService.csproj",
+        "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.DomainService\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wenlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.knxdevelop.com:8888/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {
+              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.Business\\DocmentServer.Core.Business.csproj": {
+                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocmentServer.Core.Business\\DocmentServer.Core.Business.csproj"
+              },
+              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {
+                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj",
+        "projectName": "DocumentServer.Core.Comm",
+        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj",
+        "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wenlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.knxdevelop.com:8888/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {
+              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
+                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "JWT": {
+              "target": "Package",
+              "version": "[7.2.1, )"
+            },
+            "LogNet": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "ServiceStack.Text": {
+              "target": "Package",
+              "version": "[5.9.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.7.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
+        "projectName": "DocumentServer.Core.Model",
+        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
+        "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wenlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.knxdevelop.com:8888/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
+            "Dapper.Contrib": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj",
+        "projectName": "DocumetCenter.Core.Enum",
+        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj",
+        "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wenlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.knxdevelop.com:8888/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

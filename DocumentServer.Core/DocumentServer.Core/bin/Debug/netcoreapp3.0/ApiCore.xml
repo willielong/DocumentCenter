@@ -40,7 +40,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.RegisterAutoFacController(Autofac.ContainerBuilder,Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.RegisterAutoFacController(Autofac.ContainerBuilder)">
             <summary>
             进行控制器依赖注入
             </summary>

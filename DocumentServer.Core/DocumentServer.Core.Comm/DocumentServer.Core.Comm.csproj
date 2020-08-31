@@ -13,4 +13,8 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DocumetCenter.Core.Enum\DocumetCenter.Core.Enum.csproj" />
+  </ItemGroup>
+
 </Project>
