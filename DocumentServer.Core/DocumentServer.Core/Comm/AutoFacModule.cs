@@ -10,8 +10,8 @@ namespace DocumentServer.Core.Comm
     {
         protected override void Load(ContainerBuilder builder)
         {
-           // AutoFacConfig.RegisterAutoFacController(builder: builder);
-            builder.RegisterAssemblyModules(AutoFacConfig.GetAssmenBlys());
+            builder.RegisterAssemblyTypes(AutoFacConfig.GetAssmenBlys()).InstancePerLifetimeScope()
+               .AsImplementedInterfaces();
             AutoFacConfig.RegisterSpecial(builder);
         }
     }

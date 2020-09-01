@@ -48,7 +48,7 @@ namespace DocmentServer.Core.Business.Company
         /// <returns></returns>
         public bool Delete(object id, IDbTransaction transaction = null)
         {
-            return dbConnection.Execute(sql: "DELETE FROM  UNITINFO WHERE UNITID=@unitid", param: new UnitInfo() { unitid = (int)id }, transaction: transaction) >= 0;
+            return dbConnection.Execute(sql: "DELETE FROM  UnitInfo WHERE unitID=@unitid", param: new UnitInfo() { unitid = (int)id }, transaction: transaction) >= 0;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace DocmentServer.Core.Business.Company
         /// <returns></returns>
         public List<UnitInfo> List(object id, IDbTransaction transaction = null)
         {
-            return dbConnection.Query<UnitInfo>(sql: "SELECT *  FROM  UNITINFO WHERE UNITID=@unitid", param: new UnitInfo() { unitid = (int)id }, transaction: transaction).AsList();
+            return dbConnection.Query<UnitInfo>(sql: "SELECT *  FROM  UnitInfo WHERE unitID=@unitid", param: new UnitInfo() { unitid = (int)id }, transaction: transaction).AsList();
         }
         /// <summary>
         /// 获取单位信息--多个-按工号
@@ -79,7 +79,16 @@ namespace DocmentServer.Core.Business.Company
         /// <returns></returns>
         public List<UnitInfo> GetListByCode(string code, IDbTransaction transaction = null)
         {
-            return dbConnection.Query<UnitInfo>(sql: "SELECT *  FROM  UNITINFO WHERE unitcode=@code", param: new UnitInfo() { unitcode = code }, transaction: transaction).AsList();
+            return dbConnection.Query<UnitInfo>(sql: "SELECT *  FROM  UnitInfo WHERE unitcode=@unitcode", param: new UnitInfo() { unitcode = code }, transaction: transaction).AsList();
+        }
+        /// <summary>
+        /// 获取所有单位数据
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public List<UnitInfo> All(IDbTransaction transaction = null)
+        {
+            return dbConnection.GetAll<UnitInfo>(transaction: transaction).AsList();
         }
     }
 }

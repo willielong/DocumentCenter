@@ -17,7 +17,7 @@ namespace DocumentServer.Core.Comm
     public interface IResponseMessage
     {
         bool Status { get; set; }
-        string Code { get; set; }
+        int Code { get; set; }
         string Message { get; set; }
         object Body { get; set; }
     }

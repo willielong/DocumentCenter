@@ -53,6 +53,11 @@
             </summary>
             <param name="builder"></param>
         </member>
+        <member name="M:DocumentServer.Core.Comm.AutoFacConfig.RegisterService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            进行服务注册
+            </summary>
+        </member>
         <member name="M:DocumentServer.Core.Comm.SwaggerConfig.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             配置Swagger
@@ -77,6 +82,44 @@
             </summary>
             <param name="option"></param>
         </member>
+        <member name="M:DocumentServer.Core.Controllers.BaseController.ToResult(System.Object)">
+            <summary>
+            返回数据结构
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Controllers.CompanyController.Add(DocumentServer.Core.Model.DbModel.UnitInfo)">
+            <summary>
+            进行数据新增
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Controllers.CompanyController.Update(DocumentServer.Core.Model.DbModel.UnitInfo)">
+            <summary>
+            进行数据更改
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Controllers.CompanyController.Delete(System.Int32)">
+            <summary>
+            进行数据删除
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Controllers.CompanyController.Query(System.Int32)">
+            <summary>
+            获取单个数据
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:DocumentServer.Core.Controllers.CompanyController.QueryList(System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:DocumentServer.Core.Controllers.CompanyController.QueryCode(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:DocumentServer.Core.Controllers.CompanyController.QueryCode" -->
         <member name="P:DocumentServer.Core.Filter.CustomAuthorize.Schemes">
             <summary>
             验证方案提供对象
@@ -106,6 +149,12 @@
             <summary>
             签名验证
             </summary>
+        </member>
+        <member name="M:DocumentServer.Core.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            服务注册
+            </summary>
+            <param name="services"></param>
         </member>
     </members>
 </doc>

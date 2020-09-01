@@ -57,5 +57,12 @@ namespace DocmentServer.Core.Business.Company
         /// <param name="model">单位实体</param>
         /// <returns></returns>
         List<UnitInfo> GetListByCode(string code, IDbTransaction transaction = null);
+
+        /// <summary>
+        /// 获取所有单位数据
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        List<UnitInfo> All(IDbTransaction transaction = null);
     }
 }

@@ -85,7 +85,7 @@ namespace DocumentServer.Core.Comm
         /// <typeparam name="T"></typeparam>
         /// <param name="User"></param>
         /// <returns></returns>
-        public static T ToUser<T>(this ClaimsPrincipal User) where T : class
+            public static T ToUser<T>(this ClaimsPrincipal User) where T : class
         {
             var claimsIdentity = User.Identity as ClaimsIdentity;
             string userString = claimsIdentity.FindFirst(ClaimTypes.Name)?.Value;

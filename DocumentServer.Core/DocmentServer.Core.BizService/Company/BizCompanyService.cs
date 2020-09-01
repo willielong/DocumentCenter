@@ -1,4 +1,5 @@
 ﻿using DocmentServer.Core.DomainService.Company;
+using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
 using System;
 using System.Collections.Generic;
@@ -23,13 +24,13 @@ namespace DocmentServer.Core.BizService.Company
         /// </summary>
         /// <param name="model">单位实体</param>
         /// <returns></returns>
-        public long Add(UnitInfo model)
+        public IResponseMessage Add(UnitInfo model)
         {
             dbConnection.Open();
             var transaction = dbConnection.BeginTransaction();
             long id = service.Add(model: model, transaction: transaction);
             transaction.Commit();
-            return id;
+            return id.ToResponse();
         }
         /// <summary>
         /// 修改单位信息
@@ -37,9 +38,9 @@ namespace DocmentServer.Core.BizService.Company
         /// </summary>
         /// <param name="model">单位实体</param>
         /// <returns></returns>
-        public bool Update(UnitInfo model)
+        public IResponseMessage Update(UnitInfo model)
         {
-            return service.Update(model: model);
+            return service.Update(model: model).ToResponse();
         }
 
         /// <summary>
@@ -48,9 +49,9 @@ namespace DocmentServer.Core.BizService.Company
         /// </summary>
         /// <param name="model">单位实体</param>
         /// <returns></returns>
-        public bool Delete(object id)
+        public IResponseMessage Delete(object id)
         {
-            return service.Delete(id: id);
+            return service.Delete(id: id).ToResponse();
         }
 
         /// <summary>
@@ -59,9 +60,9 @@ namespace DocmentServer.Core.BizService.Company
         /// </summary>
         /// <param name="model">单位实体</param>
         /// <returns></returns>
-        public UnitInfo Get(object id)
+        public IResponseMessage Get(object id)
         {
-            return service.Get(id: id);
+            return service.Get(id: id).ToResponse();
         }
         /// <summary>
         /// 获取单位信息--多个
@@ -69,9 +70,9 @@ namespace DocmentServer.Core.BizService.Company
         /// </summary>
         /// <param name="model">单位实体</param>
         /// <returns></returns>
-        public List<UnitInfo> List(object id)
+        public IResponseMessage List(object id)
         {
-            return service.List(id: id);
+            return service.List(id: id).ToResponse();
         }
         /// <summary>
         /// 获取单位信息--多个-按工号
@@ -79,9 +80,18 @@ namespace DocmentServer.Core.BizService.Company
         /// </summary>
         /// <param name="model">单位实体</param>
         /// <returns></returns>
-        public List<UnitInfo> GetListByCode(string code)
+        public IResponseMessage GetListByCode(string code)
         {
-            return service.GetListByCode(code: code);
+            return service.GetListByCode(code: code).ToResponse();
+        }
+        /// <summary>
+        /// 获取所有单位数据
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public IResponseMessage All(IDbTransaction transaction = null)
+        {
+            return service.All(transaction: transaction).ToResponse();
         }
     }
 }

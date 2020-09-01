@@ -77,5 +77,14 @@ namespace DocmentServer.Core.DomainService.Company
         {
             return business.GetListByCode(code: code, transaction: transaction);
         }
+        /// <summary>
+        /// 获取所有单位数据
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public List<UnitInfo> All(IDbTransaction transaction = null)
+        {
+            return business.All(transaction: transaction);
+        }
     }
 }
