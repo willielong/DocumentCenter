@@ -1,4 +1,5 @@
 ﻿using DocmentServer.Core.DomainService.Company;
+using DocmentServer.Core.DomainService.Organization;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
 using System;
@@ -6,14 +7,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace DocmentServer.Core.BizService.Company
+namespace DocmentServer.Core.BizService.Organization
 {
-    public class BizCompanyService : IBizCompanyService
+    public class BizOrganizationService : IBizOrganizationService
     {
-        private ICompanyDomainService service;
+        private IOrganizationDomainService service;
         private IDbConnection dbConnection;
 
-        public BizCompanyService(ICompanyDomainService service, IDbConnection dbConnection)
+        public BizOrganizationService(IOrganizationDomainService service, IDbConnection dbConnection)
         {
             this.service = service;
             this.dbConnection = dbConnection;
@@ -24,7 +25,7 @@ namespace DocmentServer.Core.BizService.Company
         /// </summary>
         /// <param name="model">单位实体</param>
         /// <returns></returns>
-        public IResponseMessage Add(UnitInfo model)
+        public IResponseMessage Add(DocumentServer.Core.Model.DbModel.Organization model)
         {
             dbConnection.Open();
             var transaction = dbConnection.BeginTransaction();
@@ -38,7 +39,7 @@ namespace DocmentServer.Core.BizService.Company
         /// </summary>
         /// <param name="model">单位实体</param>
         /// <returns></returns>
-        public IResponseMessage Update(UnitInfo model)
+        public IResponseMessage Update(DocumentServer.Core.Model.DbModel.Organization model)
         {
             return service.Update(model: model).ToResponse();
         }

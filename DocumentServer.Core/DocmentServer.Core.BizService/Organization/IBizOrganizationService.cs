@@ -5,58 +5,57 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace DocmentServer.Core.BizService.Company
+namespace DocmentServer.Core.BizService.Organization
 {
-    public interface IBizCompanyService
+    public interface IBizOrganizationService
     { /// <summary>
-      /// 添加单位信息
+      /// 添加组织信息
       /// </summary>
       /// </summary>
-      /// <param name="model">单位实体</param>
+      /// <param name="model">组织实体</param>
       /// <returns></returns>
-        IResponseMessage Add(UnitInfo model);
+        IResponseMessage Add(DocumentServer.Core.Model.DbModel.Organization model);
         /// <summary>
-        /// 修改单位信息
+        /// 修改组织信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">组织实体</param>
         /// <returns></returns>
-        IResponseMessage Update(UnitInfo model);
+        IResponseMessage Update(DocumentServer.Core.Model.DbModel.Organization model);
 
         /// <summary>
-        /// 删除单位信息
+        /// 删除组织信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">组织实体</param>
         /// <returns></returns>
         IResponseMessage Delete(object id);
 
         /// <summary>
-        /// 获取单位信息
+        /// 获取组织信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">组织实体</param>
         /// <returns></returns>
         IResponseMessage Get(object id);
 
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取组织信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">组织实体</param>
         /// <returns></returns>
         IResponseMessage List(object id);
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取组织信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">组织实体</param>
         /// <returns></returns>
         IResponseMessage GetListByCode(string code);
         /// <summary>
-        /// 获取所有单位数据
+        /// 获取所有组织数据
         /// </summary>
-        /// <param name="transaction"></param>
         /// <returns></returns>
         IResponseMessage All();
     }

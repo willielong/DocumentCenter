@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DocmentServer.Core.BizService.Company;
-using DocumentServer.Core.Comm;
-using DocumentServer.Core.Model.DbModel;
+using DocmentServer.Core.BizService.Organization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentServer.Core.Controllers
 {
     /// <summary>
-    /// 单位相关接口
+    /// 组织相关接口
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [ApiVersion("1")]
-    public class CompanyController : BaseController
+    public class OrganizationController : BaseController
     {
-        private IBizCompanyService service;
-        public CompanyController(IBizCompanyService service)
+        private IBizOrganizationService service;
+        public OrganizationController(IBizOrganizationService service)
         {
             this.service = service;
         }
@@ -29,7 +27,7 @@ namespace DocumentServer.Core.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost, Route("add")]
-        public IActionResult Add([FromBody]UnitInfo model)
+        public IActionResult Add([FromBody]DocumentServer.Core.Model.DbModel.Organization model)
         {
             return ToResult(service.Add(model: model));
         }
@@ -39,7 +37,7 @@ namespace DocumentServer.Core.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost, Route("update")]
-        public IActionResult Update([FromBody]UnitInfo model)
+        public IActionResult Update([FromBody]DocumentServer.Core.Model.DbModel.Organization model)
         {
             return ToResult(service.Update(model: model));
         }
@@ -64,10 +62,10 @@ namespace DocumentServer.Core.Controllers
             return ToResult(service.Get(id: id));
         }
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取组织信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">组织实体</param>
         /// <returns></returns>
         [HttpGet, Route("querys/{id}")]
         public IActionResult QueryList([FromRoute]int id)
@@ -75,10 +73,10 @@ namespace DocumentServer.Core.Controllers
             return ToResult(service.List(id: id));
         }
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取组织信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">组织实体</param>
         /// <returns></returns>
         [HttpGet, Route("getlist/{code}")]
         public IActionResult QueryCode([FromRoute]string code)
@@ -86,10 +84,10 @@ namespace DocumentServer.Core.Controllers
             return ToResult(service.GetListByCode(code: code));
         }
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取组织信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">组织实体</param>
         /// <returns></returns>
         [HttpGet, Route("all")]
         public IActionResult QueryCode()

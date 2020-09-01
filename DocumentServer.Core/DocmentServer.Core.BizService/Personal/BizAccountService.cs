@@ -1,4 +1,4 @@
-﻿using DocmentServer.Core.DomainService.Company;
+﻿using DocmentServer.Core.DomainService.Personal;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
 using System;
@@ -6,25 +6,25 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace DocmentServer.Core.BizService.Company
+namespace DocmentServer.Core.BizService.Personal
 {
-    public class BizCompanyService : IBizCompanyService
+    public class BizAccountService: IBizAccountService
     {
-        private ICompanyDomainService service;
+        private IAccountDomainService service;
         private IDbConnection dbConnection;
 
-        public BizCompanyService(ICompanyDomainService service, IDbConnection dbConnection)
+        public BizAccountService(IAccountDomainService service, IDbConnection dbConnection)
         {
             this.service = service;
             this.dbConnection = dbConnection;
         }
         /// <summary>
-        /// 添加单位信息
+        /// 添加账户信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
-        public IResponseMessage Add(UnitInfo model)
+        public IResponseMessage Add(AccoutInfo model)
         {
             dbConnection.Open();
             var transaction = dbConnection.BeginTransaction();
@@ -33,21 +33,21 @@ namespace DocmentServer.Core.BizService.Company
             return id.ToResponse();
         }
         /// <summary>
-        /// 修改单位信息
+        /// 修改账户信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
-        public IResponseMessage Update(UnitInfo model)
+        public IResponseMessage Update(AccoutInfo model)
         {
             return service.Update(model: model).ToResponse();
         }
 
         /// <summary>
-        /// 删除单位信息
+        /// 删除账户信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
         public IResponseMessage Delete(object id)
         {
@@ -55,37 +55,37 @@ namespace DocmentServer.Core.BizService.Company
         }
 
         /// <summary>
-        /// 获取单位信息
+        /// 获取账户信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
         public IResponseMessage Get(object id)
         {
             return service.Get(id: id).ToResponse();
         }
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取账户信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
         public IResponseMessage List(object id)
         {
             return service.List(id: id).ToResponse();
         }
         /// <summary>
-        /// 获取单位信息--多个-按工号
+        /// 获取账户信息--多个-按工号
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
         public IResponseMessage GetListByCode(string code)
         {
             return service.GetListByCode(code: code).ToResponse();
         }
         /// <summary>
-        /// 获取所有单位数据
+        /// 获取所有账户数据
         /// </summary>
         /// <param name="transaction"></param>
         /// <returns></returns>
