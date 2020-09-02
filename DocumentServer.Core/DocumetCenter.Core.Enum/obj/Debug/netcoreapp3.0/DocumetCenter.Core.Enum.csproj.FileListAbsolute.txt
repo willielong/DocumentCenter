@@ -1,8 +1,0 @@
-E:\Project\DocumentCenter\DocumentServer.Core\DocumetCenter.Core.Enum\bin\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.deps.json
-E:\Project\DocumentCenter\DocumentServer.Core\DocumetCenter.Core.Enum\bin\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.dll
-E:\Project\DocumentCenter\DocumentServer.Core\DocumetCenter.Core.Enum\bin\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.pdb
-E:\Project\DocumentCenter\DocumentServer.Core\DocumetCenter.Core.Enum\obj\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.AssemblyInfoInputs.cache
-E:\Project\DocumentCenter\DocumentServer.Core\DocumetCenter.Core.Enum\obj\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.AssemblyInfo.cs
-E:\Project\DocumentCenter\DocumentServer.Core\DocumetCenter.Core.Enum\obj\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.dll
-E:\Project\DocumentCenter\DocumentServer.Core\DocumetCenter.Core.Enum\obj\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.pdb
-E:\Project\DocumentCenter\DocumentServer.Core\DocumetCenter.Core.Enum\obj\Debug\netcoreapp3.0\DocumetCenter.Core.Enum.csprojAssemblyReference.cache
