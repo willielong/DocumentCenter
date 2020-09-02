@@ -11,7 +11,7 @@ namespace DocumentServer.Core.Controllers
     /// <summary>
     /// 组织相关接口
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/organization")]
     [ApiController]
     [ApiVersion("1")]
     public class OrganizationController : BaseController

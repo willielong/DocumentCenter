@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentServer.Core.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/employee")]
     [ApiController]
     [ApiVersion("1")]
     public class EmployeeController : BaseController

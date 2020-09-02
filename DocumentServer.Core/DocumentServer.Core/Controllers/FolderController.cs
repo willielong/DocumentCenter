@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DocmentServer.Core.BizService.Company;
-using DocumentServer.Core.Comm;
+using DocmentServer.Core.BizService.Folder;
 using DocumentServer.Core.Model.DbModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentServer.Core.Controllers
-{
-    /// <summary>
-    /// 单位相关接口
-    /// </summary>
-    [Route("api/company")]
+{/// <summary>
+ /// 账号接口
+ /// </summary>
+    [Route("api/folder"), Authorize("CustomAuthorize")]
     [ApiController]
     [ApiVersion("1")]
-    public class CompanyController : BaseController
+    public class FolderController : BaseController
     {
-        private IBizCompanyService service;
-        public CompanyController(IBizCompanyService service)
+        private IBizFolderService service;
+        public FolderController(IBizFolderService service)
         {
             this.service = service;
         }
@@ -29,7 +28,7 @@ namespace DocumentServer.Core.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost, Route("add")]
-        public IActionResult Add([FromBody]UnitInfo model)
+        public IActionResult Add([FromBody]FileFloder model)
         {
             return ToResult(service.Add(model: model));
         }
@@ -39,7 +38,7 @@ namespace DocumentServer.Core.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost, Route("update")]
-        public IActionResult Update([FromBody]UnitInfo model)
+        public IActionResult Update([FromBody]FileFloder model)
         {
             return ToResult(service.Update(model: model));
         }
@@ -73,17 +72,6 @@ namespace DocumentServer.Core.Controllers
         public IActionResult QueryList([FromRoute]int id)
         {
             return ToResult(service.List(id: id));
-        }
-        /// <summary>
-        /// 获取单位信息--多个
-        /// </summary>
-        /// </summary>
-        /// <param name="model">单位实体</param>
-        /// <returns></returns>
-        [HttpGet, Route("getlist/{code}")]
-        public IActionResult QueryCode([FromRoute]string code)
-        {
-            return ToResult(service.GetListByCode(code: code));
         }
         /// <summary>
         /// 获取单位信息--多个
