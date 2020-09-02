@@ -1,4 +1,4 @@
-﻿using DocmentServer.Core.DomainService.FileVersion;
+﻿using DocmentServer.Core.DomainService.FilesInfo;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
 using Microsoft.AspNetCore.Http;
@@ -7,26 +7,26 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace DocmentServer.Core.BizService.FileVersion
+namespace DocmentServer.Core.BizService.FilesInfo
 {
-    class BizFileVersionService : BaseService.BizBaseService, IBizFileVersionService
+    public class BizFilesService : BaseService.BizBaseService, IBizFilesService
     {
-        private IFileVersionDomainService service;
+        private IFilesDomainService service;
         private IDbConnection dbConnection;
 
-        public BizFileVersionService(IFileVersionDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
+        public BizFilesService(IFilesDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
         {
             this.service = service;
             this.dbConnection = dbConnection;
             this.service.SettingCurrentEmp(employee: employee);
         }
         /// <summary>
-        /// 添加版本信息
+        /// 添加账户信息
         /// </summary>
         /// </summary>
-        /// <param name="model">版本实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
-        public IResponseMessage Add(FilesVersion model)
+        public IResponseMessage Add(Files model)
         {
             dbConnection.Open();
             var transaction = dbConnection.BeginTransaction();
@@ -35,21 +35,21 @@ namespace DocmentServer.Core.BizService.FileVersion
             return id.ToResponse();
         }
         /// <summary>
-        /// 修改版本信息
+        /// 修改账户信息
         /// </summary>
         /// </summary>
-        /// <param name="model">版本实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
-        public IResponseMessage Update(FilesVersion model)
+        public IResponseMessage Update(Files model)
         {
             return service.Update(model: model).ToResponse();
         }
 
         /// <summary>
-        /// 删除版本信息
+        /// 删除账户信息
         /// </summary>
         /// </summary>
-        /// <param name="model">版本实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
         public IResponseMessage Delete(object id)
         {
@@ -57,35 +57,33 @@ namespace DocmentServer.Core.BizService.FileVersion
         }
 
         /// <summary>
-        /// 获取版本信息
+        /// 获取账户信息
         /// </summary>
         /// </summary>
-        /// <param name="model">版本实体</param>
+        /// <param name="model">文件信息实体</param>
         /// <returns></returns>
         public IResponseMessage Get(object id)
         {
-            return service.Get<FilesVersion>(id: id).ToResponse();
+            return service.Get<Files>(id: id).ToResponse();
         }
         /// <summary>
-        /// 获取版本信息--多个
+        /// 获取账户信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">版本实体</param>
+        /// <param name="model">账户实体</param>
         /// <returns></returns>
         public IResponseMessage List(object id)
         {
             return service.List(id: id).ToResponse();
         }
         /// <summary>
-        /// 获取所有版本数据
+        /// 获取所有账户数据
         /// </summary>
         /// <param name="transaction"></param>
         /// <returns></returns>
         public IResponseMessage All()
         {
-            return service.All<FilesVersion>().ToResponse();
+            return service.All<Files>().ToResponse();
         }
     }
 }
-
-

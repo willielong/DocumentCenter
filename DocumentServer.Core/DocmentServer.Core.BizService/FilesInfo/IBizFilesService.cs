@@ -4,27 +4,26 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DocmentServer.Core.BizService.FileVersion
+namespace DocmentServer.Core.BizService.FilesInfo
 {
-    public interface IBizFileVersionService
-    {
+    public interface IBizFilesService
+    { /// <summary>
+      /// 添加文件信息
+      /// </summary>
+      /// </summary>
+      /// <param name="model">文件版本信息实体</param>
+      /// <returns></returns>
+        IResponseMessage Add(Files model);
         /// <summary>
-        /// 添加文件版本信息信息
+        /// 修改文件信息
         /// </summary>
         /// </summary>
         /// <param name="model">文件版本信息实体</param>
         /// <returns></returns>
-        IResponseMessage Add(FilesVersion model);
-        /// <summary>
-        /// 修改文件版本信息信息
-        /// </summary>
-        /// </summary>
-        /// <param name="model">文件版本信息实体</param>
-        /// <returns></returns>
-        IResponseMessage Update(FilesVersion model);
+        IResponseMessage Update(Files model);
 
         /// <summary>
-        /// 删除文件版本信息信息
+        /// 删除文件信息
         /// </summary>
         /// </summary>
         /// <param name="model">文件版本信息实体</param>
@@ -32,7 +31,7 @@ namespace DocmentServer.Core.BizService.FileVersion
         IResponseMessage Delete(object id);
 
         /// <summary>
-        /// 获取文件版本信息信息
+        /// 获取文件信息
         /// </summary>
         /// </summary>
         /// <param name="model">文件版本信息实体</param>
@@ -40,7 +39,7 @@ namespace DocmentServer.Core.BizService.FileVersion
         IResponseMessage Get(object id);
 
         /// <summary>
-        /// 获取文件版本信息信息--多个
+        /// 获取文件信息--多个
         /// </summary>
         /// </summary>
         /// <param name="model">文件版本信息实体</param>
