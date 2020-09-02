@@ -64,7 +64,7 @@ namespace DocmentServer.Core.BizService.Company
         /// <returns></returns>
         public IResponseMessage Get(object id)
         {
-            return service.Get(id: id).ToResponse();
+            return service.Get<DocumentServer.Core.Model.DbModel.UnitInfo>(id: id).ToResponse();
         }
         /// <summary>
         /// 获取单位信息--多个
@@ -93,7 +93,7 @@ namespace DocmentServer.Core.BizService.Company
         /// <returns></returns>
         public IResponseMessage All()
         {
-            return service.All().ToResponse();
+            return service.All<DocumentServer.Core.Model.DbModel.UnitInfo>().ToResponse();
         }
     }
 }

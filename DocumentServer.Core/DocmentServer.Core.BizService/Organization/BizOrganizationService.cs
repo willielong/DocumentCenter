@@ -65,7 +65,7 @@ namespace DocmentServer.Core.BizService.Organization
         /// <returns></returns>
         public IResponseMessage Get(object id)
         {
-            return service.Get(id: id).ToResponse();
+            return service.Get<DocumentServer.Core.Model.DbModel.Organization>(id: id).ToResponse();
         }
         /// <summary>
         /// 获取组织信息--多个
@@ -94,7 +94,7 @@ namespace DocmentServer.Core.BizService.Organization
         /// <returns></returns>
         public IResponseMessage All()
         {
-            return service.All().ToResponse();
+            return service.All<DocumentServer.Core.Model.DbModel.Organization>().ToResponse();
         }
     }
 }

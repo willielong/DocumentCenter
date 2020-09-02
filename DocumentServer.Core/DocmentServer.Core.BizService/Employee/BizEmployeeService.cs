@@ -63,7 +63,7 @@ namespace DocmentServer.Core.BizService.Employee
         /// <returns></returns>
         public IResponseMessage Get(object id)
         {
-            return service.Get(id: id).ToResponse();
+            return service.Get<DocumentServer.Core.Model.DbModel.Employee>(id: id).ToResponse();
         }
         /// <summary>
         /// 获取人员基本信息信息--多个
@@ -92,7 +92,7 @@ namespace DocmentServer.Core.BizService.Employee
         /// <returns></returns>
         public IResponseMessage All()
         {
-            return service.All().ToResponse();
+            return service.All<DocumentServer.Core.Model.DbModel.Employee>().ToResponse();
         }
     }
 }

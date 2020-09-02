@@ -18,35 +18,35 @@ namespace DocmentServer.Core.Business.Base
         /// 添加信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">实体</param>
         /// <returns></returns>
         long Add<T>(T model, IDbTransaction transaction = null) where T : class, new();
         /// <summary>
-        /// 修改单位信息
+        /// 修改信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">实体</param>
         /// <returns></returns>
         bool Update<T>(T model, IDbTransaction transaction = null) where T : class, new();
 
         /// <summary>
-        /// 删除单位信息
+        /// 删除信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">实体</param>
         /// <returns></returns>
         bool Delete<T>(T model, IDbTransaction transaction = null) where T : class, new();
 
         /// <summary>
-        /// 获取单位信息
+        /// 获取信息
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">实体</param>
         /// <returns></returns>
         T Get<T>(object id, IDbTransaction transaction = null) where T : class, new();
 
         /// <summary>
-        /// 获取所有单位数据
+        /// 获取所有数据
         /// </summary>
         /// <param name="transaction"></param>
         /// <returns></returns>

@@ -10,10 +10,8 @@ namespace DocmentServer.Core.Business.FilesInfo
 {
     public class FilesBusiness : Base.BaseBusiness, IFilesBusiness
     {
-        private IDbConnection dbConnection;
         public FilesBusiness(IDbConnection _dbConnection) : base(dbConnection: _dbConnection)
         {
-            dbConnection = _dbConnection;
         }
         /// <summary>
         /// 删除文件信息

@@ -9,8 +9,6 @@ namespace DocmentServer.Core.Business.FilesInfo
 {
     public interface IFilesBusiness : IBaseBusiness
     {
-      
-
         /// <summary>
         /// 删除文件信息
         /// </summary>

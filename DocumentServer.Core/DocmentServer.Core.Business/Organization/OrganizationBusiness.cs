@@ -13,31 +13,8 @@ namespace DocmentServer.Core.Business.Organization
 {
     public class OrganizationBusiness : BaseBusiness, IOrganizationBusiness
     {
-        private IDbConnection dbConnection;
-        DocumentServer.Core.Model.DbModel.Employee employee;
-        public OrganizationBusiness(IDbConnection _dbConnection)
+        public OrganizationBusiness(IDbConnection _dbConnection) : base(dbConnection: _dbConnection)
         {
-            dbConnection = _dbConnection;
-        }
-        /// <summary>
-        /// 添加组织信息
-        /// </summary>
-        /// </summary>
-        /// <param name="model">组织实体</param>
-        /// <returns></returns>
-        public long Add(DocumentServer.Core.Model.DbModel.Organization model, IDbTransaction transaction = null)
-        {
-            return dbConnection.Insert<DocumentServer.Core.Model.DbModel.Organization>(entityToInsert: model, transaction: transaction);
-        }
-        /// <summary>
-        /// 修改组织信息
-        /// </summary>
-        /// </summary>
-        /// <param name="model">组织实体</param>
-        /// <returns></returns>
-        public bool Update(DocumentServer.Core.Model.DbModel.Organization model, IDbTransaction transaction = null)
-        {
-            return dbConnection.Update<DocumentServer.Core.Model.DbModel.Organization>(entityToUpdate: model, transaction: transaction);
         }
 
         /// <summary>
@@ -49,17 +26,6 @@ namespace DocmentServer.Core.Business.Organization
         public bool Delete(object id, IDbTransaction transaction = null)
         {
             return dbConnection.Execute(sql: "DELETE FROM  organization WHERE orgid=@orgid", param: new DocumentServer.Core.Model.DbModel.Organization() { orgid = (int)id }, transaction: transaction) >= 0;
-        }
-
-        /// <summary>
-        /// 获取组织信息
-        /// </summary>
-        /// </summary>
-        /// <param name="model">组织实体</param>
-        /// <returns></returns>
-        public DocumentServer.Core.Model.DbModel.Organization Get(object id, IDbTransaction transaction = null)
-        {
-            return dbConnection.Get<DocumentServer.Core.Model.DbModel.Organization>(id: id, transaction: transaction);
         }
         /// <summary>
         /// 获取组织信息--多个
@@ -81,14 +47,6 @@ namespace DocmentServer.Core.Business.Organization
         {
             return dbConnection.Query<DocumentServer.Core.Model.DbModel.Organization>(sql: "SELECT *  FROM   organization WHERE orgcode=@orgcode", param: new DocumentServer.Core.Model.DbModel.Organization() { orgcode = code }, transaction: transaction).AsList();
         }
-        /// <summary>
-        /// 获取所有组织数据
-        /// </summary>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public List<DocumentServer.Core.Model.DbModel.Organization> All(IDbTransaction transaction = null)
-        {
-            return dbConnection.GetAll<DocumentServer.Core.Model.DbModel.Organization>(transaction: transaction).AsList();
-        }
+
     }
 }

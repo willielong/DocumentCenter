@@ -65,7 +65,7 @@ namespace DocmentServer.Core.BizService.Personal
         /// <returns></returns>
         public IResponseMessage Get(object id)
         {
-            return service.Get(id: id).ToResponse();
+            return service.Get<AccoutInfo>(id: id).ToResponse();
         }
         /// <summary>
         /// 获取账户信息--多个
@@ -94,7 +94,7 @@ namespace DocmentServer.Core.BizService.Personal
         /// <returns></returns>
         public IResponseMessage All()
         {
-            return service.All().ToResponse();
+            return service.All<AccoutInfo>().ToResponse();
         }
     }
 }

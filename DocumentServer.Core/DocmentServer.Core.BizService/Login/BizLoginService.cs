@@ -49,7 +49,7 @@ namespace DocmentServer.Core.BizService.Login
                     {
                         if (accout.password == User.password)
                         {
-                            var emp = this.employeeDomainService.Get(id: accout.empid);
+                            var emp = this.employeeDomainService.Get<DocumentServer.Core.Model.DbModel.Employee>(id: accout.empid);
                             var token = new TokenBusiness().GenerateToken(accout.account, accout.name, emp.ToJsonString()).Result;
                             if (null != token)
                             {

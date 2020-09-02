@@ -15,27 +15,6 @@ namespace DocmentServer.Core.DomainService.Folder
             this.business = business;
         }
         /// <summary>
-        /// 添加文件夹信息
-        /// </summary>
-        /// </summary>
-        /// <param name="model">文件夹实体</param>
-        /// <returns></returns>
-        public long Add(FileFloder model, IDbTransaction transaction = null)
-        {
-            return business.Add(model: model, transaction: transaction);
-        }
-        /// <summary>
-        /// 修改文件夹信息
-        /// </summary>
-        /// </summary>
-        /// <param name="model">文件夹实体</param>
-        /// <returns></returns>
-        public bool Update(FileFloder model, IDbTransaction transaction = null)
-        {
-            return business.Update(model: model, transaction: transaction);
-        }
-
-        /// <summary>
         /// 删除文件夹信息
         /// </summary>
         /// </summary>
@@ -46,16 +25,7 @@ namespace DocmentServer.Core.DomainService.Folder
             return business.Delete(id: id, transaction: transaction);
         }
 
-        /// <summary>
-        /// 获取文件夹信息
-        /// </summary>
-        /// </summary>
-        /// <param name="model">文件夹实体</param>
-        /// <returns></returns>
-        public FileFloder Get(object id, IDbTransaction transaction = null)
-        {
-            return business.Get(id: id, transaction: transaction);
-        }
+      
         /// <summary>
         /// 获取文件夹信息--多个
         /// </summary>
@@ -76,14 +46,6 @@ namespace DocmentServer.Core.DomainService.Folder
         {
             return business.GetListOrgID(orgId: orgId, transaction: transaction);
         }
-        /// <summary>
-        /// 获取所有文件夹数据
-        /// </summary>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public List<FileFloder> All(IDbTransaction transaction = null)
-        {
-            return business.All(transaction: transaction);
-        }
+      
     }
 }
