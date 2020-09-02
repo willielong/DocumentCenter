@@ -42,5 +42,10 @@ namespace DocumentServer.Core.Model.DbModel
         /// 顺序
         /// </summary>
         public virtual double sequence { get; set; }
+
+        /// <summary>
+        /// 员工基本信息ID
+        /// </summary>
+        public virtual int empid { get; set; }
     }
 }

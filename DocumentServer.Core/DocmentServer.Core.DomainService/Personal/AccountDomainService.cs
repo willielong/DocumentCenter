@@ -1,4 +1,5 @@
 ﻿using DocmentServer.Core.Business.Personal;
+using DocmentServer.Core.DomainService.Base;
 using DocumentServer.Core.Model.DbModel;
 using System;
 using System.Collections.Generic;
@@ -7,10 +8,10 @@ using System.Text;
 
 namespace DocmentServer.Core.DomainService.Personal
 {
-    public class AccountDomainService : IAccountDomainService
+    public class AccountDomainService : BaseDomainService, IAccountDomainService
     {
         private IAccountBusiness business;
-        public AccountDomainService(IAccountBusiness business)
+        public AccountDomainService(IAccountBusiness business) : base(_business: business)
         {
             this.business = business;
         }

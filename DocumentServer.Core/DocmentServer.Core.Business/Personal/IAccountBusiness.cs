@@ -1,4 +1,5 @@
-﻿using DocumentServer.Core.Model.DbModel;
+﻿using DocmentServer.Core.Business.Base;
+using DocumentServer.Core.Model.DbModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
  * */
 namespace DocmentServer.Core.Business.Personal
 {
-    public interface IAccountBusiness
+    public interface IAccountBusiness : IBaseBusiness
     {/// <summary>
      /// 添加账户信息
      /// </summary>

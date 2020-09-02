@@ -11,6 +11,10 @@ namespace DocumentServer.Core.Controllers
     [ApiController]
     public class BaseController : ControllerBase
     {
+        public BaseController()
+        {
+        }
+
         /// <summary>
         /// 返回数据结构
         /// </summary>

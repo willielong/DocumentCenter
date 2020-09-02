@@ -153,8 +153,6 @@ E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netc
 E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\Autofac.Extensions.DependencyInjection.dll
 E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\AutoMapper.dll
 E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\JWT.dll
-E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\log4net.dll
-E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\LogNet.dll
 E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
 E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
@@ -310,3 +308,4 @@ E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netc
 E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\System.Xml.XPath.XmlDocument.dll
 E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\obj\Debug\netcoreapp3.0\DocumentServer.Core.MvcApplicationPartsAssemblyInfo.cs
 E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\obj\Debug\netcoreapp3.0\DocumentServer.Core.MvcApplicationPartsAssemblyInfo.cache
+E:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core\bin\Debug\netcoreapp3.0\Xg.LogNetCore.dll

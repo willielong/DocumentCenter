@@ -5,14 +5,16 @@ using System.Data;
 using System.Text;
 using Dapper.Contrib.Extensions;
 using Dapper;
+using DocmentServer.Core.Business.Base;
 /**
 * 描述：组织信息操作类-实现* 
 * */
 namespace DocmentServer.Core.Business.Organization
 {
-    public class OrganizationBusiness : IOrganizationBusiness
+    public class OrganizationBusiness : BaseBusiness, IOrganizationBusiness
     {
         private IDbConnection dbConnection;
+        DocumentServer.Core.Model.DbModel.Employee employee;
         public OrganizationBusiness(IDbConnection _dbConnection)
         {
             dbConnection = _dbConnection;

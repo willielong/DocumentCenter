@@ -15,8 +15,8 @@
 
 using Autofac;
 using DocumentServer.Core.Filter;
-using log4net;
-using log4net.Config;
+//using log4net;
+//using log4net.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -194,11 +194,12 @@ namespace DocumentServer.Core.Comm
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             ///添加接口版本管理中间件
             ApiVersionConfig.AddApiVersioning(services);
-            ///注入log4net
-            var repository = LogManager.CreateRepository(ServiceLocator.log4netRepositoryName);
-            XmlConfigurator.Configure(repository, new FileInfo("Config\\log4net.config"));
+            /////注入log4net
+            //var repository = LogManager.CreateRepository(ServiceLocator.log4netRepositoryName);
+            //XmlConfigurator.Configure(repository, new FileInfo("Config\\log4net.config"));
             ///注册数据库服务
             services.AddScoped<IDbConnection, MySqlConnection>();
+            //services.AddScoped<DocumentServer.Core.Model.DbModel.Employee>();
         }
         public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env)
         {

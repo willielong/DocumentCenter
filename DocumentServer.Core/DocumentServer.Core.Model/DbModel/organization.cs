@@ -54,5 +54,9 @@ namespace DocumentServer.Core.Model.DbModel
         /// 是否显示到组织树
         /// </summary>
         public virtual bool istree { get; set; }
+        /// <summary>
+        /// 单位ID
+        /// </summary>
+        public virtual int untid { get; set; }
     }
 }

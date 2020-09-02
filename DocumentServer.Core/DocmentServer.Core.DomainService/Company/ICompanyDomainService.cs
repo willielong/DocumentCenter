@@ -1,4 +1,5 @@
-﻿using DocumentServer.Core.Model.DbModel;
+﻿using DocmentServer.Core.DomainService.Base;
+using DocumentServer.Core.Model.DbModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace DocmentServer.Core.DomainService.Company
 {
-    public interface ICompanyDomainService
+    public interface ICompanyDomainService : IBaseDomainService
     {
         /// <summary>
         /// 添加单位信息

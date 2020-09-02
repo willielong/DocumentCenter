@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocmentServer.Core.Business.Base;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Text;
  * */
 namespace DocmentServer.Core.Business.Organization
 {
-    public interface IOrganizationBusiness
+    public interface IOrganizationBusiness : IBaseBusiness
     {
         /// <summary>
         /// 添加组织信息

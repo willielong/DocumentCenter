@@ -1,11 +1,12 @@
-﻿using System;
+﻿using DocmentServer.Core.DomainService.Base;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
 namespace DocmentServer.Core.DomainService.Organization
 {
-    public interface IOrganizationDomainService
+    public interface IOrganizationDomainService : IBaseDomainService
     {
         /// <summary>
         /// 添加组织信息

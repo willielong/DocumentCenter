@@ -252,10 +252,6 @@
               "target": "Package",
               "version": "[7.2.1, )"
             },
-            "LogNet": {
-              "target": "Package",
-              "version": "[1.0.0, )"
-            },
             "Microsoft.AspNetCore.Mvc": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -271,6 +267,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.7.1, )"
+            },
+            "Xg.LogNetCore": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [

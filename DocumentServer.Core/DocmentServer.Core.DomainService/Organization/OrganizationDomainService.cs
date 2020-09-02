@@ -1,4 +1,5 @@
 ﻿using DocmentServer.Core.Business.Organization;
+using DocmentServer.Core.DomainService.Base;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,10 +7,10 @@ using System.Text;
 
 namespace DocmentServer.Core.DomainService.Organization
 {
-    public class OrganizationDomainService: IOrganizationDomainService
+    public class OrganizationDomainService : BaseDomainService, IOrganizationDomainService
     {
         private IOrganizationBusiness business;
-        public OrganizationDomainService(IOrganizationBusiness business)
+        public OrganizationDomainService(IOrganizationBusiness business) : base(business)
         {
             this.business = business;
         }

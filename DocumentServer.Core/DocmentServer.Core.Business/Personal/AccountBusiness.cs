@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
+using DocmentServer.Core.Business.Base;
 using DocumentServer.Core.Model.DbModel;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Text;
 * */
 namespace DocmentServer.Core.Business.Personal
 {
-    public class AccountBusiness:IAccountBusiness
+    public class AccountBusiness : BaseBusiness, IAccountBusiness
     {
         private IDbConnection dbConnection;
         public AccountBusiness(IDbConnection _dbConnection)
@@ -25,6 +26,8 @@ namespace DocmentServer.Core.Business.Personal
         /// <returns></returns>
         public long Add(AccoutInfo model, IDbTransaction transaction = null)
         {
+            model.creator = CurrentUser.empid;
+            model.modifier = CurrentUser.empid;
             return dbConnection.Insert<AccoutInfo>(entityToInsert: model, transaction: transaction);
         }
         /// <summary>
@@ -35,6 +38,7 @@ namespace DocmentServer.Core.Business.Personal
         /// <returns></returns>
         public bool Update(AccoutInfo model, IDbTransaction transaction = null)
         {
+            model.modifier = CurrentUser.empid;
             return dbConnection.Update<AccoutInfo>(entityToUpdate: model, transaction: transaction);
         }
 
@@ -86,6 +90,7 @@ namespace DocmentServer.Core.Business.Personal
         /// <returns></returns>
         public List<AccoutInfo> All(IDbTransaction transaction = null)
         {
+            var e = this.CurrentUser;
             return dbConnection.GetAll<AccoutInfo>(transaction: transaction).AsList();
         }
     }

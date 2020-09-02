@@ -1,6 +1,8 @@
 ﻿using DocmentServer.Core.DomainService.Personal;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,15 +10,16 @@ using System.Text;
 
 namespace DocmentServer.Core.BizService.Personal
 {
-    public class BizAccountService: IBizAccountService
+    public class BizAccountService : BaseService.BizBaseService, IBizAccountService
     {
         private IAccountDomainService service;
         private IDbConnection dbConnection;
 
-        public BizAccountService(IAccountDomainService service, IDbConnection dbConnection)
+        public BizAccountService(IAccountDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
         {
             this.service = service;
             this.dbConnection = dbConnection;
+            this.service.SettingCurrentEmp(employee: employee);
         }
         /// <summary>
         /// 添加账户信息

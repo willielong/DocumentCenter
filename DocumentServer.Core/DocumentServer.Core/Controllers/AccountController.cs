@@ -1,5 +1,7 @@
 ﻿using DocmentServer.Core.BizService.Personal;
 using DocumentServer.Core.Model.DbModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentServer.Core.Controllers
@@ -7,7 +9,7 @@ namespace DocumentServer.Core.Controllers
     /// <summary>
     /// 账号接口
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/account"), Authorize("CustomAuthorize")]
     [ApiController]
     [ApiVersion("1")]
     public class AccountController : BaseController

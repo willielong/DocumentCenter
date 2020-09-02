@@ -161,6 +161,37 @@
         <!-- Badly formed XML comment ignored for member "M:DocumentServer.Core.Controllers.CompanyController.QueryList(System.Int32)" -->
         <!-- Badly formed XML comment ignored for member "M:DocumentServer.Core.Controllers.CompanyController.QueryCode(System.String)" -->
         <!-- Badly formed XML comment ignored for member "M:DocumentServer.Core.Controllers.CompanyController.QueryCode" -->
+        <member name="M:DocumentServer.Core.Controllers.EmployeeController.Add(DocumentServer.Core.Model.DbModel.Employee)">
+            <summary>
+            进行数据新增
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Controllers.EmployeeController.Update(DocumentServer.Core.Model.DbModel.Employee)">
+            <summary>
+            进行数据更改
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Controllers.EmployeeController.Delete(System.Int32)">
+            <summary>
+            进行数据删除
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentServer.Core.Controllers.EmployeeController.Query(System.Int32)">
+            <summary>
+            获取单个数据
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:DocumentServer.Core.Controllers.EmployeeController.QueryList(System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:DocumentServer.Core.Controllers.EmployeeController.QueryCode(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:DocumentServer.Core.Controllers.EmployeeController.QueryCode" -->
         <member name="T:DocumentServer.Core.Controllers.OrganizationController">
             <summary>
             组织相关接口
