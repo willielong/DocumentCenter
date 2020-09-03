@@ -23,11 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainServices", "DomainSer
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{80987C5D-AC96-45FF-8585-F9610CAC83FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocmentServer.Core.BizService", "DocmentServer.Core.BizService\DocmentServer.Core.BizService.csproj", "{6BA0B2DF-375E-4B32-A9D0-B3980657F28A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocmentServer.Core.BizService", "DocmentServer.Core.BizService\DocmentServer.Core.BizService.csproj", "{6BA0B2DF-375E-4B32-A9D0-B3980657F28A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocmentServer.Core.DomainService", "DocmentServer.Core.DomainService\DocmentServer.Core.DomainService.csproj", "{AFCC0F8E-07D3-4890-B3F4-FE7B887CDB9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocmentServer.Core.DomainService", "DocmentServer.Core.DomainService\DocmentServer.Core.DomainService.csproj", "{AFCC0F8E-07D3-4890-B3F4-FE7B887CDB9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocmentServer.Core.Business", "DocmentServer.Core.Business\DocmentServer.Core.Business.csproj", "{667D7DE5-9377-45CE-A29B-936A96A1DF27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocmentServer.Core.Business", "DocmentServer.Core.Business\DocmentServer.Core.Business.csproj", "{667D7DE5-9377-45CE-A29B-936A96A1DF27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
