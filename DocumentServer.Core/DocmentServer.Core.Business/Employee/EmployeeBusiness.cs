@@ -46,5 +46,15 @@ namespace DocmentServer.Core.Business.Employee
         {
             return dbConnection.Query<DocumentServer.Core.Model.DbModel.Employee>(sql: "SELECT *  FROM   Employee WHERE empcode=@empcode", param: new DocumentServer.Core.Model.DbModel.Employee() { empcode = code }, transaction: transaction).AsList();
         }
+        /// <summary>
+        /// 获取人员基本信息信息--多个-按组织ID
+        /// </summary>
+        /// </summary>
+        /// <param name="model">人员基本信息实体</param>
+        /// <returns></returns>
+        public List<DocumentServer.Core.Model.DbModel.Employee> GetListByOrgId(int orgId, IDbTransaction transaction = null)
+        {
+            return dbConnection.Query<DocumentServer.Core.Model.DbModel.Employee>(sql: "SELECT *  FROM   Employee WHERE orgid=@orgid", param: new DocumentServer.Core.Model.DbModel.Employee() { orgid = orgId }, transaction: transaction).AsList();
+        }
     }
 }

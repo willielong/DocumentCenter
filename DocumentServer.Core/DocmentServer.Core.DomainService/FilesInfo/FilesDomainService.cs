@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DocmentServer.Core.DomainService.FilesInfo
 {
-    public class FilesDomainService : Base.BaseDomainService
+    public class FilesDomainService : Base.BaseDomainService, IFilesDomainService
     {
         private IFilesBusiness business;
         public FilesDomainService(IFilesBusiness business) : base(business)

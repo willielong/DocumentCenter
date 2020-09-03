@@ -31,5 +31,13 @@ namespace DocmentServer.Core.DomainService.Employee
         /// <param name="model">人员基本信息实体</param>
         /// <returns></returns>
         List<DocumentServer.Core.Model.DbModel.Employee> GetListByCode(string code, IDbTransaction transaction = null);
+
+        /// <summary>
+        /// 获取人员基本信息信息--根据组织ID
+        /// </summary>
+        /// </summary>
+        /// <param name="model">人员基本信息实体</param>
+        /// <returns></returns>
+        List<DocumentServer.Core.Model.DbModel.Employee> GetListByOrgId(int orgId, IDbTransaction transaction = null);
     }
 }

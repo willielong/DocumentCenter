@@ -11,7 +11,7 @@ namespace DocumentServer.Core.Comm
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(AutoFacConfig.GetAssmenBlys()).InstancePerLifetimeScope()
-               .AsImplementedInterfaces();
+               .AsImplementedInterfaces().PropertiesAutowired();
             AutoFacConfig.RegisterSpecial(builder);
         }
     }

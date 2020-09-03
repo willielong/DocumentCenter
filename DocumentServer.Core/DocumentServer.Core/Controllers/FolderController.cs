@@ -84,5 +84,16 @@ namespace DocumentServer.Core.Controllers
         {
             return ToResult(service.All());
         }
+        /// <summary>
+        /// 按组织类型和ID或文件
+        /// </summary>
+        /// <param name="orgid">组织ID</param>
+        /// <param name="type">组织类型</param>
+        /// <returns></returns>
+        [HttpGet, Route("orgfolder")]
+        public IActionResult OrgFolder([FromQuery]int orgid,[FromQuery] int type)
+        {
+            return ToResult(service.GetFoldersByOrgId(orgId:orgid,type:type));
+        }
     }
 }

@@ -29,6 +29,6 @@ namespace DocmentServer.Core.DomainService.Folder
         /// </summary>
         /// <param name="model">文件夹实体</param>
         /// <returns></returns>
-        List<FileFloder> GetListOrgID(int orgId, IDbTransaction transaction = null);
+        List<FileFloder> GetListOrgID(int orgId,int type, IDbTransaction transaction = null);
     }
 }

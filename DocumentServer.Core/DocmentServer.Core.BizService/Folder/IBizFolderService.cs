@@ -51,5 +51,13 @@ namespace DocmentServer.Core.BizService.Folder
         /// </summary>
         /// <returns></returns>
         IResponseMessage All();
+
+        /// <summary>
+        /// 获取文件夹信息--多个-- 按组织ID
+        /// </summary>
+        /// </summary>
+        /// <param name="model">文件夹实体</param>
+        /// <returns></returns>
+        IResponseMessage GetFoldersByOrgId(int orgId, int type);
     }
 }

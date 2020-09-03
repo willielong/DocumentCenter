@@ -9,4 +9,8 @@
     <PackageReference Include="Dapper.Contrib" Version="2.0.35" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Query\" />
+  </ItemGroup>
+
 </Project>

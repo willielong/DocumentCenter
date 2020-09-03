@@ -9,7 +9,7 @@ namespace DocmentServer.Core.BizService.BaseService
 {
     public class BizBaseService
     {
-        public DocumentServer.Core.Model.DbModel.Employee employee;
+        public DocumentServer.Core.Model.DbModel.Employee CurrentUser;
         public BizBaseService(IHttpContextAccessor httpContext)
         {
             GetEmployee(httpContext: httpContext);
@@ -20,7 +20,7 @@ namespace DocmentServer.Core.BizService.BaseService
         /// <param name="httpContext"></param>
         public void GetEmployee(IHttpContextAccessor httpContext)
         {
-            employee = httpContext.HttpContext.User.ToUser<DocumentServer.Core.Model.DbModel.Employee>();
+            CurrentUser = httpContext.HttpContext.User.ToUser<DocumentServer.Core.Model.DbModel.Employee>();
         }
     }
 }

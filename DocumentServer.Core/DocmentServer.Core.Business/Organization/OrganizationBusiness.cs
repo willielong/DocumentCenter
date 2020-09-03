@@ -47,6 +47,25 @@ namespace DocmentServer.Core.Business.Organization
         {
             return dbConnection.Query<DocumentServer.Core.Model.DbModel.Organization>(sql: "SELECT *  FROM   organization WHERE orgcode=@orgcode", param: new DocumentServer.Core.Model.DbModel.Organization() { orgcode = code }, transaction: transaction).AsList();
         }
-
+        /// <summary>
+        /// 获取组织信息--多个--按单位
+        /// </summary>
+        /// </summary>
+        /// <param name="model">组织实体</param>
+        /// <returns></returns>
+        public List<DocumentServer.Core.Model.DbModel.Organization> GetListByCompanyId(int companyId, IDbTransaction transaction = null)
+        {
+            return dbConnection.Query<DocumentServer.Core.Model.DbModel.Organization>(sql: "SELECT *  FROM   organization WHERE untid=@untid", param: new DocumentServer.Core.Model.DbModel.Organization() { untid = companyId }, transaction: transaction).AsList();
+        }
+        /// <summary>
+        /// 获取组织信息--多个--按上级组织
+        /// </summary>
+        /// <param name="model">组织实体</param>
+        /// <returns></returns>
+        public List<DocumentServer.Core.Model.DbModel.Organization> GetListByParentId(int parentId, IDbTransaction transaction = null)
+        {
+            return dbConnection.Query<DocumentServer.Core.Model.DbModel.Organization>(sql: "SELECT *  FROM   organization WHERE parentId=@parentId", param: new DocumentServer.Core.Model.DbModel.Organization() { parentId = parentId }, transaction: transaction).AsList();
+        }
     }
 }
+

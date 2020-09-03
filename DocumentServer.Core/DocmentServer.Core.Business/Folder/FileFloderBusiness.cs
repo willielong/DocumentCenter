@@ -14,7 +14,7 @@ namespace DocmentServer.Core.Business.Folder
         public FileFloderBusiness(IDbConnection _dbConnection) : base(dbConnection: _dbConnection)
         {
         }
-        
+
 
         /// <summary>
         /// 删除文件夹信息
@@ -42,9 +42,9 @@ namespace DocmentServer.Core.Business.Folder
         /// </summary>
         /// <param name="model">文件夹实体</param>
         /// <returns></returns>
-        public List<FileFloder> GetListOrgID(int orgId, IDbTransaction transaction = null)
+        public List<FileFloder> GetListOrgID(int orgId, int type, IDbTransaction transaction = null)
         {
-            return dbConnection.Query<FileFloder>(sql: "SELECT *  FROM   FileFloder WHERE orgid=@orgid", param: new FileFloder() { orgid = orgId }, transaction: transaction).AsList();
-        }       
+            return dbConnection.Query<FileFloder>(sql: "SELECT *  FROM   FileFloder WHERE orgid=@orgid and flodertype=@flodertype", param: new FileFloder() { orgid = orgId, flodertype = type }, transaction: transaction).AsList();
+        }
     }
 }

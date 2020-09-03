@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DocmentServer.Core.DomainService.FileVersion
 {
-    public class FileVersionDomainService : Base.BaseDomainService
+    public class FileVersionDomainService : Base.BaseDomainService, IFileVersionDomainService
     {
         private IFilesVersionBusiness business;
         public FileVersionDomainService(IFilesVersionBusiness business) : base(business)

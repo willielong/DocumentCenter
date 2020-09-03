@@ -49,5 +49,16 @@ namespace DocmentServer.Core.DomainService.Company
         {
             return business.GetListByCode(code: code, transaction: transaction);
         }
+
+        /// <summary>
+        /// 获取单位信息--多个--根据上级ID
+        /// </summary>
+        /// </summary>
+        /// <param name="model">单位实体</param>
+        /// <returns></returns>
+        public List<UnitInfo> GetListByParentId(int parentId, IDbTransaction transaction = null)
+        {
+            return business.GetListByParentId(parentId: parentId, transaction: transaction);
+        }
     }
 }

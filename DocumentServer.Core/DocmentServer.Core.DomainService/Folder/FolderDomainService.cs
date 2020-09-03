@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DocmentServer.Core.DomainService.Folder
 {
-    public class FolderDomainService : Base.BaseDomainService
+    public class FolderDomainService : Base.BaseDomainService, IFolderDomainService
     {
         private IFileFloderBusiness business;
         public FolderDomainService(IFileFloderBusiness business) : base(business)
@@ -25,7 +25,7 @@ namespace DocmentServer.Core.DomainService.Folder
             return business.Delete(id: id, transaction: transaction);
         }
 
-      
+
         /// <summary>
         /// 获取文件夹信息--多个
         /// </summary>
@@ -42,10 +42,10 @@ namespace DocmentServer.Core.DomainService.Folder
         /// </summary>
         /// <param name="model">文件夹实体</param>
         /// <returns></returns>
-        public List<FileFloder> GetListOrgID(int orgId, IDbTransaction transaction = null)
+        public List<FileFloder> GetListOrgID(int orgId, int type, IDbTransaction transaction = null)
         {
-            return business.GetListOrgID(orgId: orgId, transaction: transaction);
+            return business.GetListOrgID(orgId: orgId,type:type, transaction: transaction);
         }
-      
+
     }
 }

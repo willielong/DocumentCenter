@@ -48,5 +48,15 @@ namespace DocmentServer.Core.Business.Company
         {
             return dbConnection.Query<UnitInfo>(sql: "SELECT *  FROM  UnitInfo WHERE unitcode=@unitcode", param: new UnitInfo() { unitcode = code }, transaction: transaction).AsList();
         }
+        /// <summary>
+        /// 获取单位信息--多个--根据上级ID
+        /// </summary>
+        /// </summary>
+        /// <param name="model">单位实体</param>
+        /// <returns></returns>
+        public List<UnitInfo> GetListByParentId(int parentId, IDbTransaction transaction = null)
+        {
+            return dbConnection.Query<UnitInfo>(sql: "SELECT *  FROM  UnitInfo WHERE parentId=@parentId", param: new UnitInfo() { parentId = parentId }, transaction: transaction).AsList();
+        }
     }
 }

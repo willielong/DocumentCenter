@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DocmentServer.Core.BizService.Folder
 {
-    public class BizFolderService:BaseService.BizBaseService, IBizFolderService
+    public class BizFolderService : BaseService.BizBaseService, IBizFolderService
     {
         private IFolderDomainService service;
         private IDbConnection dbConnection;
@@ -18,7 +18,7 @@ namespace DocmentServer.Core.BizService.Folder
         {
             this.service = service;
             this.dbConnection = dbConnection;
-            this.service.SettingCurrentEmp(employee: employee);
+            this.service.SettingCurrentEmp(employee: CurrentUser);
         }
         /// <summary>
         /// 添加账户信息
@@ -30,6 +30,8 @@ namespace DocmentServer.Core.BizService.Folder
         {
             dbConnection.Open();
             var transaction = dbConnection.BeginTransaction();
+            model.creator = CurrentUser.empid;
+            model.modifier = CurrentUser.empid;
             long id = service.Add(model: model, transaction: transaction);
             transaction.Commit();
             return id.ToResponse();
@@ -42,6 +44,7 @@ namespace DocmentServer.Core.BizService.Folder
         /// <returns></returns>
         public IResponseMessage Update(FileFloder model)
         {
+            model.modifier = CurrentUser.empid;
             return service.Update(model: model).ToResponse();
         }
 
@@ -84,6 +87,17 @@ namespace DocmentServer.Core.BizService.Folder
         public IResponseMessage All()
         {
             return service.All<FileFloder>().ToResponse();
+        }
+
+        /// <summary>
+        /// 获取文件夹信息--多个-- 按组织ID
+        /// </summary>
+        /// </summary>
+        /// <param name="model">文件夹实体</param>
+        /// <returns></returns>
+        public IResponseMessage GetFoldersByOrgId(int orgId, int type)
+        {
+            return service.GetListOrgID(orgId: orgId,type:type).ToResponse();
         }
     }
 }

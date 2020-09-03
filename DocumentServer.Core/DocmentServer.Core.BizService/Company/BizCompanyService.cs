@@ -18,7 +18,7 @@ namespace DocmentServer.Core.BizService.Company
         {
             this.service = service;
             this.dbConnection = dbConnection;
-            this.service.SettingCurrentEmp(employee: employee);
+            this.service.SettingCurrentEmp(employee: CurrentUser);
         }
         /// <summary>
         /// 添加单位信息
@@ -30,6 +30,8 @@ namespace DocmentServer.Core.BizService.Company
         {
             dbConnection.Open();
             var transaction = dbConnection.BeginTransaction();
+            model.creator = CurrentUser.empid;
+            model.modifier = CurrentUser.empid;
             long id = service.Add(model: model, transaction: transaction);
             transaction.Commit();
             return id.ToResponse();
@@ -42,6 +44,7 @@ namespace DocmentServer.Core.BizService.Company
         /// <returns></returns>
         public IResponseMessage Update(UnitInfo model)
         {
+            model.modifier = CurrentUser.empid;
             return service.Update(model: model).ToResponse();
         }
 

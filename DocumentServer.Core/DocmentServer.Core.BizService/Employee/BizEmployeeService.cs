@@ -17,7 +17,7 @@ namespace DocmentServer.Core.BizService.Employee
         {
             this.service = service;
             this.dbConnection = dbConnection;
-            this.service.SettingCurrentEmp(employee: employee);
+            this.service.SettingCurrentEmp(employee: CurrentUser);
         }
         /// <summary>
         /// 添加人员基本信息信息
@@ -28,6 +28,8 @@ namespace DocmentServer.Core.BizService.Employee
         public IResponseMessage Add(DocumentServer.Core.Model.DbModel.Employee model)
         {
             dbConnection.Open();
+            model.creator = CurrentUser.empid;
+            model.modifier = CurrentUser.empid;
             var transaction = dbConnection.BeginTransaction();
             long id = service.Add(model: model, transaction: transaction);
             transaction.Commit();
@@ -41,6 +43,7 @@ namespace DocmentServer.Core.BizService.Employee
         /// <returns></returns>
         public IResponseMessage Update(DocumentServer.Core.Model.DbModel.Employee model)
         {
+            model.modifier = CurrentUser.empid;
             return service.Update(model: model).ToResponse();
         }
 
