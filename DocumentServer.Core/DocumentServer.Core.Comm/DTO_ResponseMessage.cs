@@ -22,7 +22,7 @@ namespace DocumentServer.Core.Comm
         /// <summary>
         /// 返回HTTP请求响应码
         /// </summary>
-        public string Code { get; set; }
+        public int Code { get; set; }
 
         /// <summary>
         /// 返回请求是否成功-true/false
@@ -81,7 +81,7 @@ namespace DocumentServer.Core.Comm
                     }
                     return new DTO_ResponseMessage()
                     {
-                        Code = exs[0],
+                        Code = int.Parse(exs[0]),
                         Status = status,
                         Message = exs[1],
                         Body = data
@@ -106,7 +106,7 @@ namespace DocumentServer.Core.Comm
                 }
                 else if (obj is KeyValuePair<string, string>)
                 {
-                    data = JsonSerializer.SerializeToString(obj);
+                    data = obj;
                     status = true;
                 }
                 else if (obj.GetType().IsValueType || obj.GetType() == typeof(String))// Dictionary<string, string>
@@ -125,7 +125,7 @@ namespace DocumentServer.Core.Comm
                     //    throw new Exception("类名<DtoTransfer_ResponseMessage>: 映射类型错误!");
                     //}
 
-                    data = JsonSerializer.SerializeToString(obj);
+                    data = obj;
                     status = true;
                 }
                 else
@@ -134,7 +134,7 @@ namespace DocumentServer.Core.Comm
                 }
                 return new DTO_ResponseMessage()
                 {
-                    Code = "200",
+                    Code = 200,
                     Status = status,
                     Message = message,
                     Body = data
@@ -147,7 +147,7 @@ namespace DocumentServer.Core.Comm
                 {
                     return new DTO_ResponseMessage()
                     {
-                        Code = exs[0],
+                        Code = int.Parse(exs[0]),
                         Status = status,
                         Message = exs[1],
                         Body = data

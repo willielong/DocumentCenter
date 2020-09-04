@@ -81,7 +81,7 @@ namespace DocumentServer.Core.Comm
         /// <param name="password">密码</param>
         /// <param name="role">角色</param>
         /// <returns></returns>
-        public async Task<AccessToken> GenerateToken(HttpContext context, string username, string role, string entiy)
+        public async Task<AccessToken> GenerateToken(string username, string role, string entiy)
         {
             var identity = await GetIdentity(username);
             if (identity == null)
@@ -136,6 +136,6 @@ namespace DocumentServer.Core.Comm
                  new Claim(ClaimTypes.Name, username)
                 }));
         }
-      
+
     }
 }

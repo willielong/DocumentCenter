@@ -13,12 +13,12 @@ namespace DocumentServer.Core.Comm
 
         public override void OnException(ExceptionContext context)
         {
-            DTO_ResponseMessage msg = new DTO_ResponseMessage { Status = false, Code = null, Body = null };
+            DTO_ResponseMessage msg = new DTO_ResponseMessage { Status = false, Code = 200, Body = null };
 
             msg.Message = "服务器异常!";
             if (context.Exception is DbException)
             {
-                msg.Code = "1001";
+                msg.Code = 1001;
                 msg.Message = "数据库异常";
             }
             //if (context.Exception is SqlException)
@@ -28,22 +28,22 @@ namespace DocumentServer.Core.Comm
             //}
             else if (context.Exception is ArgumentException)
             {
-                msg.Code = "5001";
+                msg.Code = 5001;
                 msg.Message = "参数异常";
             }
             else if (context.Exception is NullReferenceException)
             {
-                msg.Code = "5002";
+                msg.Code = 5002;
                 msg.Message = "空指针异常";
             }
             else
             {
-                msg.Code = "500";
+                msg.Code = 500;
                 msg.Message = context.Exception.Message;
             }
             JsonResult result = new JsonResult(msg.Message)
             {
-                StatusCode = int.Parse(msg.Code),
+                StatusCode =msg.Code,
             };
             context.Result = result;
             base.OnException(context);

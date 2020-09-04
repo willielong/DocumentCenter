@@ -13,15 +13,25 @@
 * **************************************************************************
 */
 
-using log4net;
-using log4net.Config;
+using Autofac;
+using DocumentServer.Core.Filter;
+//using log4net;
+//using log4net.Config;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Swashbuckle.AspNetCore.Swagger;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -29,20 +39,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Builder;
-using DocumentServer.Core.Comm;
-using DocumentServer.Core.Filter;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using Microsoft.Extensions.PlatformAbstractions;
-using AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace DocumentServer.Core.Comm
 {
@@ -151,14 +147,14 @@ namespace DocumentServer.Core.Comm
         /// </summary>
         /// <param name="builder"></param>
         /// <param name="services"></param>
-        public static void RegisterAutoFacController(ContainerBuilder builder, IServiceCollection services)
+        public static void RegisterAutoFacController(ContainerBuilder builder)
         {
-            //var manager = new ApplicationPartManager();
-            //manager.ApplicationParts.Add(new AssemblyPart(Assembly.Load("Bbface.WF.Core")));
-            //manager.FeatureProviders.Add(new ControllerFeatureProvider());
-            //var feature = new ControllerFeature();
-            //manager.PopulateFeature(feature);
-            //builder.RegisterTypes(feature.Controllers.Select(ti => ti.AsType()).ToArray()).PropertiesAutowired();
+            var manager = new ApplicationPartManager();
+            manager.ApplicationParts.Add(new AssemblyPart(Assembly.Load("DocumentServer.Core")));
+            manager.FeatureProviders.Add(new ControllerFeatureProvider());
+            var feature = new ControllerFeature();
+            manager.PopulateFeature(feature);
+            builder.RegisterTypes(feature.Controllers.Select(ti => ti.AsType()).ToArray()).PropertiesAutowired();
         }
 
         /// <summary>
@@ -171,6 +167,72 @@ namespace DocumentServer.Core.Comm
             //  .InstancePerDependency().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).SingleInstance();///属性注入
             //           builder.RegisterGeneric(typeof(ReadRepository<>)).As(typeof(IReadRepository<>))//单个注入
             //.InstancePerDependency().PropertiesAutowired().PropertiesAutowired();///属性注入
+        }
+        /// <summary>
+        /// 进行服务注册
+        /// </summary>
+        public static void RegisterService(IServiceCollection services)
+        {
+            services.AddControllers().AddJsonOptions(o=> { o.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All); });
+            services.AddCors();
+            ///添加json序列化         
+            services.AddMvc(options => { options.Filters.Add(typeof(CustomExceptionFilter)); });
+            ///注册数据库链接
+            AddDBContext(services);
+            services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
+            ///配置jwt授权
+            AddJWTAuthorization(services);
+            //注入授权Handler
+            services.AddSingleton<IAuthorizationHandler, CustomAuthorize>();
+            services.AddDistributedMemoryCache();
+            services.AddSession(opt =>
+            {
+                opt.IdleTimeout = TimeSpan.FromMinutes(50);
+            });
+            ////添加接口文档自动生成第三方键
+            SwaggerConfig.AddSwagger(services);            ///注入Session服务
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            ///添加接口版本管理中间件
+            ApiVersionConfig.AddApiVersioning(services);
+            /////注入log4net
+            //var repository = LogManager.CreateRepository(ServiceLocator.log4netRepositoryName);
+            //XmlConfigurator.Configure(repository, new FileInfo("Config\\log4net.config"));
+            ///注册数据库服务
+            services.AddScoped<IDbConnection, MySqlConnection>();
+            //services.AddScoped<DocumentServer.Core.Model.DbModel.Employee>();
+        }
+        public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+                //允许所有的来源地址跨域访问
+                builder.AllowAnyOrigin();
+            });
+            app.UseAuthentication();//配置授权
+            app.UseAuthorization();
+            app.UseSwagger();
+            app.UseStaticFiles();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "文档中心接口文档 v1");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "文档中心接口文档 v2");
+                c.RoutePrefix = string.Empty;
+            });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

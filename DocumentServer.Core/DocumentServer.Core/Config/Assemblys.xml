@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ASSEMBLYS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <!--<CHILDS>Workflow.ServiceImp</CHILDS>-->
-  <CHILDS>Bbface.WF.Bussiness</CHILDS>
+  <CHILDS>DocmentServer.Core.BizService</CHILDS>
+  <CHILDS>DocmentServer.Core.Business</CHILDS>
   <!--<CHILDS>Bbface.WF.Entity</CHILDS>-->
-  <CHILDS>Bbface.WF.Service</CHILDS>
+  <CHILDS>DocmentServer.Core.DomainService</CHILDS>
 </ASSEMBLYS>
