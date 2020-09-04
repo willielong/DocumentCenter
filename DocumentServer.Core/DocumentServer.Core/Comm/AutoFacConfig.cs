@@ -176,7 +176,7 @@ namespace DocumentServer.Core.Comm
         /// </summary>
         public static void RegisterService(IServiceCollection services)
         {
-            services.AddControllers().AddJsonOptions(o=> { o.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All); });
+            services.AddControllers().AddJsonOptions(o => { o.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All); });
             services.AddCors();
             ///添加json序列化         
             services.AddMvc(options => { options.Filters.Add(typeof(CustomExceptionFilter)); });
@@ -204,7 +204,7 @@ namespace DocumentServer.Core.Comm
             services.AddScoped<IDbConnection, MySqlConnection>();
             //services.AddScoped<DocumentServer.Core.Model.DbModel.Employee>();
         }
-        public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env, IConfiguration configuration )
+        public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env, IConfiguration configuration)
         {
             if (env.IsDevelopment())
             {
@@ -226,14 +226,16 @@ namespace DocumentServer.Core.Comm
             app.UseAuthorization();
             app.UseSwagger();
             app.UseStaticFiles();
-            app.UseStaticFiles( new StaticFileOptions() { 
-               FileProvider = new PhysicalFileProvider(configuration.GetValue<string>("PhysicalFilePath")),
-                RequestPath = configuration.GetValue<string>("ApiFilePath")
+            var ApiConfig = configuration.Get<ApiVersionsConfig>();
+            FilePath path = ApiConfig.FilePath;
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(path.PhysicalFilePath),
+                RequestPath = path.ApiFilePath
             });
             app.UseSwaggerUI(c =>
             {
-                var ApiVersions = configuration.Get<ApiVersionsConfig>().ApiVersions;
-                ApiVersions.ForEach(a =>
+                ApiConfig.ApiVersions.ForEach(a =>
                 {
                     c.SwaggerEndpoint(a.url, a.name);
                 });
