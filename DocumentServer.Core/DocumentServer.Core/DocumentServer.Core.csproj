@@ -39,6 +39,6 @@
     <ProjectReference Include="..\DocumentServer.Core.Comm\DocumentServer.Core.Comm.csproj" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json-stat.org/format/schema/2.0/" /></VisualStudio></ProjectExtensions>
 
 </Project>

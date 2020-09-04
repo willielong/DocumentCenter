@@ -15,6 +15,7 @@
 
 using Autofac;
 using DocumentServer.Core.Filter;
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 //using log4net;
 //using log4net.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -24,8 +25,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
@@ -201,7 +204,7 @@ namespace DocumentServer.Core.Comm
             services.AddScoped<IDbConnection, MySqlConnection>();
             //services.AddScoped<DocumentServer.Core.Model.DbModel.Employee>();
         }
-        public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env)
+        public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env, IConfiguration configuration )
         {
             if (env.IsDevelopment())
             {
@@ -223,10 +226,17 @@ namespace DocumentServer.Core.Comm
             app.UseAuthorization();
             app.UseSwagger();
             app.UseStaticFiles();
+            app.UseStaticFiles( new StaticFileOptions() { 
+               FileProvider = new PhysicalFileProvider(configuration.GetValue<string>("PhysicalFilePath")),
+                RequestPath = configuration.GetValue<string>("ApiFilePath")
+            });
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "文档中心接口文档 v1");
-                c.SwaggerEndpoint("/swagger/v2/swagger.json", "文档中心接口文档 v2");
+                var ApiVersions = configuration.Get<ApiVersionsConfig>().ApiVersions;
+                ApiVersions.ForEach(a =>
+                {
+                    c.SwaggerEndpoint(a.url, a.name);
+                });
                 c.RoutePrefix = string.Empty;
             });
             app.UseEndpoints(endpoints =>
