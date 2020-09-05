@@ -54,4 +54,56 @@ namespace DocumetCenter.Core.Enum
         /// </summary>
         zh=2
     }
+    public enum TrackerStatus
+    {
+        NotFound = 0,
+        Editing = 1,
+        MustSave = 2,
+        Corrupted = 3,
+        Closed = 4,
+    }
+
+    public enum SystemType
+    {
+        /// <summary>
+        /// 桌面系统
+        /// </summary>
+        desktop=0,
+        /// <summary>
+        /// 移动端系统
+        /// </summary>
+        mobile=1
+    }
+    public enum EditType
+    {
+        /// <summary>
+        /// 编辑模式
+        /// </summary>
+        edit=0,
+        /// <summary>
+        /// 预览模式
+        /// </summary>
+        review=1,
+        view=2,
+        /// <summary>
+        /// 全屏模式
+        /// </summary>
+        fillForms=3,
+        /// <summary>
+        /// 消息模式
+        /// </summary>
+        comment=4,
+        /// <summary>
+        /// 锁定内容模式
+        /// </summary>
+        blockcontent=5,
+        /// <summary>
+        /// 无边框预览模式
+        /// </summary>
+        embedded=6,
+        /// <summary>
+        /// 条件模式
+        /// </summary>
+        filter=7
+    }
 }

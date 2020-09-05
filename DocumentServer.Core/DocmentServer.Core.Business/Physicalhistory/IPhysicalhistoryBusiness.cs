@@ -7,7 +7,7 @@ namespace DocmentServer.Core.Business.Physicalhistory
 {
     public interface IPhysicalhistoryBusiness : Base.IBaseBusiness
     {
-        bool Edit(DocumentServer.Core.Model.DbModel.Physicalhistory modele, IDbTransaction transaction = null);
+        bool Edit(IDbTransaction transaction = null);
         /// <summary>
         /// 获取开启的网站路径
         /// </summary>

@@ -5,10 +5,11 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 /*
- * 目的添加onlyOffice文件配置
- * 
- */
+* 目的添加onlyOffice文件配置
+* 
+*/
 namespace DocumentServer.Core.Comm
 {
     public static class FileUtility
@@ -18,10 +19,8 @@ namespace DocumentServer.Core.Comm
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static FileType GetFileType(string fileName)
+        public static FileType GetFileType(string ext)
         {
-            var ext = Path.GetExtension(fileName).ToLower();
-
             if (ExtsDocument.Contains(ext)) return FileType.Text;
             if (ExtsSpreadsheet.Contains(ext)) return FileType.Spreadsheet;
             if (ExtsPresentation.Contains(ext)) return FileType.Presentation;
@@ -102,6 +101,17 @@ namespace DocumentServer.Core.Comm
                 config.convert = config.convert ?? "";
                 return config.convert.Split(new char[] { '|', ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
+        }
+        /// <summary>
+        /// Translation key to a supported form.
+        /// </summary>
+        /// <param name="expectedKey">Expected key</param>
+        /// <returns>Supported key</returns>
+        public static string GenerateRevisionId(this string expectedKey)
+        {
+            if (expectedKey.Length > 20) expectedKey = expectedKey.GetHashCode().ToString();
+            var key = Regex.Replace(expectedKey, "[^0-9-.a-zA-Z_=]", "_");
+            return key.Substring(key.Length - Math.Min(key.Length, 20));
         }
     }
     

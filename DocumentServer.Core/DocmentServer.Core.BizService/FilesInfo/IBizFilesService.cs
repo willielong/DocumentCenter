@@ -50,5 +50,13 @@ namespace DocmentServer.Core.BizService.FilesInfo
         /// </summary>
         /// <returns></returns>
         IResponseMessage All();
+        /// <summary>
+        /// 进行OnlyOffice数据回调结构
+        /// </summary>
+        /// <param name="fileid"></param>
+        /// <returns></returns>
+        string TrackFile(int fileid);
+
+        IResponseMessage Config(int editType, int systemType, int fileid);
     }
 }

@@ -7,10 +7,15 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.35" />
     <PackageReference Include="Dapper.Contrib" Version="2.0.35" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Query\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocumetCenter.Core.Enum\DocumetCenter.Core.Enum.csproj" />
   </ItemGroup>
 
 </Project>

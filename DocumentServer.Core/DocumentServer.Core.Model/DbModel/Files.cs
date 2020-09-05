@@ -47,6 +47,10 @@ namespace DocumentServer.Core.Model.DbModel
         /// </summary>
         public virtual string path { get; set; }
         /// <summary>
+        /// 文件路径
+        /// </summary>
+        public virtual string folderpath { get; set; }
+        /// <summary>
         /// 文件大小
         /// </summary>
         public virtual double size { get; set; }

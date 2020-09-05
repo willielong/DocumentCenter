@@ -9,9 +9,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentServer.Core.Controllers
-{/// <summary>
- /// 账号接口
- /// </summary>
+{
+    /// <summary>
+    /// 文件夹接口
+    /// </summary>
     [Route("api/folder"), Authorize("CustomAuthorize")]
     [ApiController]
     [ApiVersion("1")]
@@ -91,9 +92,9 @@ namespace DocumentServer.Core.Controllers
         /// <param name="type">组织类型</param>
         /// <returns></returns>
         [HttpGet, Route("orgfolder")]
-        public IActionResult OrgFolder([FromQuery]int orgid,[FromQuery] int type)
+        public IActionResult OrgFolder([FromQuery]int orgid, [FromQuery] int type)
         {
-            return ToResult(service.GetFoldersByOrgId(orgId:orgid,type:type));
+            return ToResult(service.GetFoldersByOrgId(orgId: orgid, type: type));
         }
     }
 }

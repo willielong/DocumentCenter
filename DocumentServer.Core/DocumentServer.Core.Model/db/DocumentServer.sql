@@ -82,7 +82,7 @@ create table FileFloder
    orgid                int,
    primary key (autoId)
 );
-
+drop table if exists Files;
 /*==============================================================*/
 /* Table: Files                                                 */
 /*==============================================================*/
@@ -96,6 +96,7 @@ create table Files
    filetype             varchar(10),
    fileuri              text,
    filepath             text,
+   folderpath             text,
    path                 text,
    size                 double,
    creator              int,

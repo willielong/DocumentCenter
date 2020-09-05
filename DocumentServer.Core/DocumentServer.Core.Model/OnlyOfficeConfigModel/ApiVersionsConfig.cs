@@ -23,5 +23,22 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
         /// api文件地址
         /// </summary>
         public string ApiFilePath { get; set; }
+
+        /// <summary>
+        /// 文件的最大值
+        /// </summary>
+        public int MaxFile { get; set; }
+        /// <summary>
+        /// OnlyOffice版本
+        /// </summary>
+        public string ServerVersion { get; set; }
+        /// <summary>
+        /// 接口地址
+        /// </summary>
+        public string ApiUrl { get; set; }
+        /// <summary>
+        /// 网站地址
+        /// </summary>
+        public string WebUrl { get; set; }
     }
 }
