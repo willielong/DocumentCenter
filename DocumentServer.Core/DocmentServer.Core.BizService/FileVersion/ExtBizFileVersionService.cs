@@ -29,6 +29,7 @@ namespace DocmentServer.Core.BizService.FileVersion
                 history.serverVersion = item.serverVersion;
                 history.created = history.changes.First().created;
                 history.user = history.changes.First().user;
+                if (item.version == 0) history.changes = new List<ChangesConfig>();
                 config.history.Add(history);
             }
             return config;
@@ -49,12 +50,15 @@ namespace DocmentServer.Core.BizService.FileVersion
                 config.key = currentVersion.filekey;
                 config.url = currentVersion.version == int.Parse(file.currentVersion) ? string.Concat(filePath.ApiUrl, file.fileuri) : string.Concat(filePath.ApiUrl, nextVersion.prevuri);
                 config.version = currentVersion.version;
-                config.changesUrl = string.IsNullOrWhiteSpace(currentVersion.changesUrl) ? "" : string.Concat(filePath.ApiUrl, currentVersion.changesUrl);
-                config.previous = new PreviousInfo() { url = "", key = "" };
-                if (preVersion != null)
+                if (currentVersion.version > 0)
                 {
-                    config.previous.key = preVersion.filekey;
-                    config.previous.url = string.Concat(filePath.ApiUrl, preVersion.prevuri);
+                    config.changesUrl = string.IsNullOrWhiteSpace(currentVersion.changesUrl) ? "" : string.Concat(filePath.ApiUrl, currentVersion.changesUrl);
+                    config.previous = new PreviousInfo() { url = "", key = "" };
+                    if (preVersion != null)
+                    {
+                        config.previous.key = preVersion.filekey;
+                        config.previous.url = string.Concat(filePath.ApiUrl, preVersion.prevuri);
+                    }
                 }
             }
             return config;

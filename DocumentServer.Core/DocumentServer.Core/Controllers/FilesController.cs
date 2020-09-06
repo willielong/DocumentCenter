@@ -13,7 +13,7 @@ namespace DocumentServer.Core.Controllers
     /// <summary>
     /// 文件夹接口
     /// </summary>
-    [Route("api/file"), Authorize("CustomAuthorize")]
+    [Route("api/file")]
     [ApiController]
     [ApiVersion("1")]
     public class FilesController : BaseController
@@ -28,7 +28,7 @@ namespace DocumentServer.Core.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost, Route("add")]
+        [HttpPost, Route("add"), Authorize("CustomAuthorize")]
         public IActionResult Add([FromBody]Files model)
         {
             return ToResult(service.Add(model: model));
@@ -38,16 +38,16 @@ namespace DocumentServer.Core.Controllers
         /// </summary>
         /// <param name="fileid">文件ID</param>
         /// <returns></returns>
-        [HttpGet, Route("track")]
-        public IActionResult TrackFile([FromQuery]int fileid)
+        [HttpPost, Route("track")]
+        public string TrackFile([FromQuery]int fileid, [FromQuery] string token)
         {
-            return ToResult(service.TrackFile(fileid: fileid));
+            return service.TrackFile(fileid: fileid, token: token);
         }
         /// <summary>
         /// 获取配置文件
         /// </summary>
         /// <returns></returns>
-        [HttpGet, Route("config")]
+        [HttpGet, Route("config"), Authorize("CustomAuthorize")]
         public IActionResult Config([FromQuery]int editType, [FromQuery]int systemType, [FromQuery]int fileid)
         {
             return ToResult(service.Config(editType: editType, systemType: systemType, fileid: fileid));
@@ -56,7 +56,7 @@ namespace DocumentServer.Core.Controllers
         /// 获取配置文件
         /// </summary>
         /// <returns></returns>
-        [HttpGet, Route("list")]
+        [HttpGet, Route("list"), Authorize("CustomAuthorize")]
         public IActionResult List()
         {
             return ToResult(service.All());

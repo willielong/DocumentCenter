@@ -109,6 +109,7 @@ namespace DocumentServer.Core.Comm
         /// <returns>Supported key</returns>
         public static string GenerateRevisionId(this string expectedKey)
         {
+            expectedKey = string.Concat(expectedKey, DateTime.Now.ToString());
             if (expectedKey.Length > 20) expectedKey = expectedKey.GetHashCode().ToString();
             var key = Regex.Replace(expectedKey, "[^0-9-.a-zA-Z_=]", "_");
             return key.Substring(key.Length - Math.Min(key.Length, 20));

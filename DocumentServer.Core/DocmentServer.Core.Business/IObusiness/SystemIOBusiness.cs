@@ -90,11 +90,11 @@ namespace DocmentServer.Core.Business.IObusiness
         /// <param name="files"></param>
         /// <param name="fileData"></param>
         /// <returns></returns>
-        public FilesVersion TrackFile(Files files, Dictionary<string, object> fileData)
+        public FilesVersion TrackFile(Files files, OutOfficeConfigModel fileData)
         {
             FilesVersion filesVersion = new FilesVersion();
             ///组装历史文件地址
-            string histfolder = Path.Combine(filePath.PhysicalFilePath, files.folderpath, "hist");
+            string histfolder = filePath.PhysicalFilePath + Path.Combine(files.folderpath, "hist");
             filesVersion.prevuri = string.Format("{0}/{1}/{2}/", filePath.ApiFilePath, files.folderpath.Replace(@"\", "/"), "hist");
             ///组装版本信息地址
             filesVersion.changesUrl = string.Format("{0}/{1}/{2}/", filePath.ApiFilePath, files.folderpath.Replace(@"\", "/"), "hist");
@@ -108,22 +108,22 @@ namespace DocmentServer.Core.Business.IObusiness
 
             string diffFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString().Replace("-", "").Trim(), "zip");
 
-            filesVersion.changesUrl = string.Format("{0}/{1}", filesVersion.prevuri, diffFileName);
+            filesVersion.changesUrl = string.Format("{0}/{1}", filesVersion.changesUrl, diffFileName);
             ///保存文件数据
-            SavePhysicalhistoryFile(url: (string)fileData["url"], path: files.filepath);
+            SavePhysicalhistoryFile(url: fileData.url, path: files.filepath);
             ///下载历史数据
-            SavePhysicalhistoryFile(url: (string)fileData["url"], path: Path.Combine(histfolder, diffFileName));
+            SavePhysicalhistoryFile(url: fileData.changesurl, path: Path.Combine(histfolder, diffFileName));
             ///组装数据
             filesVersion.fileid = files.autoid;
             filesVersion.serverVersion = filePath.ServerVersion;
             filesVersion.creatdate = DateTime.Now;
             filesVersion.modifdate = DateTime.Now;
-            filesVersion.filekey = (string)fileData["key"];//装key
+            filesVersion.filekey =  fileData.key;//装key
             filesVersion.version = int.Parse(files.currentVersion);
-            var hist = fileData.ContainsKey("changeshistory") ? (string)fileData["changeshistory"] : null;
-            if (string.IsNullOrEmpty(hist) && fileData.ContainsKey("history"))
-            {
-                hist = JsonSerializer.SerializeToString(fileData["history"]);
+            var hist = fileData.changeshistory;
+            if (string.IsNullOrEmpty(hist) && fileData.history != null)
+            {                
+                hist = JsonSerializer.SerializeToString(fileData.history.changes);
             }
             if (!string.IsNullOrEmpty(hist))
             {

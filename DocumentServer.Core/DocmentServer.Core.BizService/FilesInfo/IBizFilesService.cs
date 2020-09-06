@@ -55,7 +55,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
         /// </summary>
         /// <param name="fileid"></param>
         /// <returns></returns>
-        string TrackFile(int fileid);
+        string TrackFile(int fileid, string token);
 
         IResponseMessage Config(int editType, int systemType, int fileid);
     }

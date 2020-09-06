@@ -13,7 +13,7 @@ namespace DocmentServer.Core.BizService.BaseService
     {
         public HttpContext context;
         public DocumentServer.Core.Model.DbModel.Employee CurrentUser;
-      
+
         public BizBaseService(IHttpContextAccessor httpContext)
         {
             context = httpContext.HttpContext;
@@ -23,9 +23,10 @@ namespace DocmentServer.Core.BizService.BaseService
         /// 根据token获取员工基本信息
         /// </summary>
         /// <param name="httpContext"></param>
-        public void GetEmployee(IHttpContextAccessor httpContext)
+        public void GetEmployee(IHttpContextAccessor httpContext, DocumentServer.Core.Model.DbModel.Employee employee = null)
         {
-            CurrentUser = httpContext.HttpContext.User.ToUser<DocumentServer.Core.Model.DbModel.Employee>();
+            CurrentUser = new DocumentServer.Core.Model.DbModel.Employee();
+            CurrentUser = httpContext != null ? (httpContext.HttpContext.User.ToUser<DocumentServer.Core.Model.DbModel.Employee>() ?? employee) : employee;
         }
     }
 }

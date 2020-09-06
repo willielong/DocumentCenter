@@ -1,4 +1,5 @@
 ﻿using DocumentServer.Core.Model.DbModel;
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +25,6 @@ namespace DocmentServer.Core.DomainService.IO
         /// </summary>
         /// <param name="fileid"></param>
         /// <returns></returns>
-        FilesVersion TrackFile(Files files, Dictionary<string, object> fileData);
+        FilesVersion TrackFile(Files files, OutOfficeConfigModel fileData);
     }
 }

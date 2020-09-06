@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using DocmentServer.Core.Business.IObusiness;
 using DocumentServer.Core.Model.DbModel;
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 
 namespace DocmentServer.Core.DomainService.IO
 {
@@ -35,7 +36,7 @@ namespace DocmentServer.Core.DomainService.IO
         /// </summary>
         /// <param name="fileid"></param>
         /// <returns
-        public FilesVersion TrackFile(Files files, Dictionary<string, object> fileData)
+        public FilesVersion TrackFile(Files files, OutOfficeConfigModel fileData)
         {
             return systemIOBusiness.TrackFile(files: files, fileData: fileData);
         }

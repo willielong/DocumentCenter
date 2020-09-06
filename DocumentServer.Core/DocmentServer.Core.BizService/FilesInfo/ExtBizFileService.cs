@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Text;
 
 namespace DocmentServer.Core.BizService.FilesInfo
@@ -88,11 +89,9 @@ namespace DocmentServer.Core.BizService.FilesInfo
         /// </summary>
         /// <param name="fileid"></param>
         /// <returns></returns>
-        public FilesVersion TrackFile(Files files, Dictionary<string, object> fileData)
+        public FilesVersion TrackFile(Files files, OutOfficeConfigModel fileData)
         {
-            FilesVersion filesVersion = systemIODomainService.TrackFile(files: files, fileData: fileData);
-            filesVersion.creator = CurrentUser.empid;
-            filesVersion.modifier = CurrentUser.empid;
+            FilesVersion filesVersion = systemIODomainService.TrackFile(files: files, fileData: fileData);        
             return filesVersion;
         }
         /// <summary>
@@ -157,7 +156,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
             EditorConfig editor = new EditorConfig();
             editor.mode = FileUtility.EditedExts.Contains(string.Concat(".", model.files.ext)) && model.editType != EditType.view ? EditType.edit.ToString() : EditType.view.ToString();
             editor.lang = "zh";
-            editor.callbackUrl = GetCallbackUrl(file: model.files, path: model.filePath);
+            editor.callbackUrl = GetCallbackUrl(file: model.files, path: model.filePath,employee:model.employee);
             editor.user = new User() { id = model.employee.empid.ToString(), name = model.employee.cnname };
             editor.embedded = new Embedded() { embedUrl = string.Concat(model.filePath.ApiUrl, model.files.fileuri), saveUrl = string.Concat(model.filePath.ApiUrl, model.files.fileuri), shareUrl = string.Concat(model.filePath.ApiUrl, model.files.fileuri), toolbarDocked = "top" };
             editor.customization = GetCustomizationInfo(model: model);
@@ -169,9 +168,10 @@ namespace DocmentServer.Core.BizService.FilesInfo
         /// <param name="file"></param>
         /// <param name="path"></param>
         /// <returns></returns>
-        public string GetCallbackUrl(Files file, FilePath path)
+        public string GetCallbackUrl(Files file, FilePath path,DocumentServer.Core.Model.DbModel.Employee employee)
         {
-            return string.Concat(path.ApiUrl, "/api/file/track?fileid=", file.autoid);
+            byte[] b = Encoding.Default.GetBytes(string.Format("{0}@@{1}",employee.empcode,employee.empid));
+            return string.Concat(path.ApiUrl, "/api/file/track?fileid=", file.autoid,"&token=",Convert.ToBase64String(b));
         }
         /// <summary>
         /// 配置自定义信息
@@ -201,6 +201,28 @@ namespace DocmentServer.Core.BizService.FilesInfo
             info.url = string.Concat(model.filePath.WebUrl, "/Index");
             return info;
             throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 获取Body中的值
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public string GetBody(HttpContext context)
+        {
+            string body = "";
+            try
+            {
+                using (var receiveStream = context.Request.Body)
+                using (var readStream = new StreamReader(receiveStream))
+                {
+                    body = readStream.ReadToEndAsync().Result;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return body;
         }
     }
 }

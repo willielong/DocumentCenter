@@ -125,37 +125,40 @@ namespace DocmentServer.Core.BizService.FilesInfo
         /// </summary>
         /// <param name="fileid"></param>
         /// <returns></returns>
-        public string TrackFile(int fileid)
+        public string TrackFile(int fileid, string token)
         {
-            var tran = dbConnection.BeginTransaction();
-            Files files = service.Get<Files>(id: fileid, transaction: tran);
-            string message = "";
-            if (null != files)
+            string message = "{\"error\":0}";
+            string body = extBizFileService.GetBody(context: context);
+            if (string.IsNullOrEmpty(body)) return "{\"error\":0}";
+            OutOfficeConfigModel fileData = JsonSerializer.DeserializeFromString<OutOfficeConfigModel>(body);
+            switch (fileData.status)
             {
-                string body;
-                try
-                {
-                    using (var receiveStream = context.Request.Body)
-                    using (var readStream = new StreamReader(receiveStream))
+                case TrackerStatus.MustSave:
+                case TrackerStatus.Corrupted:
                     {
-                        body = readStream.ReadToEnd();
+                        dbConnection.Open();
+                        var tran = dbConnection.BeginTransaction();
+                        Files files = service.Get<Files>(id: fileid, transaction: tran);
+                        if (null != files)
+                        {
+                            var byt = Convert.FromBase64String(token);
+                            string value = Encoding.Default.GetString(byt).Split(new string[] { "@@" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                            DocumentServer.Core.Model.DbModel.Employee employee = employeeDomainService.Get<DocumentServer.Core.Model.DbModel.Employee>(id: int.Parse(value), transaction: tran);
+                            files.currentVersion = (int.Parse(files.currentVersion) + 1).ToString();
+                            GetEmployee(httpContext: null, employee: employee);
+                            files.modifier = CurrentUser.empid;
+                            files.modifdate = DateTime.Now;
+                            FilesVersion filesVersion = extBizFileService.TrackFile(files: files, fileData: fileData);
+                            filesVersion.creator = CurrentUser.empid;
+                            filesVersion.modifier = CurrentUser.empid;
+                            service.Update<Files>(model: files, transaction: tran);
+                            fileVersionDomainService.Add<FilesVersion>(filesVersion);
+                            tran.Commit();
+                        }
                     }
-                }
-                catch (Exception e)
-                {
-                    throw new Exception(e.Message);
-                }
-
-                if (string.IsNullOrEmpty(body)) return "";
-                Dictionary<string, object> fileData = JsonSerializer.DeserializeFromString<Dictionary<string, object>>(body);
-                files.currentVersion = (int.Parse(files.currentVersion) + 1).ToString();
-                files.modifier = CurrentUser.empid;
-                files.modifdate = DateTime.Now;
-                FilesVersion filesVersion = extBizFileService.TrackFile(files: files, fileData: fileData);
-                service.Update<Files>(model: files, transaction: tran);
-                fileVersionDomainService.Add<FilesVersion>(filesVersion);
+                    break;
+                default: { } break;
             }
-            tran.Commit();
             return message;
         }
         /// <summary>
@@ -181,5 +184,6 @@ namespace DocmentServer.Core.BizService.FilesInfo
             }
             return extBizFileService.Config(model: new ConfigModel() { editType = eType, systemType = system, filePath = filePath, files = files, httpContext = context, version = version, employee = employeeDomainService.Get<DocumentServer.Core.Model.DbModel.Employee>(id: files.creator) }).ToResponse();
         }
+
     }
 }

@@ -102,4 +102,13 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
         /// </summary>
         public User user { get; set; }
     }
+
+    public class ChangesModel {
+        /// <summary>
+        /// 工具版本
+        /// </summary>
+        public string serverVersion { get; set; }
+        public List<ChangesConfig> changes { get; set; }
+    }
+
 }
