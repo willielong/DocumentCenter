@@ -28,23 +28,23 @@ namespace DocmentServer.Core.BizService.Login
         {
             if (null == User)
             {
-                return "请输入登录信息".ToResponse();
+                return "请输入登录信息".ToErrMessage().ToResponse();
             }
             else
             {
                 if (string.IsNullOrWhiteSpace(User.account) || User.account == "string")
                 {
-                    return "用户名不能为空!".ToResponse();
+                    return "用户名不能为空!".ToErrMessage().ToResponse();
                 }
                 else if (string.IsNullOrWhiteSpace(User.password) || User.password == "string")
                 {
-                    return "密码不能为空!".ToResponse();
+                    return "密码不能为空!".ToErrMessage().ToResponse();
                 }
                 else
                 {
                     DocumentServer.Core.Model.DbModel.AccoutInfo accout = this.accountDomainService.GetListByCode(code: User.account).SingleOrDefault();
                     if (accout == null)
-                        return "当前用户名不存在!请联系管理员！".ToResponse();
+                        return "当前用户名不存在!请联系管理员！".ToErrMessage().ToResponse();
                     else
                     {
                         if (accout.password == User.password)
@@ -57,12 +57,12 @@ namespace DocmentServer.Core.BizService.Login
                             }
                             else
                             {
-                                return "未生成登录令牌!".ToResponse();
+                                return "未生成登录令牌!".ToErrMessage().ToResponse();
                             }
                         }
                         else
                         {
-                            return "当前用户密码不正确!请重新输入！".ToResponse();
+                            return "当前用户密码不正确!请重新输入！".ToErrMessage().ToResponse();
                         }
                     }
                 }
