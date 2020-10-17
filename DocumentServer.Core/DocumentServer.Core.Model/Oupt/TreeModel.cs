@@ -27,5 +27,10 @@ namespace DocumentServer.Core.Model.Oupt
         /// 图标
         /// </summary>
         public string icon { get; set; }
+
+        /// <summary>
+        /// 主题
+        /// </summary>
+        public string item { get; set; }
     }
 }

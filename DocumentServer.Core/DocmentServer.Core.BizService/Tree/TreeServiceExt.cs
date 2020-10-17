@@ -21,6 +21,8 @@ namespace DocmentServer.Core.BizService.Tree
             dicTreeActions = new Dictionary<int, Func<int, int, List<TreeModel>>>();
             dicTreeActions.Add(0, TreesCompany);
             dicTreeActions.Add(1, TreesOrganization);
+            dicTreeActions.Add(2, TreesPerson); ;
+            dicTreeActions.Add(-1, TreesPerson); ;
             this.employeeDomainService = _employeeDomainService;
             this.organizationDomainService = _organizationDomainService;
             this.companyDomainService = _companyDomainService;
@@ -38,7 +40,7 @@ namespace DocmentServer.Core.BizService.Tree
             var companys = this.companyDomainService.GetListByParentId(parentId: pId);
             companys.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.unitid, pid = pId, type = type });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.unitid, pid = pId, type = type, icon = "el-icon-s-home", item= "primary" });
             });
             ///组装组织
             treeModels.AddRange(TreesOrganizationByCompayId(type: (int)FolderType.Organization, pId: pId));
@@ -59,10 +61,10 @@ namespace DocmentServer.Core.BizService.Tree
             organizations = this.organizationDomainService.GetListByCompanyId(companyId: pId);
             organizations.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success" });
             });
             ///组装人员
-            treeModels.AddRange(TreesPerson(type: (int)FolderType.Personal, pId: pId));
+            //treeModels.AddRange(TreesPerson(type: (int)FolderType.Personal, pId: pId));
             return treeModels;
         }
 
@@ -80,7 +82,7 @@ namespace DocmentServer.Core.BizService.Tree
             organizations = this.organizationDomainService.GetListByParentId(parentId: pId);
             organizations.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success" });
             });
             ///组装人员
             treeModels.AddRange(TreesPerson(type: (int)FolderType.Personal, pId: pId));
@@ -95,11 +97,14 @@ namespace DocmentServer.Core.BizService.Tree
         private List<TreeModel> TreesPerson(int type, int pId)
         {
             List<TreeModel> treeModels = new List<TreeModel>();
-            var emps = this.employeeDomainService.GetListByOrgId(orgId: pId);
-            emps.ForEach(o =>
+            if (type != -1)
             {
-                treeModels.Add(new TreeModel() { name = o.cnname, id = o.empid, pid = pId, type = type });
-            });
+                var emps = this.employeeDomainService.GetListByOrgId(orgId: pId);
+                emps.ForEach(o =>
+                {
+                    treeModels.Add(new TreeModel() { name = o.cnname, id = o.empid, pid = -1, type = -1, icon = "el-icon-user", item = "warning" });
+                });
+            }
             return treeModels;
         }
         /// <summary>
