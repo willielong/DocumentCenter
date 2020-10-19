@@ -61,5 +61,34 @@ namespace DocumentServer.Core.Controllers
         {
             return ToResult(service.All());
         }
+        /// <summary>
+        /// 删除数据
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, Route("delete/{id}"), Authorize("CustomAuthorize")]
+        public IActionResult Delete(int id)
+        {
+            return ToResult(service.Delete(id));
+        }
+        /// <summary>
+        /// 获取单个数据
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet, Route("query/{id}"), Authorize("CustomAuthorize")]
+        public IActionResult Query([FromRoute]int id)
+        {
+            return ToResult(service.Get(id: id));
+        }
+        /// <summary>
+        /// 进行数据更改
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost, Route("update"), Authorize("CustomAuthorize")]
+        public IActionResult Update([FromBody]Files model)
+        {
+            return ToResult(service.Update(model: model));
+        }
     }
 }

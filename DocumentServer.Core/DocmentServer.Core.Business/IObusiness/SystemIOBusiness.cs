@@ -119,7 +119,7 @@ namespace DocmentServer.Core.Business.IObusiness
             filesVersion.creatdate = DateTime.Now;
             filesVersion.modifdate = DateTime.Now;
             filesVersion.filekey =  fileData.key;//装key
-            filesVersion.version = int.Parse(files.currentVersion);
+            filesVersion.version = int.Parse(files.currentVersion.ToString());
             var hist = fileData.changeshistory;
             if (string.IsNullOrEmpty(hist) && fileData.history != null)
             {                

@@ -144,7 +144,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
                             var byt = Convert.FromBase64String(token);
                             string value = Encoding.Default.GetString(byt).Split(new string[] { "@@" }, StringSplitOptions.RemoveEmptyEntries)[1];
                             DocumentServer.Core.Model.DbModel.Employee employee = employeeDomainService.Get<DocumentServer.Core.Model.DbModel.Employee>(id: int.Parse(value), transaction: tran);
-                            files.currentVersion = (int.Parse(files.currentVersion) + 1).ToString();
+                            files.currentVersion = files.currentVersion + 1;
                             GetEmployee(httpContext: null, employee: employee);
                             files.modifier = CurrentUser.empid;
                             files.modifdate = DateTime.Now;

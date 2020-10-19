@@ -18,12 +18,12 @@ namespace DocmentServer.Core.BizService.FileVersion
         public HistoryHitConfig refreshHistory(Files file, List<FilesVersion> versions, List<DocumentServer.Core.Model.DbModel.Employee> employees, FilePath filePath)
         {
             HistoryHitConfig config = new HistoryHitConfig();
-            config.currentVersion = int.Parse(file.currentVersion);
+            config.currentVersion = file.currentVersion;
             config.history = new List<HistoryHit>();
             foreach (var item in versions)
             {
                 HistoryHit history = new HistoryHit();
-                history.key = item.version == int.Parse(file.currentVersion) ? file.fileuri.GetHashCode().ToString().GenerateRevisionId() : item.filekey;
+                history.key = item.version == file.currentVersion ? file.fileuri.GetHashCode().ToString().GenerateRevisionId() : item.filekey;
                 history.version = item.version;
                 history.changes = JsonSerializer.DeserializeFromString<List<ChangesConfig>>(item.changes);
                 history.serverVersion = item.serverVersion;
@@ -48,7 +48,7 @@ namespace DocmentServer.Core.BizService.FileVersion
             if (currentVersion != null)
             {
                 config.key = currentVersion.filekey;
-                config.url = currentVersion.version == int.Parse(file.currentVersion) ? string.Concat(filePath.ApiUrl, file.fileuri) : string.Concat(filePath.ApiUrl, nextVersion.prevuri);
+                config.url = currentVersion.version == file.currentVersion ? string.Concat(filePath.ApiUrl, file.fileuri) : string.Concat(filePath.ApiUrl, nextVersion.prevuri);
                 config.version = currentVersion.version;
                 if (currentVersion.version > 0)
                 {

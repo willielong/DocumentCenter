@@ -132,7 +132,7 @@ namespace DocmentServer.Core.BizService.Folder
             });
             files.ForEach(o =>
             {
-                treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = o.currentVersion, dic_filetype = o.ext.ConvertToExt(), dic_orgtype = type.ConvertToOrgTypeString(), ext = o.ext, filetype = o.ext.ConvertToExtInt(), id = o.autoid, orgtype = type, sequence = o.sequence, size = o.size.ToString() + " kb",path=o.path,orgid=orgId});
+                treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = o.currentVersion.ToString(), dic_filetype = o.ext.ConvertToExt(), dic_orgtype = type.ConvertToOrgTypeString(), ext = o.ext, filetype = o.ext.ConvertToExtInt(), id = o.autoid, orgtype = type, sequence = o.sequence, size = o.size.CovertToGb(), path=o.path,orgid=orgId});
             });
             return treeTables.ToResponse();
         }
