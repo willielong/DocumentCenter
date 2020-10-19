@@ -41,7 +41,32 @@ namespace DocumetCenter.Core.Enum
         /// <summary>
         /// 幻灯片类
         /// </summary>
-        Presentation
+        Presentation,
+        /// <summary>
+        /// 文件夹
+        /// </summary>
+        Folder,
+
+    }
+    public enum TextType
+    {
+        /// <summary>
+        /// 文本文档类
+        /// </summary>
+        Word,
+        /// <summary>
+        /// 表格类
+        /// </summary>
+        Excel,
+        /// <summary>
+        /// 幻灯片类
+        /// </summary>
+        PPT,
+        /// <summary>
+        /// 文件夹
+        /// </summary>
+        文件夹,
+
     }
 
     public enum LanguageType { 
@@ -68,11 +93,12 @@ namespace DocumetCenter.Core.Enum
         /// <summary>
         /// 桌面系统
         /// </summary>
-        desktop=0,
+        desktop,
         /// <summary>
         /// 移动端系统
         /// </summary>
-        mobile=1
+        mobile,
+        embedded,
     }
     public enum EditType
     {

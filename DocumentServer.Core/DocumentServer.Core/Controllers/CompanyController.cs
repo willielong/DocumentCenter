@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DocmentServer.Core.BizService.Company;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,7 @@ namespace DocumentServer.Core.Controllers
     /// <summary>
     /// 单位相关接口
     /// </summary>
-    [Route("api/company")]
+    [Route("api/company"), Authorize("CustomAuthorize")]
     [ApiController]
     [ApiVersion("1")]
     public class CompanyController : BaseController

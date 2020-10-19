@@ -44,7 +44,18 @@ namespace DocmentServer.Core.Business.Folder
         /// <returns></returns>
         public List<FileFloder> GetListOrgID(int orgId, int type, IDbTransaction transaction = null)
         {
-            return dbConnection.Query<FileFloder>(sql: "SELECT *  FROM   FileFloder WHERE orgid=@orgid and flodertype=@flodertype", param: new FileFloder() { orgid = orgId, flodertype = type }, transaction: transaction).AsList();
+            return dbConnection.Query<FileFloder>(sql: "SELECT *  FROM   FileFloder WHERE orgid=@orgid and flodertype=@flodertype and parentId=0", param: new FileFloder() { orgid = orgId, flodertype = type }, transaction: transaction).AsList();
+        }
+        /// <summary>
+        /// 获取文件列表-按组织-按上级Id
+        /// </summary>
+        /// <param name="orgId"></param>
+        /// <param name="type"></param>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        public List<FileFloder> GetFolders(int pid, IDbTransaction transaction = null)
+        {
+            return dbConnection.Query<FileFloder>(sql: "SELECT *  FROM   FileFloder WHERE   parentId=@parentId", param: new FileFloder() { parentId=pid }, transaction: transaction).AsList();
         }
     }
 }

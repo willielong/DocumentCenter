@@ -32,5 +32,9 @@ namespace DocumentServer.Core.Model.Oupt
         /// 主题
         /// </summary>
         public string item { get; set; }
+        /// <summary>
+        /// 单位ID
+        /// </summary>
+        public int unitid { get; set; }
     }
 }

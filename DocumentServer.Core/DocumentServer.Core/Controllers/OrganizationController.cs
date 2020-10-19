@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DocmentServer.Core.BizService.Organization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,7 @@ namespace DocumentServer.Core.Controllers
     /// <summary>
     /// 组织相关接口
     /// </summary>
-    [Route("api/organization")]
+    [Route("api/organization"), Authorize("CustomAuthorize")]
     [ApiController]
     [ApiVersion("1")]
     public class OrganizationController : BaseController

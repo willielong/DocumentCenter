@@ -61,7 +61,7 @@ namespace DocmentServer.Core.BizService.Tree
             organizations = this.organizationDomainService.GetListByCompanyId(companyId: pId);
             organizations.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success" });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success",unitid=pId, });
             });
             ///组装人员
             //treeModels.AddRange(TreesPerson(type: (int)FolderType.Personal, pId: pId));
@@ -82,7 +82,7 @@ namespace DocmentServer.Core.BizService.Tree
             organizations = this.organizationDomainService.GetListByParentId(parentId: pId);
             organizations.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success" });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success",unitid=c.untid });
             });
             ///组装人员
             treeModels.AddRange(TreesPerson(type: (int)FolderType.Personal, pId: pId));

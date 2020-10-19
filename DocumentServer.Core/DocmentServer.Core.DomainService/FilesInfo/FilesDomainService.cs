@@ -34,6 +34,10 @@ namespace DocmentServer.Core.DomainService.FilesInfo
         {
             return business.List(id: id, transaction: transaction);
         }
+        public List<Files> GetFiles(int folderid, IDbTransaction transaction = null)
+        {
+            return business.GetFiles(folderid: folderid, transaction: transaction);
+        }
 
     }
 }

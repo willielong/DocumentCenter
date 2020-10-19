@@ -23,5 +23,6 @@ namespace DocmentServer.Core.DomainService.FilesInfo
         /// <param name="model">文件实体</param>
         /// <returns></returns>
         List<Files> List(object id, IDbTransaction transaction = null);
+         List<Files> GetFiles(int folderid, IDbTransaction transaction = null);
     }
 }

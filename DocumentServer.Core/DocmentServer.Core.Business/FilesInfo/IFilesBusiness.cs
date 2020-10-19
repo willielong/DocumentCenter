@@ -23,6 +23,13 @@ namespace DocmentServer.Core.Business.FilesInfo
         /// <param name="model">文件实体</param>
         /// <returns></returns>
         List<Files> List(object id, IDbTransaction transaction = null);
+        /// <summary>
+        /// 根据文件夹获取文件
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        List<Files> GetFiles(int folderid, IDbTransaction transaction = null);
 
     }
 }
