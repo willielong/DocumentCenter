@@ -52,5 +52,10 @@ namespace DocumentServer.Core.Model.Oupt
 
         public virtual string path { get; set; }
         public virtual int orgid { get; set; }
+
+        /// <summary>
+        /// 文件路径
+        /// </summary>
+        public virtual string fileurl { get; set; }
     }
 }

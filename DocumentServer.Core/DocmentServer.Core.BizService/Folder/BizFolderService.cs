@@ -10,6 +10,8 @@ using System.Data;
 using System.Text;
 using DocumentServer.Core.Comm;
 using DocumetCenter.Core.Enum;
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
+using Microsoft.Extensions.Configuration;
 
 namespace DocmentServer.Core.BizService.Folder
 {
@@ -18,12 +20,15 @@ namespace DocmentServer.Core.BizService.Folder
         private IFolderDomainService service;
         private IDbConnection dbConnection;
         private IFilesDomainService fileDomainService;
-        public BizFolderService(IFolderDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext, IFilesDomainService _filesDomainService) : base(httpContext: httpContext)
+        public FilePath filePath;
+        public BizFolderService(IConfiguration configuration, IFolderDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext, IFilesDomainService _filesDomainService) : base(httpContext: httpContext)
         {
             this.service = service;
             this.dbConnection = dbConnection;
             this.service.SettingCurrentEmp(employee: CurrentUser);
             this.fileDomainService = _filesDomainService;
+            ///获取配置文件中的数据
+            filePath = configuration.Get<ApiVersionsConfig>().FilePath;
         }
         /// <summary>
         /// 添加账户信息
@@ -128,11 +133,11 @@ namespace DocmentServer.Core.BizService.Folder
             }
             fileFloders.ForEach(o =>
             {
-                treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = "", dic_filetype = TextType.文件夹.ToString(), dic_orgtype = type.ConvertToOrgTypeString(), ext = "", filetype = (int)TextType.文件夹, id = o.autoid, orgtype = type, sequence = o.sequence, size = "",path=o.path,orgid=o.orgid });
+                treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = "", dic_filetype = TextType.文件夹.ToString(), dic_orgtype = type.ConvertToOrgTypeString(), ext = "", filetype = (int)TextType.文件夹, id = o.autoid, orgtype = type, sequence = o.sequence, size = "",path=o.path,orgid=o.orgid,fileurl="" });
             });
             files.ForEach(o =>
             {
-                treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = o.currentVersion.ToString(), dic_filetype = o.ext.ConvertToExt(), dic_orgtype = type.ConvertToOrgTypeString(), ext = o.ext, filetype = o.ext.ConvertToExtInt(), id = o.autoid, orgtype = type, sequence = o.sequence, size = o.size.CovertToGb(), path=o.path,orgid=orgId});
+                treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = o.currentVersion.ToString(), dic_filetype = o.ext.ConvertToExt(), dic_orgtype = type.ConvertToOrgTypeString(), ext = o.ext, filetype = o.ext.ConvertToExtInt(), id = o.autoid, orgtype = type, sequence = o.sequence, size = o.size.CovertToGb(), path=o.path,orgid=orgId,fileurl=filePath.ApiUrl+o.fileuri});
             });
             return treeTables.ToResponse();
         }

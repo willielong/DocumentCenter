@@ -26,12 +26,15 @@ namespace DocmentServer.Core.BizService.Login
         /// <returns></returns>
         public IResponseMessage LogIn(LoginModel User)
         {
+            string UserInfo = User.key.AesDecrypt(User.keys);
+            User = UserInfo.ToEntity<LoginModel>();
             if (null == User)
             {
                 return "请输入登录信息".ToErrMessage().ToResponse();
             }
             else
             {
+               
                 if (string.IsNullOrWhiteSpace(User.account) || User.account == "string")
                 {
                     return "用户名不能为空!".ToErrMessage().ToResponse();
