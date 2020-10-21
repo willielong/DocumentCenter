@@ -144,6 +144,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
             permissions.modifyFilter = model.editType != EditType.filter;
             permissions.modifyContentControl = model.editType != EditType.blockcontent;
             permissions.review = model.editType == EditType.edit || model.editType == EditType.review;
+            permissions.changeHistory = true;
             return permissions;
         }
         /// <summary>
