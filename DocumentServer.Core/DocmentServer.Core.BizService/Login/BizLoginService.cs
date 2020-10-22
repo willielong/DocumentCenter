@@ -26,7 +26,7 @@ namespace DocmentServer.Core.BizService.Login
         /// <returns></returns>
         public IResponseMessage LogIn(LoginModel User)
         {
-            string UserInfo = User.key.AesDecrypt(User.keys);
+            string UserInfo = User.key.AESDecrypt(User.keys);
             User = UserInfo.ToEntity<LoginModel>();
             if (null == User)
             {

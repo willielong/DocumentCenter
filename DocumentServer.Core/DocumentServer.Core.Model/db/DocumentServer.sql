@@ -1,9 +1,3 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/9/3 17:53:20                            */
-/*==============================================================*/
-
-
 drop table if exists AccoutInfo;
 
 drop table if exists Employee;
@@ -29,7 +23,7 @@ create table AccoutInfo
    account              varchar(20) not null,
    password             varchar(20) not null,
    name                 varchar(20) not null,
-   email                varchar(20) not null,
+   email                varchar(200) not null,
    phone                varchar(20),
    creator              int,
    modifier             int,
@@ -48,9 +42,9 @@ create table Employee
 (
    empid                int not null auto_increment,
    cnname               varchar(20) not null,
-   enname               varchar(20) not null,
+   enname               varchar(100) not null,
    empcode              varchar(20) not null,
-   email                varchar(20) not null,
+   email                varchar(100) not null,
    phone                varchar(20),
    enable               bit,
    sequence             double,
@@ -82,7 +76,7 @@ create table FileFloder
    orgid                int,
    primary key (autoId)
 );
-drop table if exists Files;
+
 /*==============================================================*/
 /* Table: Files                                                 */
 /*==============================================================*/
@@ -96,7 +90,6 @@ create table Files
    filetype             varchar(10),
    fileuri              text,
    filepath             text,
-   folderpath             text,
    path                 text,
    size                 double,
    creator              int,
@@ -106,6 +99,7 @@ create table Files
    enable               bit,
    sequence             double,
    currentVersion       int,
+   folderpath           text,
    primary key (autoid)
 );
 
@@ -134,14 +128,14 @@ create table FilesVersion
 /*==============================================================*/
 create table Physicalhistory
 (
-   auotid               int not null auto_increment,
-   physicalfolder       text not null,
-   enable               bit,
+   autoid               int not null auto_increment,
+   physicalfolder       int not null,
    creator              int,
    modifier             int,
    creatdate            datetime,
    modifdate            datetime,
-   primary key (auotid)
+   enable               bit,
+   primary key (autoid)
 );
 
 /*==============================================================*/
@@ -151,8 +145,8 @@ create table UnitInfo
 (
    unitID               int not null auto_increment,
    unitcode             varchar(20),
-   cnname               varchar(20),
-   enname               varchar(20),
+   cnname               varchar(100),
+   enname               varchar(100),
    parentId             int,
    head                 int,
    c_head               varchar(20),
@@ -172,8 +166,8 @@ create table organization
 (
    orgid                int not null auto_increment,
    orgcode              varchar(20),
-   cnname               varchar(20),
-   enname               varchar(20),
+   cnname               varchar(100),
+   enname               varchar(100),
    parentId             int,
    head                 int,
    c_head               varchar(20),
@@ -188,4 +182,3 @@ create table organization
    untid                int,
    primary key (orgid)
 );
-
