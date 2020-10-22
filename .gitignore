@@ -4,4 +4,22 @@
 
 /DocumentServer.Core/.vs/DocumentServer.Core
 /DocumentServer.Core/DocmentServer.Core.BizService/obj
-/DocumentServer.Core
+/DocumentServer.Core/DocumetCenter.Core.Enum/bin/Debug/netcoreapp3.0
+/DocumentServer.Core/DocumetCenter.Core.Enum/obj/Debug/netcoreapp3.0
+/DocumentServer.Core/DocumentServer.Core.Model/obj/Debug/netcoreapp3.0
+/DocumentServer.Core/DocumentServer.Core.Model/db/文档管理中心.pdb
+/DocumentServer.Core/DocumentServer.Core.Model/obj
+/DocumentServer.Core/DocumetCenter.Core.Enum/obj
+/DocumentServer.Core/DocumentServer.Core.Model/bin/Debug/netcoreapp3.0
+/DocumentServer.Core/DocumentServer.Core.Comm/obj
+/DocumentServer.Core/DocmentServer.Core.BizService/bin/Debug/netcoreapp3.0
+/DocumentServer.Core/DocmentServer.Core.Business/bin/Debug/netcoreapp3.0
+/DocumentServer.Core/DocmentServer.Core.Business/obj/Debug/netcoreapp3.0
+/DocumentServer.Core/DocmentServer.Core.Business/obj
+/DocumentServer.Core/DocumentServer.Core.Comm/bin/Debug/netcoreapp3.0
+/DocumentServer.Core/DocumentServer.Core/Properties/PublishProfiles
+/DocumentServer.Core/DocumentServer.Core/obj
+/DocumentServer.Core/DocumentServer.Core/bin/Debug/netcoreapp3.0
+/DocumentServer.Core/DocumentServer.Core/ApiCore.xml
+/DocumentServer.Core/DocmentServer.Core.DomainService/obj
+/DocumentServer.Core/DocmentServer.Core.DomainService/bin/Debug/netcoreapp3.0
