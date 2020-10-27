@@ -24,10 +24,10 @@ namespace DocumentServer.Core.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpGet]
-        public IActionResult Get([FromQuery] int fileid)
+        [HttpPost]
+        public IActionResult Get([FromBody]Model.DbModel.Files files)
         {
-            var model = bizservice.DownloadFile(fileid: fileid);
+            var model = bizservice.DownloadFile(fileid: files.autoid);
             return File(model.Buff, model.ContentType, model.fileName); ;
         }
     }

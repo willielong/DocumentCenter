@@ -2,6 +2,7 @@
 using DocumentServer.Core.Model.DbModel;
 using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using DocumentServer.Core.Model.Oupt;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -33,28 +34,10 @@ namespace DocmentServer.Core.BizService.FilesInfo
             Files files = service.Get<Files>(fileid);
             if (files != null)
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(filePath.ApiUrl+files.fileuri);
-                request.Method = "GET";
-                using (WebResponse webRes = request.GetResponse())
-                {
-                    model = new DownloadModel();
-                    int length = (int)webRes.ContentLength;
-                    HttpWebResponse response = webRes as HttpWebResponse;
-                    Stream stream = response.GetResponseStream();
-                    model.fileName = files.cnname + "." + files.ext;
-                    model.ContentType = "application/octet-stream";
-                    //读取到内存
-                    MemoryStream stmMemory = new MemoryStream();
-                    byte[] buffer = new byte[length];
-                    int i;
-                    //将字节逐个放入到Byte中
-                    while ((i = stream.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        stmMemory.Write(buffer, 0, i);
-                    }
-                    stmMemory.Close();
-                    model.Buff = buffer;
-                }
+                model = new DownloadModel();
+                model.Buff = System.IO.File.OpenRead(files.filepath);
+                model.fileName = files.cnname + "." + files.ext;
+                model.ContentType = new FileExtensionContentTypeProvider().Mappings["."+files.ext];
             }
             return model;
         }

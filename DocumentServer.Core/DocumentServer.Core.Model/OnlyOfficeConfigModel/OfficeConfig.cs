@@ -155,6 +155,10 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
         /// 自定义配置类
         /// </summary>
         public CustomizationInfo customization { get; set; }
+        /// <summary>
+        /// 自定义logo
+        /// </summary>
+        public LogoInfo logo { get; set; }
     }
     /// <summary>
     /// 用户信息
@@ -219,6 +223,11 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
         /// 是否显示关于
         /// </summary>
         public bool about { get; set; }
+
+        /// <summary>
+        /// 自定义关于信息
+        /// </summary>
+        public CustomerInfo customer { get; set; }
     }
 
     /// <summary>
@@ -266,5 +275,35 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
         /// 跳转地址
         /// </summary>
         public string url { get; set; }
+    }
+    /// <summary>
+    /// 自定义关于信息
+    /// </summary>
+    public class CustomerInfo
+    {
+        /// <summary>
+        /// 联系地址
+        /// </summary>
+        public string address { get; set; }
+        /// <summary>
+        /// 相关信息描述
+        /// </summary>
+        public string info { get; set; }
+        /// <summary>
+        /// logo图标
+        /// </summary>
+        public string logo { get; set; }
+        /// <summary>
+        /// 邮箱
+        /// </summary>
+        public string mail { get; set; }
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string name { get; set; }
+        /// <summary>
+        /// 域名
+        /// </summary>
+        public string www { get; set; }
     }
 }

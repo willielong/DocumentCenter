@@ -161,6 +161,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
             editor.user = new User() { id = model.employee.empid.ToString(), name = model.employee.cnname };
             editor.embedded = new Embedded() { embedUrl = string.Concat(model.filePath.ApiUrl, model.files.fileuri), saveUrl = string.Concat(model.filePath.ApiUrl, model.files.fileuri), shareUrl = string.Concat(model.filePath.ApiUrl, model.files.fileuri), toolbarDocked = "top" };
             editor.customization = GetCustomizationInfo(model: model);
+            editor.logo = new LogoInfo() { image = "", imageEmbedded = "", url = model.filePath.WebUrl };
             return editor;
         }
         /// <summary>
@@ -184,9 +185,10 @@ namespace DocmentServer.Core.BizService.FilesInfo
             CustomizationInfo customizationInfo = new CustomizationInfo();
             customizationInfo.chat = true;
             customizationInfo.help = false;
-            customizationInfo.about = false;
+            customizationInfo.about = true;
             customizationInfo.feedback = new FeedBackInfo() { url = "", visible = false };
             customizationInfo.goback = GetGoBackInfo(model: model);
+            customizationInfo.customer = GetCustomerInfo(model: model);
             return customizationInfo;
         }
         /// <summary>
@@ -201,7 +203,22 @@ namespace DocmentServer.Core.BizService.FilesInfo
             info.blank = true;
             info.url = string.Concat(model.filePath.WebUrl, "/Index");
             return info;
-            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 获取自定义关于信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        private CustomerInfo GetCustomerInfo(ConfigModel model)
+        {
+            CustomerInfo info = new CustomerInfo();
+            info.address = "四川-成都-青羊-府南新区";
+            info.info = "文档管理中心";
+            info.www = string.Concat(model.filePath.WebUrl, "/Index");
+            info.mail = "";
+            info.name = "willie";
+            info.logo = "";
+            return info;
         }
         /// <summary>
         /// 获取Body中的值
