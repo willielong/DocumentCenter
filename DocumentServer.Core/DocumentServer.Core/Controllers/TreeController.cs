@@ -34,5 +34,16 @@ namespace DocumentServer.Core.Controllers
         {
             return ToResult(service.Trees(type: type, pid: pid));
         }
+        /// <summary>
+        ///获取树形结构--组织结构
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <param name="pid">上级ID</param>
+        /// <returns></returns>
+        [HttpGet,Route("org")]
+        public IActionResult TreesOrg([FromQuery]int type, [FromQuery]int pid)
+        {
+            return ToResult(service.TreesOrg(type: type, pid: pid));
+        }
     }
 }
