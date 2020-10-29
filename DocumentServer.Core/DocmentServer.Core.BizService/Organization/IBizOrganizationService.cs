@@ -58,5 +58,11 @@ namespace DocmentServer.Core.BizService.Organization
         /// </summary>
         /// <returns></returns>
         IResponseMessage All();
+        /// <summary>
+        /// 获取子级部门
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        IResponseMessage GetTableOrganization(int pid);
     }
 }

@@ -89,5 +89,20 @@ namespace DocumentServer.Core.Comm
             }
             return b + "B";
         }
+        /// <summary>
+        /// 转换单位
+        /// </summary>
+        /// <param name="orgType"></param>
+        /// <returns></returns>
+        public static string ConvertToDicOrgTypeString(this OrgationalType orgType)
+        {
+            switch (orgType)
+            {
+                case OrgationalType.Unit: return "单位";
+                case OrgationalType.Organization: return "部门";
+                case OrgationalType.Personal: return "个人";
+                default: return "";
+            }
+        }
     }
 }

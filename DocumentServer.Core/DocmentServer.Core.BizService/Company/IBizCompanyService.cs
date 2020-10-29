@@ -59,5 +59,12 @@ namespace DocmentServer.Core.BizService.Company
         /// <param name="transaction"></param>
         /// <returns></returns>
         IResponseMessage All();
+
+        /// <summary>
+        /// 获取子级组织
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        IResponseMessage GetTableCompany(int pid);
     }
 }

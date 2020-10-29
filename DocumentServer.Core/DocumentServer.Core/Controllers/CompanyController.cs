@@ -97,5 +97,15 @@ namespace DocumentServer.Core.Controllers
         {
             return ToResult(service.All());
         }
+        /// <summary>
+        /// 获取子级的组织
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        [HttpGet,Route("tables")]
+        public IActionResult GetTableCompany(int pid)
+        {
+            return ToResult(service.GetTableCompany(pid:pid));
+        }
     }
 }

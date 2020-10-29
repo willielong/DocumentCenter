@@ -55,7 +55,7 @@ namespace DocmentServer.Core.Business.Organization
         /// <returns></returns>
         public List<DocumentServer.Core.Model.DbModel.Organization> GetListByCompanyId(int companyId, IDbTransaction transaction = null)
         {
-            return dbConnection.Query<DocumentServer.Core.Model.DbModel.Organization>(sql: "SELECT *  FROM   organization WHERE untid=@untid", param: new DocumentServer.Core.Model.DbModel.Organization() { untid = companyId }, transaction: transaction).AsList();
+            return dbConnection.Query<DocumentServer.Core.Model.DbModel.Organization>(sql: "SELECT *  FROM   organization WHERE untid=@untid and parentId = 0", param: new DocumentServer.Core.Model.DbModel.Organization() { untid = companyId }, transaction: transaction).AsList();
         }
         /// <summary>
         /// 获取组织信息--多个--按上级组织

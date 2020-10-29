@@ -44,7 +44,7 @@ namespace DocmentServer.Core.BizService.Tree
             var companys = this.companyDomainService.GetListByParentId(parentId: pId);
             companys.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.unitid, pid = pId, type = type, icon = "el-icon-s-home", item = "primary" });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.unitid, pid = pId, type = type, icon = "el-icon-s-home", item = "primary",unitid=c.unitid });
             });
             ///组装组织
             treeModels.AddRange(TreesOrganizationByCompayId(type: (int)FolderType.Organization, pId: pId));

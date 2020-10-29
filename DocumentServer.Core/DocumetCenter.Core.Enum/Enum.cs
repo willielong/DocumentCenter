@@ -25,6 +25,25 @@ namespace DocumetCenter.Core.Enum
         /// </summary>
         Personal = 2,
     }
+
+    /// <summary>
+    /// 组织类型
+    /// </summary>
+    public enum OrgationalType
+    {
+        /// <summary>
+        /// 单位
+        /// </summary>
+        Unit = 0,
+        /// <summary>
+        /// 组织
+        /// </summary>
+        Organization = 1,
+        /// <summary>
+        /// 个人
+        /// </summary>
+        Personal = 2,
+    }
     /// <summary>
     /// OnlyOffice 识别文档的类型
     /// </summary>
