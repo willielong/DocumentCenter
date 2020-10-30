@@ -15,7 +15,7 @@ namespace DocumentServer.Core.Controllers
     public class EmployeeController : BaseController
     {
         private IBizEmployeeService service;
-        public EmployeeController(IBizEmployeeService service) 
+        public EmployeeController(IBizEmployeeService service)
         {
             this.service = service;
         }
@@ -91,6 +91,16 @@ namespace DocumentServer.Core.Controllers
         public IActionResult QueryCode()
         {
             return ToResult(service.All());
+        }
+        /// <summary>
+        /// 根据部门ID获取人员信息
+        /// </summary>
+        /// <param name="pid">组织ID</param>
+        /// <returns></returns>
+        [HttpGet, Route("tables/{pid:int}")]
+        public IActionResult TablePersonal(int pid)
+        {
+            return ToResult(service.TablePersonal(pid:pid));
         }
     }
 }

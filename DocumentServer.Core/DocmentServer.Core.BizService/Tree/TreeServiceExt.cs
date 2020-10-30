@@ -23,7 +23,7 @@ namespace DocmentServer.Core.BizService.Tree
             dicTreeOrgActions = new Dictionary<int, Func<int, int, List<TreeModel>>>();
             dicTreeActions.Add(0, TreesCompany);
             dicTreeActions.Add(1, TreesOrganization);
-            dicTreeActions.Add(2, TreesPerson); 
+            dicTreeActions.Add(2, TreesPerson);
             dicTreeActions.Add(-1, TreesPerson);
             dicTreeOrgActions.Add(0, TreesCompany);
             dicTreeOrgActions.Add(1, TreesOrganizationUnPerson);
@@ -44,11 +44,11 @@ namespace DocmentServer.Core.BizService.Tree
             var companys = this.companyDomainService.GetListByParentId(parentId: pId);
             companys.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.unitid, pid = pId, type = type, icon = "el-icon-s-home", item = "primary",unitid=c.unitid });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.unitid, pid = pId, type = type, icon = "el-icon-s-home", item = "primary", unitid = c.unitid, seq = c.sequence });
             });
             ///组装组织
             treeModels.AddRange(TreesOrganizationByCompayId(type: (int)FolderType.Organization, pId: pId));
-
+            treeModels = treeModels.OrderBy(o => o.seq).ToList();
             return treeModels;
         }
         /// <summary>
@@ -65,10 +65,11 @@ namespace DocmentServer.Core.BizService.Tree
             organizations = this.organizationDomainService.GetListByCompanyId(companyId: pId);
             organizations.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success", unitid = pId, });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success", unitid = pId, seq = c.sequence });
             });
             ///组装人员
             //treeModels.AddRange(TreesPerson(type: (int)FolderType.Personal, pId: pId));
+            treeModels = treeModels.OrderBy(o => o.seq).ToList();
             return treeModels;
         }
 
@@ -86,10 +87,11 @@ namespace DocmentServer.Core.BizService.Tree
             organizations = this.organizationDomainService.GetListByParentId(parentId: pId);
             organizations.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success", unitid = c.untid });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success", unitid = c.untid, seq = c.sequence });
             });
             ///组装人员
             treeModels.AddRange(TreesPerson(type: (int)FolderType.Personal, pId: pId));
+            treeModels = treeModels.OrderBy(o => o.seq).ToList();
             return treeModels;
         }
         /// <summary>
@@ -106,8 +108,9 @@ namespace DocmentServer.Core.BizService.Tree
             organizations = this.organizationDomainService.GetListByParentId(parentId: pId);
             organizations.ForEach(c =>
             {
-                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success", unitid = c.untid });
+                treeModels.Add(new TreeModel() { name = c.cnname, id = c.orgid, pid = pId, type = type, icon = "el-icon-school", item = "success", unitid = c.untid, seq = c.sequence });
             });
+            treeModels = treeModels.OrderBy(o => o.seq).ToList();
             return treeModels;
         }
         /// <summary>
@@ -124,9 +127,10 @@ namespace DocmentServer.Core.BizService.Tree
                 var emps = this.employeeDomainService.GetListByOrgId(orgId: pId);
                 emps.ForEach(o =>
                 {
-                    treeModels.Add(new TreeModel() { name = o.cnname, id = o.empid, pid = -1, type = -1, icon = "el-icon-user", item = "warning" });
+                    treeModels.Add(new TreeModel() { name = o.cnname, id = o.empid, pid = -1, type = -1, icon = "el-icon-user", item = "warning", seq = o.sequence });
                 });
             }
+            treeModels = treeModels.OrderBy(o => o.seq).ToList();
             return treeModels;
         }
         /// <summary>

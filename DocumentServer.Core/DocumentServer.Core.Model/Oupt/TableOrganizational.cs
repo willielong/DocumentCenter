@@ -58,5 +58,6 @@ namespace DocumentServer.Core.Model.Oupt
         /// </summary>
         public virtual string dic_orgtype { get; set; }
         public virtual int unitid { get; set; }
+        public virtual double seq { get; set; }
     }
 }

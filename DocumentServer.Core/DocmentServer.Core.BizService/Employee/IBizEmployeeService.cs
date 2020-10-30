@@ -57,5 +57,11 @@ namespace DocmentServer.Core.BizService.Employee
         /// </summary>
         /// <returns></returns>
         IResponseMessage All();
+        /// <summary>
+        /// 根据部门ID获取人员信息
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        IResponseMessage TablePersonal(int pid);
     }
 }

@@ -132,9 +132,12 @@ namespace DocmentServer.Core.BizService.Organization
                                              orgtype = DocumetCenter.Core.Enum.OrgationalType.Organization,
                                              parentid = a1.parentId,
                                              sequence = a1.sequence,
-                                             dic_orgtype = DocumetCenter.Core.Enum.OrgationalType.Organization.ConvertToDicOrgTypeString()
+                                             dic_orgtype = DocumetCenter.Core.Enum.OrgationalType.Organization.ConvertToDicOrgTypeString(),
+                                             unitid=a1.untid,
+                                             seq=a1.sequence
                                          }).ToList();
             tables.AddRange(org);
+            tables = tables.OrderBy(o => o.seq).ToList();
             return tables.ToResponse();
         }
     }

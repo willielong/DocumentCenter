@@ -161,6 +161,7 @@ namespace DocmentServer.Core.BizService.Company
                                                   unitid=a1.unitid
                                               }).ToList();
             tables.AddRange(unitInfo);
+            tables = tables.OrderBy(o => o.sequence).ToList();
             return tables.ToResponse();
         }
     }

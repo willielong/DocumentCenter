@@ -39,5 +39,11 @@ namespace DocmentServer.Core.DomainService.Employee
         /// <param name="model">人员基本信息实体</param>
         /// <returns></returns>
         List<DocumentServer.Core.Model.DbModel.Employee> GetListByOrgId(int orgId, IDbTransaction transaction = null);
+        /// <summary>
+        /// 根据部门ID获取人员信息
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        List<DocumentServer.Core.Model.Oupt.TableEmployee> TablePersonal(int pid, IDbTransaction transaction = null);
     }
 }

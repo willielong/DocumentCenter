@@ -1,10 +1,12 @@
 ﻿using DocmentServer.Core.DomainService.Employee;
 using DocumentServer.Core.Comm;
+using DocumentServer.Core.Model.Oupt;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Linq;
 
 namespace DocmentServer.Core.BizService.Employee
 {
@@ -96,6 +98,22 @@ namespace DocmentServer.Core.BizService.Employee
         public IResponseMessage All()
         {
             return service.All<DocumentServer.Core.Model.DbModel.Employee>().ToResponse();
+        }
+        /// <summary>
+        /// 根据部门ID获取人员信息
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        public IResponseMessage TablePersonal(int pid)
+        {
+            var emps = service.All<DocumentServer.Core.Model.DbModel.Employee>();
+            List<TableEmployee> tableEmployees = service.TablePersonal(pid: pid);
+            List<TableEmployee> tables = tableEmployees.Join(emps, a => int.Parse(a.dic_creator), b => b.empid, (a, b) =>
+            {
+                a.dic_creator = b.cnname;
+                return a;
+            }).OrderBy(o=>o.sequence).ToList();
+            return tables.ToResponse();
         }
     }
 }

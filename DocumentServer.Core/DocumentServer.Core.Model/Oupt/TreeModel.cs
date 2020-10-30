@@ -36,5 +36,6 @@ namespace DocumentServer.Core.Model.Oupt
         /// 单位ID
         /// </summary>
         public int unitid { get; set; }
+        public double seq { get; set; }
     }
 }
