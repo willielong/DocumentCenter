@@ -31,5 +31,12 @@ namespace DocmentServer.Core.DomainService.Personal
         /// <param name="model">账户实体</param>
         /// <returns></returns>
         List<AccoutInfo> GetListByCode(string code, IDbTransaction transaction = null);
+        /// <summary>
+        /// 获取账号信息--根据EmpId
+        /// </summary>
+        /// </summary>
+        /// <param name="empid">员工基本信息ID</param>
+        /// <returns></returns>
+        AccoutInfo QueryByEmpId(int empid,IDbTransaction transaction=null);
     }
 }
