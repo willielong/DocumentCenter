@@ -11,7 +11,7 @@ namespace DocumentServer.Core.Controllers
 {
     [Route("api/employee"), Authorize("CustomAuthorize")]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     public class EmployeeController : BaseController
     {
         private IBizEmployeeService service;

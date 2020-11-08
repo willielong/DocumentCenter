@@ -11,7 +11,7 @@ namespace DocumentServer.Core.Controllers
     /// </summary>
     [Route("api/account"), Authorize("CustomAuthorize")]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     public class AccountController : BaseController
     {
         private IBizAccountService service;

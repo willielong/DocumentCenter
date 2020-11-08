@@ -11,7 +11,7 @@ namespace DocumentServer.Core.Controllers
 {
     [Route("api/download"), Authorize("CustomAuthorize")]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     public class DownloadController : BaseController
     {
         IDownloadBizservice bizservice;

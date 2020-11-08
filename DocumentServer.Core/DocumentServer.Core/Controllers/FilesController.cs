@@ -15,7 +15,7 @@ namespace DocumentServer.Core.Controllers
     /// </summary>
     [Route("api/file")]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     public class FilesController : BaseController
     {
         private IBizFilesService service;
@@ -38,7 +38,7 @@ namespace DocumentServer.Core.Controllers
         /// </summary>
         /// <param name="fileid">文件ID</param>
         /// <returns></returns>
-        [HttpPost, Route("track")]
+        [HttpPost, Route("v{version:apiVersion}/track")]
         public string TrackFile([FromQuery]int fileid, [FromQuery] string token)
         {
             return service.TrackFile(fileid: fileid, token: token);

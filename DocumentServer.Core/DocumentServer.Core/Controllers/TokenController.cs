@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DocumentServer.Core.Controllers
 {
     [Route("api/token")]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     [ApiController]
     public class TokenController : BaseController
     {

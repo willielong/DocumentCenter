@@ -11,7 +11,7 @@ namespace DocumentServer.Core.Controllers
 {
     [Route("api/version"), Authorize("CustomAuthorize")]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     public class FileVersionController : BaseController
     {
         private IBizFileVersionService service;

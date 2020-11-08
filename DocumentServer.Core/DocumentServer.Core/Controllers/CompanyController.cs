@@ -16,7 +16,7 @@ namespace DocumentServer.Core.Controllers
     /// </summary>
     [Route("api/company"), Authorize("CustomAuthorize")]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     public class CompanyController : BaseController
     {
         private IBizCompanyService service;

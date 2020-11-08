@@ -174,7 +174,7 @@ namespace DocumentServer.Core.Comm
         /// <summary>
         /// 进行服务注册
         /// </summary>
-        public static void RegisterService(IServiceCollection services)
+        public static void RegisterService(IServiceCollection services,IConfiguration configuration)
         {
             services.AddControllers().AddJsonOptions(o => { o.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All); });
             services.AddCors();
@@ -193,7 +193,7 @@ namespace DocumentServer.Core.Comm
                 opt.IdleTimeout = TimeSpan.FromMinutes(50);
             });
             ////添加接口文档自动生成第三方键
-            SwaggerConfig.AddSwagger(services);            ///注入Session服务
+            SwaggerConfig.AddSwagger(services,configuration);            ///注入Session服务
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             ///添加接口版本管理中间件
             ApiVersionConfig.AddApiVersioning(services);
@@ -237,7 +237,7 @@ namespace DocumentServer.Core.Comm
             {
                 ApiConfig.ApiVersions.ForEach(a =>
                 {
-                    c.SwaggerEndpoint(a.url, a.name);
+                    c.SwaggerEndpoint(string.Format("/swagger/v{0}/swagger.json",a.version), string.Format("Document center interface document v{0}",a.version));
                 });
                 c.RoutePrefix = string.Empty;
             });

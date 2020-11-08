@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -16,29 +20,24 @@ namespace DocumentServer.Core.Comm
         /// 配置Swagger
         /// </summary>
         /// <param name="services"></param>
-        public static void AddSwagger(IServiceCollection services)
+        public static void AddSwagger(IServiceCollection services, IConfiguration configuration)
         {
+            ApiVersionsConfig ApiConfig = configuration.Get<ApiVersionsConfig>();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                foreach (var item in ApiConfig.ApiVersions)
                 {
-                    Version = "v1",
-                    Title = "Document Server Rest API v1",
-                    Description = "文档中心v1",
-                    TermsOfService = null,
-                    Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "willie li", Email = "", Url = new Uri("http://localhost:86/") },
+                    string ver = string.Format("v{0}", item.version);
+                    c.SwaggerDoc(ver, new Microsoft.OpenApi.Models.OpenApiInfo
+                    {
+                        Version = ver,
+                        Title = "Document Server Rest API " + ver,
+                        Description = "文档中心" + ver,
+                        TermsOfService = null,
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "willie li", Email = "", Url = new Uri("http://localhost:86/") },
 
-                });
-                c.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Version = "v2",
-                    Title = "Document Server Rest API v2",
-                    Description = "文档中心v2",
-                    TermsOfService = null,
-                    Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "willie li", Email = "", Url = new Uri("http://localhost:86/") },
-
-                });
-
+                    });
+                }
                 //Set the comments path for the swagger json and ui.
                 var basePath = Path.GetDirectoryName(AppContext.BaseDirectory);
                 var xmlPath = Path.Combine(basePath, "ApiCore.xml");
@@ -47,8 +46,9 @@ namespace DocumentServer.Core.Comm
                 AddSecurityRequirement(c);
                 DocInclusionPredicate(c);
                 //c.OperationFilter<RemoveVersionParameterOperationFilter>();
-                c.DocumentFilter<SetVersionInPathDocumentFilter>();
+               // c.DocumentFilter<SetVersionInPathDocumentFilter>();
             });
+            ;
         }
         /// <summary>
         /// 添加定义
@@ -59,7 +59,7 @@ namespace DocumentServer.Core.Comm
             // Add security definitions
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
             {
-                Description = "Please enter into field the word 'Bearer' followed by a space and the JWT value",
+                Description = "请输入身份验证码",
                 Name = "Authorization",
                 In = ParameterLocation.Header,
                 Type = SecuritySchemeType.ApiKey,

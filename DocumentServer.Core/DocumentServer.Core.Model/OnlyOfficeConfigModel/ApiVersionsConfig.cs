@@ -11,10 +11,10 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
     }
     public class ApiVersion
     {
-        public string url { get; set; }
-        public string name { get; set; }
+        public string version { get; set; }
     }
-    public class FilePath { 
+    public class FilePath
+    {
         /// <summary>
         /// 物理路径
         /// </summary>
