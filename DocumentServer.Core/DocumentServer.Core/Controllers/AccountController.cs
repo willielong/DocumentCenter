@@ -60,10 +60,10 @@ namespace DocumentServer.Core.Controllers
             return ToResult(service.Get(id: id));
         }
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取账号信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">账号实体</param>
         /// <returns></returns>
         [HttpGet, Route("querys/{id}")]
         public IActionResult QueryList([FromRoute]int id)
@@ -71,10 +71,10 @@ namespace DocumentServer.Core.Controllers
             return ToResult(service.List(id: id));
         }
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取账号信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">账号实体</param>
         /// <returns></returns>
         [HttpGet, Route("getlist/{code}")]
         public IActionResult QueryCode([FromRoute]string code)
@@ -82,15 +82,25 @@ namespace DocumentServer.Core.Controllers
             return ToResult(service.GetListByCode(code: code));
         }
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取账号信息--多个
         /// </summary>
         /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="model">账号实体</param>
         /// <returns></returns>
         [HttpGet, Route("all")]
         public IActionResult QueryCode()
         {
             return ToResult(service.All());
+        }
+        /// <summary>
+        /// 获取账号信息--根据EmpId
+        /// </summary>
+        /// <param name="empid">员工基本信息ID</param>
+        /// <returns></returns>
+        [HttpGet, Route("emp/{empid:int}")]
+        public IActionResult QueryByEmpId(int empid)
+        {
+            return ToResult(service.QueryByEmpId(empid:empid));
         }
     }
 }

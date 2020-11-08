@@ -47,5 +47,15 @@ namespace DocmentServer.Core.Business.Personal
         {
             return dbConnection.Query<AccoutInfo>(sql: "SELECT *  FROM   AccoutInfo WHERE account=@account", param: new AccoutInfo() { account = code }, transaction: transaction).AsList();
         }
+        /// <summary>
+        /// 获取账号信息--根据EmpId
+        /// </summary>
+        /// </summary>
+        /// <param name="empid">员工基本信息ID</param>
+        /// <returns></returns>
+        public AccoutInfo QueryByEmpId(int empid, IDbTransaction transaction)
+        {
+            return dbConnection.QueryFirstOrDefault<AccoutInfo>(sql: "SELECT *  FROM   AccoutInfo WHERE empid=@empid", param: new AccoutInfo() { empid = empid }, transaction: transaction);
+        }
     }
 }

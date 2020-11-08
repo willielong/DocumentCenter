@@ -58,5 +58,12 @@ namespace DocmentServer.Core.BizService.Personal
         /// </summary>
         /// <returns></returns>
         IResponseMessage All();
+        /// <summary>
+        /// 获取账号信息--根据EmpId
+        /// </summary>
+        /// </summary>
+        /// <param name="empid">员工基本信息ID</param>
+        /// <returns></returns>
+        IResponseMessage QueryByEmpId(int empid);
     }
 }

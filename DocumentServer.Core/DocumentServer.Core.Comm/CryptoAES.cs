@@ -8,6 +8,7 @@ namespace DocumentServer.Core.Comm
 {
     public static class CryptoAES
     {
+        public const string AESKeys= "zyxwvutsrqponlmkjihgfedcba123456";
         /// <summary>
         /// AES加密(无向量)
         /// </summary>
