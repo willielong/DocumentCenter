@@ -182,3 +182,54 @@ create table organization
    untid                int,
    primary key (orgid)
 );
+
+drop table if exists Bb_TableInfo;
+
+/*==============================================================*/
+/* Table: Bb_TableInfo                                          */
+/*==============================================================*/
+create table Bb_TableInfo
+(
+   autoid               int not null auto_increment,
+   cnname               varchar(100),
+   enname               varchar(100),
+   enable               bit,
+   isdel                bit,
+   sequence             decimal(8,2),
+   issystem             bit,
+   tablecode            varchar(20),
+   creator              int,
+   modifier             int,
+   creatdate            datetime,
+   modifdate            datetime,
+   primary key (autoid)
+);
+
+drop table if exists Bb_Fields;
+
+/*==============================================================*/
+/* Table: Bb_Fields                                             */
+/*==============================================================*/
+create table Bb_Fields
+(
+   autoid               int not null auto_increment,
+   fieldcode            varchar(50),
+   fieldname            varchar(50),
+   fieldenname          varchar(200),
+   tablecode            varchar(50),
+   controlsouces        varchar(50),
+   fieldtype            int,
+   controlstype         int,
+   defaultvalue         varchar(2000),
+   fieldlength          int,
+   isrequired           bit,
+   isinlay              bit,
+   enable               bit,
+   isdel                bit,
+   sequence             decimal(8,2),
+   creator              int,
+   modifier             int,
+   creatdate            datetime,
+   modifdate            datetime,
+   primary key (autoid)
+);
