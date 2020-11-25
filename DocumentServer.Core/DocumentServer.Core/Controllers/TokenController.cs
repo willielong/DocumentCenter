@@ -19,12 +19,6 @@ namespace DocumentServer.Core.Controllers
         {
             service = _service;
         }
-
-        [HttpGet]
-        public IActionResult GenerateToken()
-        {
-            return new JsonResult(new DocumentServer.Core.Comm.TokenBusiness().GenerateToken("Willie li", "P@$$w34e", "").Result);
-        }
         [HttpPost, Route("login")]
         public IActionResult Login([FromBody] LoginModel model)
         {

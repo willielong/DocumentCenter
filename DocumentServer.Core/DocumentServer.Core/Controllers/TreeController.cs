@@ -15,6 +15,8 @@ namespace DocumentServer.Core.Controllers
     /// </summary>
     [Authorize("CustomAuthorize")]
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/tree"), Authorize("CustomAuthorize")] 
     public class TreeController : BaseController
     {
         private IBizTreeService service;
@@ -41,17 +43,6 @@ namespace DocumentServer.Core.Controllers
         /// <returns></returns>
         [HttpGet,Route("org")]
         public virtual IActionResult TreesOrg([FromQuery]int type, [FromQuery]int pid)
-        {
-            return ToResult(service.TreesOrg(type: type, pid: pid));
-        }
-        /// <summary>
-        ///获取树形结构--组织结构
-        /// </summary>
-        /// <param name="type">类型</param>
-        /// <param name="pid">上级ID</param>
-        /// <returns></returns>
-        [HttpGet, Route("org1")]
-        public virtual IActionResult TreesOrg1([FromQuery]int type, [FromQuery]int pid)
         {
             return ToResult(service.TreesOrg(type: type, pid: pid));
         }
