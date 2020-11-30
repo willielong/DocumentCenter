@@ -38,8 +38,7 @@ namespace DocumentServer.Core.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost, Route("update"), Route("v{version:apiVersion}/update")]
-        [ApiVersion("1.0"), ApiVersion("2.0")]
+        [HttpPost, Route("update")]
         public IActionResult Update([FromBody]FileFloder model)
         {
             return ToResult(service.Update(model: model));
@@ -49,8 +48,7 @@ namespace DocumentServer.Core.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost, Route("delete/{id}"), Route("v{version:apiVersion}/delete/{id}")]
-        [ApiVersion("2.0")]
+        [HttpPost, Route("delete/{id}")]
         public IActionResult Delete([FromRoute]int id)
         {
             return ToResult(service.Delete(id: id));

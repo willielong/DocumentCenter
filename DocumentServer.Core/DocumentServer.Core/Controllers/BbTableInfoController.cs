@@ -13,7 +13,7 @@ namespace DocumentServer.Core.Controllers
     /// <summary>
     /// 表结构相关接口
     /// </summary>
-    [Route("api/tables"), Authorize("CustomAuthorize"), ApiController, ApiVersion("1.0")]
+    [Route("api/tables"), Authorize("CustomAuthorize"), ApiController, ApiVersion("2.0")]
     public class BbTableInfoController : BaseController
     {
         private IBizBbTableInfoService service;
@@ -24,7 +24,7 @@ namespace DocumentServer.Core.Controllers
         /// <summary>
         /// 进行数据新增
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">数据表实体</param>
         /// <returns></returns>
         [HttpPost, Route("add")]
         public IActionResult Add([FromBody]Bb_TableInfo model)
@@ -34,10 +34,9 @@ namespace DocumentServer.Core.Controllers
         /// <summary>
         /// 进行数据更改
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">数据表实体</param>
         /// <returns></returns>
-        [HttpPost, Route("update"), Route("v{version:apiVersion}/update")]
-        [ApiVersion("1.0"), ApiVersion("2.0")]
+        [HttpPost, Route("update")]
         public IActionResult Update([FromBody]Bb_TableInfo model)
         {
             return ToResult(service.Update(model: model));
@@ -45,10 +44,9 @@ namespace DocumentServer.Core.Controllers
         /// <summary>
         /// 进行数据删除
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="id">主键ID</param>
         /// <returns></returns>
-        [HttpDelete, Route("delete/{id}"), Route("v{version:apiVersion}/delete/{id}")]
-        [ApiVersion("2.0")]
+        [HttpDelete, Route("delete/{id}")]
         public IActionResult LogicDelete([FromRoute]int id)
         {
             return ToResult(service.LogicDelete(autoid: id));
@@ -56,7 +54,7 @@ namespace DocumentServer.Core.Controllers
         /// <summary>
         /// 获取单个数据
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="id">主键ID</param>
         /// <returns></returns>
         [HttpGet, Route("query/{id}")]
         public IActionResult Query([FromRoute]int id)
@@ -64,10 +62,8 @@ namespace DocumentServer.Core.Controllers
             return ToResult(service.Get(id: id));
         }
         /// <summary>
-        /// 获取单位信息--多个
+        /// 获取数据表信息--多个
         /// </summary>
-        /// </summary>
-        /// <param name="model">单位实体</param>
         /// <returns></returns>
         [HttpGet, Route("all")]
         public IActionResult QueryCode()
@@ -77,8 +73,8 @@ namespace DocumentServer.Core.Controllers
         /// <summary>
         /// 启用禁用
         /// </summary>
-        /// </summary>
-        /// <param name="model">单位实体</param>
+        /// <param name="id">主键ID</param>
+        /// <param name="enable">启用禁用</param>
         /// <returns></returns>
         [HttpDelete, Route("enable")]
         public IActionResult QueryCode([FromQuery]int id, [FromQuery] bool enable)
