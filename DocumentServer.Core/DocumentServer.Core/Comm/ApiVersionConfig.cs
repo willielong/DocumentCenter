@@ -32,8 +32,8 @@ namespace DocumentServer.Core.Comm
                 opt.ReportApiVersions = true;
                 opt.AssumeDefaultVersionWhenUnspecified = true;
                 opt.DefaultApiVersion = ApiVersion.Default;
-                //opt.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
-                opt.ApiVersionReader = ApiVersionReader.Combine(new QueryStringApiVersionReader(), new HeaderApiVersionReader() { HeaderNames = { "api-version" } });
+                //opt.ApiVersionReader = new HeaderApiVersionReader("x-api-version");///只在header 中添加版本
+                opt.ApiVersionReader = ApiVersionReader.Combine(new QueryStringApiVersionReader(), new HeaderApiVersionReader() { HeaderNames = { "api-version" } });///header和QueryString中都添加版本
             });
         }
     }
