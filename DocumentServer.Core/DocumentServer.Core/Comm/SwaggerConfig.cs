@@ -45,8 +45,8 @@ namespace DocumentServer.Core.Comm
                 AddSecurityDefinition(c);
                 AddSecurityRequirement(c);
                 DocInclusionPredicate(c);
-                //c.OperationFilter<RemoveVersionParameterOperationFilter>();
-               // c.DocumentFilter<SetVersionInPathDocumentFilter>();
+                c.OperationFilter<HttpHeaderOperation>();
+                //c.DocumentFilter<SetVersionInPathDocumentFilter>();
             });
             ;
         }
@@ -101,6 +101,9 @@ namespace DocumentServer.Core.Comm
                });
         }
     }
+    /// <summary>
+    /// 替换路由中的版本
+    /// </summary>
     public class SetVersionInPathDocumentFilter : IDocumentFilter
     {
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
@@ -123,8 +126,24 @@ namespace DocumentServer.Core.Comm
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
             // Remove version parameter from all Operations
-            var versionParameter = operation.Parameters.Single(p => p.Name == "version");
-            operation.Parameters.Remove(versionParameter);
+            //var versionParameter = operation.Parameters.Single(p => p.Name == "version");
+            ///operation.Parameters.Remove(versionParameter);
+        }
+    }
+    /// <summary>
+    /// 接口添加版本号
+    /// </summary>
+    public class HttpHeaderOperation : IOperationFilter
+    {
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
+        {
+            operation.Parameters.Add(new OpenApiParameter()
+            {
+                Name = "x-api-version",  //添加Authorization头部参数
+                In = ParameterLocation.Header,
+                Required = true,
+                Description = "请输入接口版本号"
+            });
         }
     }
 }
