@@ -130,7 +130,7 @@ namespace DocumentServer.Core.Comm
         {
             operation.Parameters.Add(new OpenApiParameter()
             {
-                Name = "x-api-version",  //添加接口版本头部参数
+                Name = "api-version",  //添加接口版本头部参数
                 In = ParameterLocation.Header,
                 Required = true,
                 Description = "请输入接口版本号"

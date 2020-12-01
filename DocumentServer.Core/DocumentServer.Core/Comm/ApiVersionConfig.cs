@@ -33,7 +33,7 @@ namespace DocumentServer.Core.Comm
                 opt.AssumeDefaultVersionWhenUnspecified = true;
                 opt.DefaultApiVersion = ApiVersion.Default;
                 //opt.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
-                opt.ApiVersionReader = ApiVersionReader.Combine(new QueryStringApiVersionReader(), new HeaderApiVersionReader() { HeaderNames = { "x-api-version" } });
+                opt.ApiVersionReader = ApiVersionReader.Combine(new QueryStringApiVersionReader(), new HeaderApiVersionReader() { HeaderNames = { "api-version" } });
             });
         }
     }
