@@ -121,15 +121,6 @@ namespace DocumentServer.Core.Comm
         }
     }
 
-    public class RemoveVersionParameterOperationFilter : IOperationFilter
-    {
-        public void Apply(OpenApiOperation operation, OperationFilterContext context)
-        {
-            // Remove version parameter from all Operations
-            //var versionParameter = operation.Parameters.Single(p => p.Name == "version");
-            ///operation.Parameters.Remove(versionParameter);
-        }
-    }
     /// <summary>
     /// 接口添加版本号
     /// </summary>
@@ -139,7 +130,7 @@ namespace DocumentServer.Core.Comm
         {
             operation.Parameters.Add(new OpenApiParameter()
             {
-                Name = "x-api-version",  //添加Authorization头部参数
+                Name = "x-api-version",  //添加接口版本头部参数
                 In = ParameterLocation.Header,
                 Required = true,
                 Description = "请输入接口版本号"
