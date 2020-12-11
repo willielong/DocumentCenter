@@ -1,21 +1,22 @@
-﻿using Dapper.Contrib.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace DocumentServer.Core.Model.DbModel
 {
-    [Table("AccoutInfo")]
+    [Dapper.Contrib.Extensions.Table("AccoutInfo")]
     public class AccoutInfo : EntityBase
     {
         /// <summary>
         /// 主键ID
         /// </summary>
-        [Key]
+        [Dapper.Contrib.Extensions.Key]
         public virtual int autoid { get; set; }
         /// <summary>
         /// 账号
         /// </summary>
+        [Display(Name = "账号"), Required(ErrorMessage = "{0}必填")]
         public virtual string account { get; set; }
 
         /// <summary>

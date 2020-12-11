@@ -10,14 +10,17 @@ namespace DocumentServer.Core.Model.Oupt
         /// 树形结构名称
         /// </summary>
         public string name { get; set; }
+
         /// <summary>
         /// 类型
         /// </summary>
         public int type { get; set; }
+
         /// <summary>
         /// ID
         /// </summary>
         public int id { get; set; }
+
         /// <summary>
         /// 父级ID
         /// </summary>
