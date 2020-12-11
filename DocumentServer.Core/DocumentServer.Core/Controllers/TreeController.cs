@@ -46,5 +46,16 @@ namespace DocumentServer.Core.Controllers
         {
             return ToResult(service.TreesOrg(type: type, pid: pid));
         }
+        /// <summary>
+        ///获取树形结构--组织结构
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <param name="pid">上级ID</param>
+        /// <returns></returns>
+        [HttpGet, Route("org1")]
+        public virtual IActionResult TreesOrg1([FromQuery]int type, [FromQuery]int pid)
+        {
+            throw new NullReferenceException();
+        }
     }
 }

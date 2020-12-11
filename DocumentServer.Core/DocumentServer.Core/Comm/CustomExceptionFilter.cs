@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DocumentServer.Core.Comm
 {
-    public class CustomExceptionFilter : ExceptionFilterAttribute
+    public class CustomExceptionFilter : IExceptionFilter
     {
 
-        public override void OnException(ExceptionContext context)
+        public  void OnException(ExceptionContext context)
         {
             DTO_ResponseMessage msg = new DTO_ResponseMessage { Status = false, Code = 200, Body = null };
 
@@ -41,12 +41,11 @@ namespace DocumentServer.Core.Comm
                 msg.Code = 500;
                 msg.Message = context.Exception.Message;
             }
-            JsonResult result = new JsonResult(msg.Message)
-            {
-                StatusCode =msg.Code,
+            JsonResult result = new JsonResult(msg)
+            { 
+                StatusCode = 500
             };
             context.Result = result;
-            base.OnException(context);
         }
     }
 }
