@@ -23,6 +23,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
@@ -174,13 +175,13 @@ namespace DocumentServer.Core.Comm
         /// <summary>
         /// 进行服务注册
         /// </summary>
-        public static void RegisterService(IServiceCollection services,IConfiguration configuration)
+        public static void RegisterService(IServiceCollection services, IConfiguration configuration)
         {
             services.AddControllers().AddJsonOptions(o => { o.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All); });
             services.AddCors();
             ///添加json序列化         
             services.AddMvc(options => { options.Filters.Add(typeof(CustomExceptionFilter)); });
-            ///注册数据库链接
+            ///注册数据库链接Configure
             AddDBContext(services);
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
             ///配置jwt授权
@@ -193,7 +194,7 @@ namespace DocumentServer.Core.Comm
                 opt.IdleTimeout = TimeSpan.FromMinutes(50);
             });
             ////添加接口文档自动生成第三方键
-            SwaggerConfig.AddSwagger(services,configuration);            ///注入Session服务
+            SwaggerConfig.AddSwagger(services, configuration);            ///注入Session服务
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             ///添加接口版本管理中间件
             ApiVersionConfig.AddApiVersioning(services);
@@ -203,6 +204,27 @@ namespace DocumentServer.Core.Comm
             ///注册数据库服务
             services.AddScoped<IDbConnection, MySqlConnection>();
             //services.AddScoped<DocumentServer.Core.Model.DbModel.Employee>();
+            ///返回数据验证器数据
+            services.Configure<ApiBehaviorOptions>(opt =>
+            {
+                opt.InvalidModelStateResponseFactory = actionContext =>
+                {
+                    //获取验证失败的模型字段 
+                    var errors = actionContext.ModelState
+                        .Where(e => e.Value.Errors.Count > 0)
+                        .Select(e => new { field = e.Key, err = e.Value.Errors.Select(o=>o.ErrorMessage) })
+                        .ToList();
+                    //设置返回内容
+                    DTO_ResponseMessage result = new DTO_ResponseMessage
+                    {
+                        Status = false,
+                        Message = "未通过数据验证",
+                        Body=errors 
+                    };
+
+                    return new BadRequestObjectResult(result);
+                };
+            });
         }
         public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env, IConfiguration configuration)
         {
@@ -237,7 +259,7 @@ namespace DocumentServer.Core.Comm
             {
                 ApiConfig.ApiVersions.ForEach(a =>
                 {
-                    c.SwaggerEndpoint(string.Format("/swagger/v{0}/swagger.json",a.version), string.Format("Document center interface document v{0}",a.version));
+                    c.SwaggerEndpoint(string.Format("/swagger/v{0}/swagger.json", a.version), string.Format("Document center interface document v{0}", a.version));
                 });
                 c.RoutePrefix = string.Empty;
             });
