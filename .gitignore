@@ -24,3 +24,4 @@
 /DocumentServer.Core/DocmentServer.Core.DomainService/obj
 /DocumentServer.Core/DocmentServer.Core.DomainService/bin/Debug/netcoreapp3.0
 *.user
+/DocumentServer.Core/DocumentServer.Core/.editorconfig
