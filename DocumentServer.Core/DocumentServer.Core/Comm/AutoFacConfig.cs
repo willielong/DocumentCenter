@@ -178,32 +178,44 @@ namespace DocumentServer.Core.Comm
         public static void RegisterService(IServiceCollection services, IConfiguration configuration)
         {
             services.AddControllers().AddJsonOptions(o => { o.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All); });
+
             services.AddCors();
+
             ///添加json序列化         
             services.AddMvc(options => { options.Filters.Add(typeof(CustomExceptionFilter)); });
+
             ///注册数据库链接Configure
             AddDBContext(services);
+
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
+
             ///配置jwt授权
             AddJWTAuthorization(services);
+
             //注入授权Handler
             services.AddSingleton<IAuthorizationHandler, CustomAuthorize>();
             services.AddDistributedMemoryCache();
+
             services.AddSession(opt =>
             {
                 opt.IdleTimeout = TimeSpan.FromMinutes(50);
             });
             ////添加接口文档自动生成第三方键
-            SwaggerConfig.AddSwagger(services, configuration);            ///注入Session服务
+            SwaggerConfig.AddSwagger(services, configuration);   
+            
+            ///注入Session服务
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             ///添加接口版本管理中间件
             ApiVersionConfig.AddApiVersioning(services);
+
             /////注入log4net
             //var repository = LogManager.CreateRepository(ServiceLocator.log4netRepositoryName);
             //XmlConfigurator.Configure(repository, new FileInfo("Config\\log4net.config"));
+
             ///注册数据库服务
-            services.AddScoped<IDbConnection, MySqlConnection>();
-            //services.AddScoped<DocumentServer.Core.Model.DbModel.Employee>();
+            services.AddScoped<IDbConnection, MySqlConnection>(); 
+
             ///返回数据验证器数据
             services.Configure<ApiBehaviorOptions>(opt =>
             {
@@ -221,11 +233,11 @@ namespace DocumentServer.Core.Comm
                         Message = "未通过数据验证",
                         Body=errors 
                     };
-
                     return new BadRequestObjectResult(result);
                 };
             });
         }
+
         public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env, IConfiguration configuration)
         {
             if (env.IsDevelopment())
@@ -247,14 +259,18 @@ namespace DocumentServer.Core.Comm
             app.UseAuthentication();//配置授权
             app.UseAuthorization();
             app.UseSwagger();
-            app.UseStaticFiles();
+
             var ApiConfig = configuration.Get<ApiVersionsConfig>();
             FilePath path = ApiConfig.FilePath;
+            
+            ///使用静态文件目录
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(path.PhysicalFilePath),
                 RequestPath = path.ApiFilePath
             });
+           
+            ///使用swagger UI
             app.UseSwaggerUI(c =>
             {
                 ApiConfig.ApiVersions.ForEach(a =>
