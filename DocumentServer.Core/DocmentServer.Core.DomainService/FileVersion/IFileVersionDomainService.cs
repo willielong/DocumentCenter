@@ -23,5 +23,12 @@ namespace DocmentServer.Core.DomainService.FileVersion
         /// <param name="model">版本实体</param>
         /// <returns></returns>
         List<FilesVersion> List(object id, IDbTransaction transaction = null);
+        /// <summary>
+        /// 获取版本信息信息--多个
+        /// </summary>
+        /// </summary>
+        /// <param name="model">版本信息实体</param>
+        /// <returns></returns>
+        List<FilesVersion> GetVersionsByFileId(int fileid, IDbTransaction transaction = null);
     }
 }

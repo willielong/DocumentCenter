@@ -25,6 +25,17 @@ namespace DocmentServer.Core.DomainService.FileVersion
             return business.Delete(id: id, transaction: transaction);
         }
         /// <summary>
+        /// 获取版本信息信息--多个
+        /// </summary>
+        /// </summary>
+        /// <param name="model">版本信息实体</param>
+        /// <returns></returns>
+        public List<FilesVersion> GetVersionsByFileId(int fileid, IDbTransaction transaction = null)
+        {
+            return business.GetVersionsByFileId(fileid: fileid, transaction: transaction);
+        }
+
+        /// <summary>
         /// 获取版本信息--多个
         /// </summary>
         /// </summary>

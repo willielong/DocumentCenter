@@ -15,6 +15,7 @@
 
 using Autofac;
 using DocumentServer.Core.Filter;
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 //using log4net;
 //using log4net.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -22,10 +23,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
@@ -171,37 +175,70 @@ namespace DocumentServer.Core.Comm
         /// <summary>
         /// 进行服务注册
         /// </summary>
-        public static void RegisterService(IServiceCollection services)
+        public static void RegisterService(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddControllers().AddJsonOptions(o=> { o.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All); });
+            services.AddControllers().AddJsonOptions(o => { o.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All); });
+
             services.AddCors();
+
             ///添加json序列化         
             services.AddMvc(options => { options.Filters.Add(typeof(CustomExceptionFilter)); });
-            ///注册数据库链接
+
+            ///注册数据库链接Configure
             AddDBContext(services);
+
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
+
             ///配置jwt授权
             AddJWTAuthorization(services);
+
             //注入授权Handler
             services.AddSingleton<IAuthorizationHandler, CustomAuthorize>();
             services.AddDistributedMemoryCache();
+
             services.AddSession(opt =>
             {
                 opt.IdleTimeout = TimeSpan.FromMinutes(50);
             });
             ////添加接口文档自动生成第三方键
-            SwaggerConfig.AddSwagger(services);            ///注入Session服务
+            SwaggerConfig.AddSwagger(services, configuration);   
+            
+            ///注入Session服务
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             ///添加接口版本管理中间件
             ApiVersionConfig.AddApiVersioning(services);
+
             /////注入log4net
             //var repository = LogManager.CreateRepository(ServiceLocator.log4netRepositoryName);
             //XmlConfigurator.Configure(repository, new FileInfo("Config\\log4net.config"));
+
             ///注册数据库服务
-            services.AddScoped<IDbConnection, MySqlConnection>();
-            //services.AddScoped<DocumentServer.Core.Model.DbModel.Employee>();
+            services.AddScoped<IDbConnection, MySqlConnection>(); 
+
+            ///返回数据验证器数据
+            services.Configure<ApiBehaviorOptions>(opt =>
+            {
+                opt.InvalidModelStateResponseFactory = actionContext =>
+                {
+                    //获取验证失败的模型字段 
+                    var errors = actionContext.ModelState
+                        .Where(e => e.Value.Errors.Count > 0)
+                        .Select(e => new { field = e.Key, err = e.Value.Errors.Select(o=>o.ErrorMessage) })
+                        .ToList();
+                    //设置返回内容
+                    DTO_ResponseMessage result = new DTO_ResponseMessage
+                    {
+                        Status = false,
+                        Message = "未通过数据验证",
+                        Body=errors 
+                    };
+                    return new BadRequestObjectResult(result);
+                };
+            });
         }
-        public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env)
+
+        public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env, IConfiguration configuration)
         {
             if (env.IsDevelopment())
             {
@@ -222,11 +259,24 @@ namespace DocumentServer.Core.Comm
             app.UseAuthentication();//配置授权
             app.UseAuthorization();
             app.UseSwagger();
-            app.UseStaticFiles();
+
+            var ApiConfig = configuration.Get<ApiVersionsConfig>();
+            FilePath path = ApiConfig.FilePath;
+            
+            ///使用静态文件目录
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(path.PhysicalFilePath),
+                RequestPath = path.ApiFilePath
+            });
+           
+            ///使用swagger UI
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "文档中心接口文档 v1");
-                c.SwaggerEndpoint("/swagger/v2/swagger.json", "文档中心接口文档 v2");
+                ApiConfig.ApiVersions.ForEach(a =>
+                {
+                    c.SwaggerEndpoint(string.Format("/swagger/v{0}/swagger.json", a.version), string.Format("Document center interface document v{0}", a.version));
+                });
                 c.RoutePrefix = string.Empty;
             });
             app.UseEndpoints(endpoints =>

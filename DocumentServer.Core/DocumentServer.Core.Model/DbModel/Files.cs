@@ -33,7 +33,7 @@ namespace DocumentServer.Core.Model.DbModel
         /// <summary>
         /// 所属类型--组织/单位/个人
         /// </summary>
-        public virtual string filetype { get; set; }
+        public virtual int filetype { get; set; }
         /// <summary>
         /// 文件网络地址
         /// </summary>
@@ -47,13 +47,17 @@ namespace DocumentServer.Core.Model.DbModel
         /// </summary>
         public virtual string path { get; set; }
         /// <summary>
+        /// 文件路径
+        /// </summary>
+        public virtual string folderpath { get; set; }
+        /// <summary>
         /// 文件大小
         /// </summary>
         public virtual double size { get; set; }
         /// <summary>
         /// 当前文件版本
         /// </summary>
-        public virtual string currentVersion { get; set; }
+        public virtual int currentVersion { get; set; }
         /// <summary>
         /// 启用？
         /// </summary>

@@ -6,11 +6,13 @@ using Dapper.Contrib.Extensions;
 
 namespace DocumentServer.Core.Model.DbModel
 {
+    [Table("Physicalhistory")]
     public class Physicalhistory:EntityBase
     {
         /// <summary>
         /// 主键ID
         /// </summary>
+        [Key]
         public int autoid { get; set; }
 
         /// <summary>

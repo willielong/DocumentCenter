@@ -59,5 +59,14 @@ namespace DocmentServer.Core.DomainService.Employee
         {
             return business.GetListByOrgId(orgId: orgId, transaction: transaction);
         }
+        /// <summary>
+        /// 根据部门ID获取人员信息
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+       public List<DocumentServer.Core.Model.Oupt.TableEmployee> TablePersonal(int pid, IDbTransaction transaction = null)
+        {
+            return business.TablePersonal(pid: pid, transaction: transaction);
+        }
     }
 }

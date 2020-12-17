@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DocmentServer.Core.BizService.Employee;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentServer.Core.Controllers
 {
-    [Route("api/employee")]
+    [Route("api/employee"), Authorize("CustomAuthorize")]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     public class EmployeeController : BaseController
     {
         private IBizEmployeeService service;
-        public EmployeeController(IBizEmployeeService service) 
+        public EmployeeController(IBizEmployeeService service)
         {
             this.service = service;
         }
@@ -90,6 +91,16 @@ namespace DocumentServer.Core.Controllers
         public IActionResult QueryCode()
         {
             return ToResult(service.All());
+        }
+        /// <summary>
+        /// 根据部门ID获取人员信息
+        /// </summary>
+        /// <param name="pid">组织ID</param>
+        /// <returns></returns>
+        [HttpGet, Route("tables/{pid:int}")]
+        public IActionResult TablePersonal(int pid)
+        {
+            return ToResult(service.TablePersonal(pid:pid));
         }
     }
 }

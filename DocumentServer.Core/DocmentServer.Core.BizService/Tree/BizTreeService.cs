@@ -35,5 +35,15 @@ namespace DocmentServer.Core.BizService.Tree
             ext = new TreeServiceExt(_employeeDomainService: employeeDomainService, _organizationDomainService: organizationDomainService, _companyDomainService: companyDomainService);
             return this.ext.JudgeTreeType(type: type, pId: pid).ToResponse();
         }
+        /// <summary>
+        /// 获取树形结构--组织结构
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public IResponseMessage TreesOrg(int type, int pid)
+        {
+            ext = new TreeServiceExt(_employeeDomainService: employeeDomainService, _organizationDomainService: organizationDomainService, _companyDomainService: companyDomainService);
+            return this.ext.JudgeOrgTreeType(type: type, pId: pid).ToResponse();
+        }
     }
 }

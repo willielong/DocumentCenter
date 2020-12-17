@@ -21,13 +21,13 @@ namespace DocumentServer.Core
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            AutoFacConfig.RegisterService(services: services);
+            AutoFacConfig.RegisterService(services: services,configuration:this.Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            AutoFacConfig.RegisterConfigure(app: app, env: env);
+            AutoFacConfig.RegisterConfigure(app: app, env: env,configuration:Configuration);
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {

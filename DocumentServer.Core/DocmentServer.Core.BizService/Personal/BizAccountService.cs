@@ -99,5 +99,15 @@ namespace DocmentServer.Core.BizService.Personal
         {
             return service.All<AccoutInfo>().ToResponse();
         }
+        /// <summary>
+        /// 获取账号信息--根据EmpId
+        /// </summary>
+        /// </summary>
+        /// <param name="empid">员工基本信息ID</param>
+        /// <returns></returns>
+        public IResponseMessage QueryByEmpId(int empid)
+        {
+            return service.QueryByEmpId(empid:empid).ToResponse();
+        }
     }
 }

@@ -46,6 +46,17 @@ namespace DocmentServer.Core.DomainService.Folder
         {
             return business.GetListOrgID(orgId: orgId,type:type, transaction: transaction);
         }
+        /// <summary>
+        /// 获取文件列表-按组织-按上级Id
+        /// </summary>
+        /// <param name="orgId"></param>
+        /// <param name="type"></param>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        public List<FileFloder> GetFolders(int pid, IDbTransaction transaction = null)
+        {
+            return business.GetFolders(pid: pid, transaction: transaction);
+        }
 
     }
 }

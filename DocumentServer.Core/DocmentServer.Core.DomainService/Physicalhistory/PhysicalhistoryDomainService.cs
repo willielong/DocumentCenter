@@ -14,9 +14,9 @@ namespace DocmentServer.Core.DomainService.Physicalhistory
         {
             this.business = business;
         }
-        public bool Edit(DocumentServer.Core.Model.DbModel.Physicalhistory modele, IDbTransaction transaction = null)
+        public bool Edit(IDbTransaction transaction = null)
         {
-            return this.business.Edit(modele: modele, transaction: transaction);
+            return this.business.Edit(transaction: transaction);
         }
 
         /// <summary>

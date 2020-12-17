@@ -13,7 +13,7 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
         /// <summary>
         /// 版本
         /// </summary>
-        public HistoryHit history { get; set; }
+        public List<HistoryHit> history { get; set; }
     }
     public class HistoryConfig
     {
@@ -50,7 +50,7 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
         /// <summary>
         /// 历史版本信息
         /// </summary>
-        public List<PreviousInfo> previous { get; set; }
+        public PreviousInfo previous { get; set; }
     }
     /// <summary>
     /// 历史版本信息
@@ -88,6 +88,27 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
         /// 用户信息
         /// </summary>
         public User user { get; set; }
-        public string changes { get; set; }
+        public List<ChangesConfig> changes { get; set; }
     }
+
+    public class ChangesConfig
+    {
+        /// <summary>
+        /// 创建日期
+        /// </summary>
+        public string created { get; set; }
+        /// <summary>
+        /// 用户信息
+        /// </summary>
+        public User user { get; set; }
+    }
+
+    public class ChangesModel {
+        /// <summary>
+        /// 工具版本
+        /// </summary>
+        public string serverVersion { get; set; }
+        public List<ChangesConfig> changes { get; set; }
+    }
+
 }

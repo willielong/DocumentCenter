@@ -2,11 +2,14 @@
 using DocmentServer.Core.DomainService.Organization;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
+using DocumentServer.Core.Model.Oupt;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Linq;
+using DocmentServer.Core.DomainService.Employee;
 
 namespace DocmentServer.Core.BizService.Organization
 {
@@ -14,11 +17,13 @@ namespace DocmentServer.Core.BizService.Organization
     {
         private IOrganizationDomainService service;
         private IDbConnection dbConnection;
+        private IEmployeeDomainService employeeDomainService;
 
-        public BizOrganizationService(IOrganizationDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
+        public BizOrganizationService(IOrganizationDomainService service, IEmployeeDomainService _employeeDomainService, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
         {
             this.service = service;
             this.dbConnection = dbConnection;
+            this.employeeDomainService = _employeeDomainService;
             this.service.SettingCurrentEmp(employee: CurrentUser);
         }
         /// <summary>
@@ -98,6 +103,42 @@ namespace DocmentServer.Core.BizService.Organization
         public IResponseMessage All()
         {
             return service.All<DocumentServer.Core.Model.DbModel.Organization>().ToResponse();
+        }
+        /// <summary>
+        /// 获取子级部门
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        public IResponseMessage GetTableOrganization(int pid)
+        {
+            List<TableOrgational> tables = new List<TableOrgational>();
+            ///获取单位
+            List<DocumentServer.Core.Model.DbModel.Organization> organizations = this.service.GetListByParentId(pid);
+            List<DocumentServer.Core.Model.DbModel.Employee> employees = this.employeeDomainService.All<DocumentServer.Core.Model.DbModel.Employee>();
+            List<TableOrgational> org = (from a1 in organizations
+                                         join a2 in employees on a1.head equals a2.empid
+                                         join a3 in employees on a1.c_head equals a3.empid.ToString()
+                                         join a4 in employees on a1.creator equals a4.empid
+                                         select new TableOrgational()
+                                         {
+                                             cnname = a1.cnname,
+                                             dic_createdate = a1.creatdate.ToString("yyyy-MM-dd HH:mm"),
+                                             dic_creator = a4.cnname,
+                                             dic_c_head = a3.cnname,
+                                             dic_head = a2.cnname,
+                                             enname = a1.enname,
+                                             id = a1.orgid,
+                                             orgcode = a1.orgcode,
+                                             orgtype = DocumetCenter.Core.Enum.OrgationalType.Organization,
+                                             parentid = a1.parentId,
+                                             sequence = a1.sequence,
+                                             dic_orgtype = DocumetCenter.Core.Enum.OrgationalType.Organization.ConvertToDicOrgTypeString(),
+                                             unitid=a1.untid,
+                                             seq=a1.sequence
+                                         }).ToList();
+            tables.AddRange(org);
+            tables = tables.OrderBy(o => o.seq).ToList();
+            return tables.ToResponse();
         }
     }
 }

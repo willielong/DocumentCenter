@@ -1,7 +1,11 @@
-﻿using DocmentServer.Core.DomainService.FileVersion;
+﻿using DocmentServer.Core.DomainService.Employee;
+using DocmentServer.Core.DomainService.FilesInfo;
+using DocmentServer.Core.DomainService.FileVersion;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,14 +15,21 @@ namespace DocmentServer.Core.BizService.FileVersion
 {
     class BizFileVersionService : BaseService.BizBaseService, IBizFileVersionService
     {
-        private IFileVersionDomainService service;
+        private IFileVersionDomainService service { get; set; }
         private IDbConnection dbConnection;
+        public IEmployeeDomainService employeeDomainService { get; set; }
+        private FilePath filePath;
+        public IFilesDomainService filesDomainService { get; set; }
+        private ExtBizFileVersionService extBizFileVersion;
 
-        public BizFileVersionService(IFileVersionDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
+        public BizFileVersionService(IFileVersionDomainService _service,IConfiguration configuration, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
         {
-            this.service = service;
+            this.service = _service;
             this.dbConnection = dbConnection;
             this.service.SettingCurrentEmp(employee: CurrentUser);
+            ///获取配置文件中的数据
+            filePath = configuration.Get<ApiVersionsConfig>().FilePath;
+            extBizFileVersion = new ExtBizFileVersionService();
         }
         /// <summary>
         /// 添加版本信息
@@ -87,6 +98,36 @@ namespace DocmentServer.Core.BizService.FileVersion
         public IResponseMessage All()
         {
             return service.All<FilesVersion>().ToResponse();
+        }
+        /// <summary>
+        /// 获取所有的历史信息
+        /// </summary>
+        /// <param name="fileid"></param>
+        /// <returns></returns>
+        public IResponseMessage refreshHistory(int fileid)
+        {
+            ///获取该文件的所有版本
+            List<FilesVersion> versions = service.GetVersionsByFileId(fileid: fileid);
+            ///获取文件
+            Files file = filesDomainService.Get<Files>(id: fileid);
+            List<DocumentServer.Core.Model.DbModel.Employee> employees = employeeDomainService.All<DocumentServer.Core.Model.DbModel.Employee>();
+            return extBizFileVersion.refreshHistory(file: file, versions: versions, employees: employees, filePath: filePath).ToResponse();
+        }
+
+        /// <summary>
+        /// 设置历史
+        /// </summary>
+        /// <param name="fileid"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        public IResponseMessage setHistoryData(int fileid, int version)
+        {
+            ///获取该文件的所有版本
+            List<FilesVersion> versions = service.GetVersionsByFileId(fileid: fileid);
+            ///获取文件
+            Files file = filesDomainService.Get<Files>(id: fileid);
+            List<DocumentServer.Core.Model.DbModel.Employee> employees = employeeDomainService.All<DocumentServer.Core.Model.DbModel.Employee>();
+            return extBizFileVersion.setHistoryData(file: file, versions: versions, employees: employees, filePath: filePath,version:version).ToResponse();
         }
     }
 }

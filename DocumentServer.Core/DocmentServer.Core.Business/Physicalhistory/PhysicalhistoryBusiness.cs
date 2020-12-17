@@ -6,6 +6,7 @@ using System.Data;
 using System.Text;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using System.Linq;
 
 namespace DocmentServer.Core.Business.Physicalhistory
 {
@@ -20,7 +21,7 @@ namespace DocmentServer.Core.Business.Physicalhistory
         /// <param name="modele"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public bool Edit(DocumentServer.Core.Model.DbModel.Physicalhistory modele, IDbTransaction transaction = null)
+        public bool Edit(IDbTransaction transaction = null)
         {
             return dbConnection.Execute(sql: "UPDATE Physicalhistory  SET `enable`=0 WHERE `enable`=1", transaction: transaction) >= 0;
         }
@@ -31,7 +32,15 @@ namespace DocmentServer.Core.Business.Physicalhistory
         /// <returns></returns>
         public DocumentServer.Core.Model.DbModel.Physicalhistory SingleByEnable(IDbTransaction transaction = null)
         {
-            return dbConnection.QuerySingle<DocumentServer.Core.Model.DbModel.Physicalhistory>(sql: "SELECT * FROM Physicalhistory where `enable`=1", transaction: transaction);
+            var List= dbConnection.Query<DocumentServer.Core.Model.DbModel.Physicalhistory> (sql: "SELECT * FROM Physicalhistory where `enable`=1", transaction: transaction).AsList();
+            if (List.Any())
+            {
+                return List.FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

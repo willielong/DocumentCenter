@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DocmentServer.Core.BizService.Company;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,9 +14,9 @@ namespace DocumentServer.Core.Controllers
     /// <summary>
     /// 单位相关接口
     /// </summary>
-    [Route("api/company")]
+    [Route("api/company"), Authorize("CustomAuthorize")]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     public class CompanyController : BaseController
     {
         private IBizCompanyService service;
@@ -95,6 +96,16 @@ namespace DocumentServer.Core.Controllers
         public IActionResult QueryCode()
         {
             return ToResult(service.All());
+        }
+        /// <summary>
+        /// 获取子级的组织
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        [HttpGet,Route("tables")]
+        public IActionResult GetTableCompany(int pid)
+        {
+            return ToResult(service.GetTableCompany(pid:pid));
         }
     }
 }

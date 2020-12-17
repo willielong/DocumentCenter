@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DocumentServer.Core.Controllers
 {
     [Route("api/token")]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     [ApiController]
     public class TokenController : BaseController
     {
@@ -18,12 +18,6 @@ namespace DocumentServer.Core.Controllers
         public TokenController(IBizLoginService _service)
         {
             service = _service;
-        }
-
-        [HttpGet]
-        public IActionResult GenerateToken()
-        {
-            return new JsonResult(new DocumentServer.Core.Comm.TokenBusiness().GenerateToken("Willie li", "P@$$w34e", "").Result);
         }
         [HttpPost, Route("login")]
         public IActionResult Login([FromBody] LoginModel model)

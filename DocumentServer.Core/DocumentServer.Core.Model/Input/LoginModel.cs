@@ -14,5 +14,13 @@ namespace DocumentServer.Core.Model.Input
         /// 密码
         /// </summary>
         public string password { get; set; }
+        /// <summary>
+        /// 密文
+        /// </summary>
+        public string key { get; set; }
+        /// <summary>
+        /// key
+        /// </summary>
+        public string keys { get; set; }
     }
 }

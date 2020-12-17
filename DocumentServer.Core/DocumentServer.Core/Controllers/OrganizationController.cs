@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DocmentServer.Core.BizService.Organization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,9 +12,9 @@ namespace DocumentServer.Core.Controllers
     /// <summary>
     /// 组织相关接口
     /// </summary>
-    [Route("api/organization")]
+    [Route("api/organization"), Authorize("CustomAuthorize")]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("1.0")]
     public class OrganizationController : BaseController
     {
         private IBizOrganizationService service;
@@ -93,6 +94,17 @@ namespace DocumentServer.Core.Controllers
         public IActionResult QueryCode()
         {
             return ToResult(service.All());
+        }
+
+        /// <summary>
+        /// 获取子级的组织
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        [HttpGet, Route("tables")]
+        public IActionResult GetTableOrganization(int pid)
+        {
+            return ToResult(service.GetTableOrganization(pid: pid));
         }
     }
 }

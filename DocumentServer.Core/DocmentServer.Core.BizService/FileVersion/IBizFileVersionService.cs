@@ -51,5 +51,17 @@ namespace DocmentServer.Core.BizService.FileVersion
         /// </summary>
         /// <returns></returns>
         IResponseMessage All();
+        /// <summary>
+        /// 获取所有历史的信息
+        /// </summary>
+        /// <param name="fileid"></param>
+        /// <returns></returns>
+        IResponseMessage refreshHistory(int fileid);
+        /// <summary>
+        /// 设置历史
+        /// </summary>
+        /// <param name="fileid"></param>
+        /// <returns></returns>
+        IResponseMessage setHistoryData(int fileid,int version);
     }
 }

@@ -23,6 +23,17 @@ namespace DocmentServer.Core.Business.FileVersion
         {
             return dbConnection.Execute(sql: "DELETE FROM  FilesVersion WHERE autoid=@autoid", param: new FilesVersion() { autoid = (int)id }, transaction: transaction) >= 0;
         }
+        /// <summary>
+        /// 获取版本信息信息--多个
+        /// </summary>
+        /// </summary>
+        /// <param name="model">版本信息实体</param>
+        /// <returns></returns>
+        public List<FilesVersion> GetVersionsByFileId(int fileid, IDbTransaction transaction = null)
+        {
+            return dbConnection.Query<FilesVersion>(sql: "SELECT *  FROM  FilesVersion WHERE fileid=@fileid", param: new FilesVersion() { fileid = fileid }, transaction: transaction).AsList();
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// 获取版本信息信息--多个

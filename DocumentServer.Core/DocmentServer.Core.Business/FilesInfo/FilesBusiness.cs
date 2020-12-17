@@ -24,6 +24,11 @@ namespace DocmentServer.Core.Business.FilesInfo
             return dbConnection.Execute(sql: "DELETE FROM  Files WHERE autoid=@autoid", param: new Files() { autoid = (int)id }, transaction: transaction) >= 0;
         }
 
+        public List<Files> GetFiles(int folderid, IDbTransaction transaction = null)
+        {
+            return dbConnection.Query<Files>(sql: "SELECT *  FROM  Files WHERE folderid=@folderid", param: new Files() { folderid = folderid }, transaction: transaction).AsList();
+        }
+
         /// <summary>
         /// 获取文件信息--多个
         /// </summary>
