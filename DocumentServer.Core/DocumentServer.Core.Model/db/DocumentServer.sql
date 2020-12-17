@@ -202,6 +202,7 @@ create table Bb_TableInfo
    viewtype             int default(-1),
    isprimary            bit default(0),
    pktable              varchar(20) default (''),
+   isflow               bit default 0,
    creator              int default(-1),
    modifier             int default(-1),
    creatdate            datetime default('1000-01-01 00:00:00'),
