@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentServer.Core.Model.ValidationAttributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -23,7 +24,7 @@ namespace DocumentServer.Core.Model.DbModel
         /// <summary>
         /// 密码
         /// </summary>
-        [Display(Name = "密码"), Required(ErrorMessage = "{0}不能为空!"), StringLength(8, ErrorMessage = "{0}不超过8个字符"), RegularExpression(@"^([a-zA-Z0-9-@#$&]){1,20}$", ErrorMessage = "密码的安全性不够，请输入英文字符、数字、特殊字符组成的{0}")]
+        [Display(Name = "密码"), Required(ErrorMessage = "{0}不能为空!"), StringLength(8, ErrorMessage = "{0}不超过8个字符"), RegularExpression(@"^([a-zA-Z0-9@#$&]){1,20}$", ErrorMessage = "密码的安全性不够，请输入英文字符、数字、特殊字符组成的{0}")]
         public virtual string password { get; set; }
         /// <summary>
         /// 显示名称
@@ -33,12 +34,12 @@ namespace DocumentServer.Core.Model.DbModel
         /// <summary>
         /// 电话
         /// </summary>
-        [Display(Name = "电话"), Phone(ErrorMessage = "{0}格式不正确!")]
+        [Display(Name = "电话"), PhoneValidation(ErrorMessage = "电话格式不正确!")]
         public virtual string phone { get; set; }
         /// <summary>
         /// 邮箱
         /// </summary>
-        [Display(Name = "邮箱"), EmailAddress(ErrorMessage = "{0}格式不正确!")]
+        [Display(Name = "邮箱"), Email(ErrorMessage = "{0}格式不正确!")]
         public virtual string email { get; set; }
         /// <summary>
         /// 启用？
