@@ -9,6 +9,7 @@ using DocumentServer.Core.Model.DbModel;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
 using DocumentServer.Core.Model.Oupt;
+using AutoMapper;
 
 namespace DocmentServer.Core.BizService.BbTableInfo
 {
@@ -27,7 +28,7 @@ namespace DocmentServer.Core.BizService.BbTableInfo
         /// <param name="httpContext"></param>
         /// <param name="_domainService">domain层</param>
         /// <param name="_dbConnection">数据库连接</param>
-        public BizBbTableInfoService(IHttpContextAccessor httpContext, IBbTableInfoDomainService _domainService, IDbConnection _dbConnection, IEmployeeDomainService employeeDomainService) : base(httpContext)
+        public BizBbTableInfoService(IHttpContextAccessor httpContext, IBbTableInfoDomainService _domainService, IDbConnection _dbConnection, IEmployeeDomainService employeeDomainService, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
             this.domainService = _domainService;
             this.domainService.SettingCurrentEmp(employee: CurrentUser);///将用户的基本信息传入其他层

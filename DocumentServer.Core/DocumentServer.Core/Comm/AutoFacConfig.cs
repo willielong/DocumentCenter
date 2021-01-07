@@ -14,6 +14,7 @@
 */
 
 using Autofac;
+using AutoMapper;
 using DocumentServer.Core.Filter;
 using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 //using log4net;
@@ -180,7 +181,7 @@ namespace DocumentServer.Core.Comm
             services.AddControllers().AddJsonOptions(o => { o.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All); });
 
             services.AddCors();
-
+            services.AddAutoMapper(Assembly.Load("DocumentServer.Core.Mapper"));
             ///添加json序列化         
             services.AddMvc(options => { options.Filters.Add(typeof(CustomExceptionFilter)); });
 

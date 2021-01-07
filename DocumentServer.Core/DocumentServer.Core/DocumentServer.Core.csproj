@@ -17,6 +17,7 @@
     <PackageReference Include="Autofac" Version="5.2.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.0.0" />
@@ -37,6 +38,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DocmentServer.Core.BizService\DocmentServer.Core.BizService.csproj" />
     <ProjectReference Include="..\DocumentServer.Core.Comm\DocumentServer.Core.Comm.csproj" />
+    <ProjectReference Include="..\DocumentServer.Core.Mapper\DocumentServer.Core.Mapper.csproj" />
   </ItemGroup>
 
   <ItemGroup>

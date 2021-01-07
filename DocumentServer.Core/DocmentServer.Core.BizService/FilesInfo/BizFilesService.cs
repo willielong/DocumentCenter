@@ -18,6 +18,7 @@ using System.Net;
 using System.Text;
 using System.Linq;
 using DocmentServer.Core.DomainService.Employee;
+using AutoMapper;
 
 namespace DocmentServer.Core.BizService.FilesInfo
 {
@@ -31,7 +32,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
         public IEmployeeDomainService employeeDomainService { get; set; }
         public FilePath filePath;
 
-        public BizFilesService(IConfiguration configuration, IDbConnection dbConnection, IHttpContextAccessor httpContext, IPhysicalhistoryDomainService _physicalhistoryDomainService, ISystemIODomainService _systemIODomainService, IFilesDomainService _service) : base(httpContext: httpContext)
+        public BizFilesService(IConfiguration configuration, IDbConnection dbConnection, IHttpContextAccessor httpContext, IPhysicalhistoryDomainService _physicalhistoryDomainService, ISystemIODomainService _systemIODomainService, IFilesDomainService _service, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
             this.service = _service;
             this.dbConnection = dbConnection;

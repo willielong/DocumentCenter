@@ -8,6 +8,7 @@ using DocmentServer.Core.DomainService.Organization;
 using DocmentServer.Core.DomainService.Company;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.Oupt;
+using AutoMapper;
 
 /// <summary>
 /// 进行树形构造
@@ -20,7 +21,7 @@ namespace DocmentServer.Core.BizService.Tree
         public IOrganizationDomainService organizationDomainService { get; set; }
         public ICompanyDomainService companyDomainService { get; set; }
         private TreeServiceExt ext;
-        public BizTreeService(IHttpContextAccessor httpContext, IDbConnection dbConnection) : base(httpContext)
+        public BizTreeService(IHttpContextAccessor httpContext, IDbConnection dbConnection, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
            
         }

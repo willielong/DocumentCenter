@@ -12,6 +12,7 @@ using DocumentServer.Core.Comm;
 using DocumetCenter.Core.Enum;
 using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using Microsoft.Extensions.Configuration;
+using AutoMapper;
 
 namespace DocmentServer.Core.BizService.Folder
 {
@@ -21,7 +22,7 @@ namespace DocmentServer.Core.BizService.Folder
         private IDbConnection dbConnection;
         private IFilesDomainService fileDomainService;
         public FilePath filePath;
-        public BizFolderService(IConfiguration configuration, IFolderDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext, IFilesDomainService _filesDomainService) : base(httpContext: httpContext)
+        public BizFolderService(IConfiguration configuration, IFolderDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext, IFilesDomainService _filesDomainService, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
             this.service = service;
             this.dbConnection = dbConnection;

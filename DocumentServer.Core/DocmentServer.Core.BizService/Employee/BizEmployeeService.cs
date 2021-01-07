@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Linq;
+using AutoMapper;
 
 namespace DocmentServer.Core.BizService.Employee
 {
@@ -15,7 +16,7 @@ namespace DocmentServer.Core.BizService.Employee
         private IEmployeeDomainService service;
         private IDbConnection dbConnection;
 
-        public BizEmployeeService(IEmployeeDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
+        public BizEmployeeService(IEmployeeDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
             this.service = service;
             this.dbConnection = dbConnection;

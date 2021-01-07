@@ -10,6 +10,7 @@ using System.Data;
 using System.Text;
 using System.Linq;
 using DocmentServer.Core.DomainService.Employee;
+using AutoMapper;
 
 namespace DocmentServer.Core.BizService.Organization
 {
@@ -19,7 +20,7 @@ namespace DocmentServer.Core.BizService.Organization
         private IDbConnection dbConnection;
         private IEmployeeDomainService employeeDomainService;
 
-        public BizOrganizationService(IOrganizationDomainService service, IEmployeeDomainService _employeeDomainService, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
+        public BizOrganizationService(IOrganizationDomainService service, IEmployeeDomainService _employeeDomainService, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
             this.service = service;
             this.dbConnection = dbConnection;

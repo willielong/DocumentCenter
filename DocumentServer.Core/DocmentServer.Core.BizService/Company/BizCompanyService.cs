@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Linq;
+using AutoMapper;
+
 namespace DocmentServer.Core.BizService.Company
 {
     public class BizCompanyService : BaseService.BizBaseService, IBizCompanyService
@@ -19,7 +21,7 @@ namespace DocmentServer.Core.BizService.Company
         private IOrganizationDomainService organizationDomainService;
         private IEmployeeDomainService employeeDomainService;
 
-        public BizCompanyService(ICompanyDomainService service, IOrganizationDomainService _organizationDomainService, IEmployeeDomainService _employeeDomainService, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
+        public BizCompanyService(ICompanyDomainService service, IOrganizationDomainService _organizationDomainService, IEmployeeDomainService _employeeDomainService, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
             this.service = service;
             this.organizationDomainService = _organizationDomainService;

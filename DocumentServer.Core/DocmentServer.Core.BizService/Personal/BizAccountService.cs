@@ -1,4 +1,5 @@
-﻿using DocmentServer.Core.DomainService.Personal;
+﻿using AutoMapper;
+using DocmentServer.Core.DomainService.Personal;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +16,7 @@ namespace DocmentServer.Core.BizService.Personal
         private IAccountDomainService service;
         private IDbConnection dbConnection;
 
-        public BizAccountService(IAccountDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
+        public BizAccountService(IAccountDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
             this.service = service;
             this.dbConnection = dbConnection;

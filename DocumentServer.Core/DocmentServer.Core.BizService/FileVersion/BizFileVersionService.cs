@@ -1,4 +1,5 @@
-﻿using DocmentServer.Core.DomainService.Employee;
+﻿using AutoMapper;
+using DocmentServer.Core.DomainService.Employee;
 using DocmentServer.Core.DomainService.FilesInfo;
 using DocmentServer.Core.DomainService.FileVersion;
 using DocumentServer.Core.Comm;
@@ -22,7 +23,7 @@ namespace DocmentServer.Core.BizService.FileVersion
         public IFilesDomainService filesDomainService { get; set; }
         private ExtBizFileVersionService extBizFileVersion;
 
-        public BizFileVersionService(IFileVersionDomainService _service,IConfiguration configuration, IDbConnection dbConnection, IHttpContextAccessor httpContext) : base(httpContext: httpContext)
+        public BizFileVersionService(IFileVersionDomainService _service,IConfiguration configuration, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
             this.service = _service;
             this.dbConnection = dbConnection;
