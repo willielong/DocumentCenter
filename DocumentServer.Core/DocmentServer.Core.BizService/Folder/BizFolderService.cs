@@ -132,14 +132,16 @@ namespace DocmentServer.Core.BizService.Folder
                 fileFloders = service.GetFolders(pid: pid);
                 files = fileDomainService.GetFiles(folderid: pid);
             }
-            fileFloders.ForEach(o =>
-            {
-                treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = "", dic_filetype = TextType.文件夹.ToString(), dic_orgtype = type.ConvertToOrgTypeString(), ext = "", filetype = (int)TextType.文件夹, id = o.autoid, orgtype = type, sequence = o.sequence, size = "",path=o.path,orgid=o.orgid,fileurl="" });
-            });
-            files.ForEach(o =>
-            {
-                treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = o.currentVersion.ToString(), dic_filetype = o.ext.ConvertToExt(), dic_orgtype = type.ConvertToOrgTypeString(), ext = o.ext, filetype = o.ext.ConvertToExtInt(), id = o.autoid, orgtype = type, sequence = o.sequence, size = o.size.CovertToGb(), path=o.path,orgid=orgId,fileurl=filePath.ApiUrl+o.fileuri});
-            });
+            ToViewModels<FileFloder, TreeTableModel>(fileFloders, out treeTables);
+            treeTables.AddRange(ToFileViewModels(files, orgId, filePath.ApiUrl));
+            //fileFloders.ForEach(o =>
+            //{
+            //    treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = "", dic_filetype = TextType.文件夹.ToString(), dic_orgtype = o.flodertype.ConvertToOrgTypeString(), ext = "", filetype = (int)TextType.文件夹, id = o.autoid, orgtype = o.flodertype, sequence = o.sequence, size = "", path = o.path, orgid = o.orgid, fileurl = "" });
+            //});
+            //files.ForEach(o =>
+            //{
+            //    treeTables.Add(new TreeTableModel() { cnname = o.cnname, enname = o.enname, currentVersion = o.currentVersion.ToString(), dic_filetype = o.ext.ConvertToExt(), dic_orgtype = o.filetype.ConvertToOrgTypeString(), ext = o.ext, filetype = o.ext.ConvertToExtInt(), id = o.autoid, orgtype = type, sequence = o.sequence, size = o.size.CovertToGb(), path = o.path, orgid = orgId, fileurl = filePath.ApiUrl + o.fileuri });
+            //});
             return treeTables.ToResponse();
         }
     }

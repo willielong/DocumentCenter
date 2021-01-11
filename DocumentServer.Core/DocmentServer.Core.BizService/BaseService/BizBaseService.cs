@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using Microsoft.Extensions.Configuration;
 using AutoMapper;
+using DocumentServer.Core.Model.Oupt;
+using DocumentServer.Core.Model.DbModel;
 
 namespace DocmentServer.Core.BizService.BaseService
 {
@@ -20,7 +22,7 @@ namespace DocmentServer.Core.BizService.BaseService
             context = httpContext.HttpContext;
             GetEmployee(httpContext: httpContext);
             mapper = _mapper;
-        }
+        } 
         /// <summary>
         /// 根据token获取员工基本信息
         /// </summary>
@@ -76,6 +78,23 @@ namespace DocmentServer.Core.BizService.BaseService
         public void ToModels<TModel, TInputModel>(List<TInputModel> input, out List<TModel> model) where TModel : class, new() where TInputModel : class, new()
         {
             model = mapper.Map<List<TInputModel>, List<TModel>>(input);
+        }
+        /// <summary>
+        /// 将文件的信息转换成表格文件
+        /// </summary>
+        /// <typeparam name="TModel">数据库实体</typeparam>
+        /// <typeparam name="TViewModel">输出实体</typeparam>
+        /// <param name="model">数据</param>
+        /// <param name="t2">输出数据</param>
+        public List<TreeTableModel> ToFileViewModels(List<Files> model,  int orgId, string apiUrl)
+        {
+            List<TreeTableModel> result= mapper.Map<List<Files>, List<TreeTableModel>>(model);            
+            result.ForEach(o =>
+            {
+                o.orgid = orgId;
+                o.fileurl = apiUrl + o.fileurl;
+            });
+            return result;
         }
     }
 }

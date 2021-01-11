@@ -11,7 +11,7 @@ namespace DocmentServer.Core.Business.Employee
 {
     public interface IEmployeeBusiness : IBaseBusiness
     {
-      
+
 
         /// <summary>
         /// 删除人员基本信息信息
@@ -21,7 +21,7 @@ namespace DocmentServer.Core.Business.Employee
         /// <returns></returns>
         bool Delete(object id, IDbTransaction transaction = null);
 
-       
+
         /// <summary>
         /// 获取人员基本信息信息--多个
         /// </summary>
@@ -50,5 +50,20 @@ namespace DocmentServer.Core.Business.Employee
         /// <param name="pid"></param>
         /// <returns></returns>
         List<TableEmployee> TablePersonal(int pid, IDbTransaction transaction);
+
+        /// <summary>
+        /// 获取人员基本信息信息--根据empids集合
+        /// </summary>
+        /// </summary>
+        /// <param name="model">人员基本信息实体</param>
+        /// <returns></returns>
+        Dictionary<int, string> GetListByEmpIds(List<string> empids, IDbTransaction transaction = null);
+        /// <summary>
+        /// 获取人员基本信息信息--获取所有集合
+        /// </summary>
+        /// </summary>
+        /// <param name="model">人员基本信息实体</param>
+        /// <returns></returns>
+        Dictionary<int, string> GetAll(IDbTransaction transaction = null);
     }
 }

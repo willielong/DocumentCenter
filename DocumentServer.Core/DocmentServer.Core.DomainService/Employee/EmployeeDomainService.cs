@@ -16,7 +16,7 @@ namespace DocmentServer.Core.DomainService.Employee
             this.business = business;
         }
 
-       
+
         /// <summary>
         /// 删除人员基本信息信息
         /// </summary>
@@ -28,7 +28,7 @@ namespace DocmentServer.Core.DomainService.Employee
             return business.Delete(id: id, transaction: transaction);
         }
 
-       
+
         /// <summary>
         /// 获取人员基本信息信息--多个
         /// </summary>
@@ -64,9 +64,30 @@ namespace DocmentServer.Core.DomainService.Employee
         /// </summary>
         /// <param name="pid"></param>
         /// <returns></returns>
-       public List<DocumentServer.Core.Model.Oupt.TableEmployee> TablePersonal(int pid, IDbTransaction transaction = null)
+        public List<DocumentServer.Core.Model.Oupt.TableEmployee> TablePersonal(int pid, IDbTransaction transaction = null)
         {
             return business.TablePersonal(pid: pid, transaction: transaction);
         }
+        /// <summary>
+        /// 获取人员基本信息信息--根据empids集合
+        /// </summary>
+        /// </summary>
+        /// <param name="model">人员基本信息实体</param>
+        /// <returns></returns>
+        public Dictionary<int, string> GetListByEmpIds(List<string> empids, IDbTransaction transaction = null)
+        {
+            return business.GetListByEmpIds(empids: empids, transaction: transaction);
+        }
+        /// <summary>
+        /// 获取人员基本信息信息--获取所有集合
+        /// </summary>
+        /// </summary>
+        /// <param name="model">人员基本信息实体</param>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAll(IDbTransaction transaction = null)
+        {
+            return business.GetAll(transaction: transaction);
+        }
+
     }
 }

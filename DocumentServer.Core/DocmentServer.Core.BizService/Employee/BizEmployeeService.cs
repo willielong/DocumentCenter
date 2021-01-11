@@ -107,14 +107,17 @@ namespace DocmentServer.Core.BizService.Employee
         /// <returns></returns>
         public IResponseMessage TablePersonal(int pid)
         {
-            var emps = service.All<DocumentServer.Core.Model.DbModel.Employee>();
+
             List<TableEmployee> tableEmployees = service.TablePersonal(pid: pid);
-            List<TableEmployee> tables = tableEmployees.Join(emps, a => int.Parse(a.dic_creator), b => b.empid, (a, b) =>
+            List<string> empids = new List<string>();
+            var emps = service.GetAll();
+            tableEmployees.ForEach(a =>
             {
-                a.dic_creator = b.cnname;
-                return a;
-            }).OrderBy(o=>o.sequence).ToList();
-            return tables.ToResponse();
+                if (emps.Any(p => p.Key.ToString() == a.dic_creator))
+                    a.dic_creator = emps[int.Parse(a.dic_creator)];
+            });
+            tableEmployees = tableEmployees.OrderBy(o => o.sequence).ToList();
+            return tableEmployees.ToResponse();
         }
     }
 }

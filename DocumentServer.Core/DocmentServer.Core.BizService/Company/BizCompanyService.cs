@@ -115,54 +115,50 @@ namespace DocmentServer.Core.BizService.Company
         public IResponseMessage GetTableCompany(int pid)
         {
             List<TableOrgational> tables = new List<TableOrgational>();
+            List<string> empIds = new List<string>();
             ///获取单位
             List<DocumentServer.Core.Model.DbModel.Organization> organizations = this.organizationDomainService.GetListByCompanyId(pid);
+            organizations.ForEach(o => { empIds.Add(o.creator.ToString()); empIds.Add(o.head.ToString()); empIds.Add(o.c_head.ToString()); });
             ////获取组织
             List<DocumentServer.Core.Model.DbModel.UnitInfo> unitInfos = this.service.GetListByParentId(pid);
+            unitInfos.ForEach(o => { empIds.Add(o.creator.ToString()); empIds.Add(o.head.ToString()); empIds.Add(o.c_head.ToString()); });
             ///获取所有人员
-            List<DocumentServer.Core.Model.DbModel.Employee> employees = this.employeeDomainService.All<DocumentServer.Core.Model.DbModel.Employee>();
-            List<TableOrgational> org = (from a1 in organizations
-                                         join a2 in employees on a1.head equals a2.empid
-                                         join a3 in employees on a1.c_head equals a3.empid.ToString()
-                                         join a4 in employees on a1.creator equals a4.empid
-                                         select new TableOrgational()
-                                         {
-                                             cnname = a1.cnname,
-                                             dic_createdate = a1.creatdate.ToString("yyyy-MM-dd HH:mm"),
-                                             dic_creator = a4.cnname,
-                                             dic_c_head = a3.cnname,
-                                             dic_head = a2.cnname,
-                                             enname = a1.enname,
-                                             id = a1.orgid,
-                                             orgcode = a1.orgcode,
-                                             orgtype = DocumetCenter.Core.Enum.OrgationalType.Organization,
-                                             parentid = a1.parentId,
-                                             sequence = a1.sequence,
-                                             dic_orgtype= DocumetCenter.Core.Enum.OrgationalType.Organization.ConvertToDicOrgTypeString(),
-                                             unitid=a1.untid
-                                         }).ToList();
+            Dictionary<int, string> employees = this.employeeDomainService.GetListByEmpIds(empIds);
+            List<TableOrgational> org = new List<TableOrgational>();
+            ToViewModels<DocumentServer.Core.Model.DbModel.Organization, TableOrgational>(organizations, out org);
+            org.ForEach(o =>
+            {
+                if (employees.Any(l => l.Key == o.creator))
+                {
+                    o.dic_creator = employees[o.creator];
+                }
+                if (employees.Any(l => l.Key == o.head))
+                {
+                    o.dic_head = employees[o.head];
+                }
+                if (employees.Any(l => l.Key.ToString() == o.c_head))
+                {
+                    o.dic_c_head = employees[int.Parse(o.c_head)];
+                }
+            });
             tables.AddRange(org);
-            List<TableOrgational> unitInfo = (from a1 in unitInfos
-                                              join a2 in employees on a1.head equals a2.empid
-                                              join a3 in employees on a1.c_head equals a3.empid.ToString()
-                                              join a4 in employees on a1.creator equals a4.empid
-                                              select new TableOrgational()
-                                              {
-                                                  cnname = a1.cnname,
-                                                  dic_createdate = a1.creatdate.ToString("yyyy-MM-dd HH:mm"),
-                                                  dic_creator = a4.cnname,
-                                                  dic_c_head = a3.cnname,
-                                                  dic_head = a2.cnname,
-                                                  enname = a1.enname,
-                                                  id = a1.unitid,
-                                                  orgcode = a1.unitcode,
-                                                  orgtype = DocumetCenter.Core.Enum.OrgationalType.Unit,
-                                                  parentid = a1.parentId,
-                                                  sequence = a1.sequence,
-                                                  dic_orgtype= DocumetCenter.Core.Enum.OrgationalType.Unit.ConvertToDicOrgTypeString(),
-                                                  unitid=a1.unitid
-                                              }).ToList();
-            tables.AddRange(unitInfo);
+            ToViewModels<DocumentServer.Core.Model.DbModel.UnitInfo, TableOrgational>(unitInfos, out org);
+            org.ForEach(o =>
+            {
+                if (employees.Any(l => l.Key == o.creator))
+                {
+                    o.dic_creator = employees[o.creator];
+                }
+                if (employees.Any(l => l.Key == o.head))
+                {
+                    o.dic_head = employees[o.head];
+                }
+                if (employees.Any(l => l.Key.ToString() == o.c_head))
+                {
+                    o.dic_c_head = employees[int.Parse(o.c_head)];
+                }
+            });
+            tables.AddRange(org);
             tables = tables.OrderBy(o => o.sequence).ToList();
             return tables.ToResponse();
         }

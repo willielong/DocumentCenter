@@ -46,6 +46,7 @@ namespace DocmentServer.Core.BizService.BbTableInfo
             //throw new NotImplementedException();
             model.creator = CurrentUser.empid;
             model.modifier = CurrentUser.empid;
+            ToModel<Bb_TableInfo, Bb_TableInfo>(model, out model);
             return domainService.Add(model: model).ToResponse();
         }
         /// <summary>

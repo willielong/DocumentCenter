@@ -59,5 +59,21 @@ namespace DocumentServer.Core.Model.Oupt
         public virtual string dic_orgtype { get; set; }
         public virtual int unitid { get; set; }
         public virtual double seq { get; set; }
+        /// <summary>
+        /// 创建人
+        /// </summary>
+        public virtual int creator { get; set; }
+        /// <summary>
+        /// 修改人
+        /// </summary>
+        public virtual int modifier { get; set; }
+        /// <summary>
+        /// 单位负责人
+        /// </summary>
+        public virtual int head { get; set; }
+        /// <summary>
+        /// 包含组织/单位/个人的ID
+        /// </summary>
+        public virtual string c_head { get; set; }
     }
 }
