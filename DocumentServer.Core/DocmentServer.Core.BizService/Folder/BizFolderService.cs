@@ -1,18 +1,14 @@
-﻿using DocmentServer.Core.DomainService.FilesInfo;
+﻿using AutoMapper;
+using DocmentServer.Core.DomainService.FilesInfo;
 using DocmentServer.Core.DomainService.Folder;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using DocumentServer.Core.Model.Oupt;
 using Microsoft.AspNetCore.Http;
-using System;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
-using DocumentServer.Core.Comm;
-using DocumetCenter.Core.Enum;
-using DocumentServer.Core.Model.OnlyOfficeConfigModel;
-using Microsoft.Extensions.Configuration;
-using AutoMapper;
 
 namespace DocmentServer.Core.BizService.Folder
 {

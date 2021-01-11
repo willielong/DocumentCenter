@@ -3,9 +3,6 @@ using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
 using DocumentServer.Core.Model.Oupt;
 using DocumetCenter.Core.Enum;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DocumentServer.Core.Mapper.ProfileMapper
 {

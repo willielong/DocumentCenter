@@ -1,9 +1,7 @@
 ﻿using DocmentServer.Core.Business.Base;
 using DocumentServer.Core.Model.DbModel;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 /**
  * 描述：账户信息操作类-接口 
  * */

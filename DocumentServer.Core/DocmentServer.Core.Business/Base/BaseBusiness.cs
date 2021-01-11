@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
-using DocumentServer.Core.Model.DbModel;
-using Dapper;
-using Dapper.Contrib.Extensions;
 
 namespace DocmentServer.Core.Business.Base
 {

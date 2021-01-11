@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DocmentServer.Core.Business.BbTableInfo;
 using System.Data;
-using System.Text;
-using DocmentServer.Core.Business.Base;
-using DocmentServer.Core.Business.BbTableInfo;
 
 namespace DocmentServer.Core.DomainService.BbTableInfo
 {

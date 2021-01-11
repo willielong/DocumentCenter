@@ -1,8 +1,6 @@
 ﻿using DocmentServer.Core.Business.Base;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 /**
  * 描述：组织信息操作类-接口 
  * */

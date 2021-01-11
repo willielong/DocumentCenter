@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-/*
+﻿/*
  * 描述：控件字段类型枚举 
  */
 namespace DocumetCenter.Core.Enum

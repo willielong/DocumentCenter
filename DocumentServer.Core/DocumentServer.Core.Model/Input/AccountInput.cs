@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-/// <summary>
+﻿/// <summary>
 /// 入参--账号
 /// </summary>
 namespace DocumentServer.Core.Model.Input

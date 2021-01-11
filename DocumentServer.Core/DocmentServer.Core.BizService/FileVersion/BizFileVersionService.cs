@@ -7,10 +7,8 @@ using DocumentServer.Core.Model.DbModel;
 using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace DocmentServer.Core.BizService.FileVersion
 {

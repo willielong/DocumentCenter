@@ -1,8 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
 using DocumetCenter.Core.Enum;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DocumentServer.Core.Model.DbModel
 {

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
+﻿using AutoMapper;
 using DocmentServer.Core.DomainService.BbTableInfo;
 using DocmentServer.Core.DomainService.Employee;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
-using Microsoft.AspNetCore.Http;
-using System.Linq;
 using DocumentServer.Core.Model.Oupt;
-using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace DocmentServer.Core.BizService.BbTableInfo
 {

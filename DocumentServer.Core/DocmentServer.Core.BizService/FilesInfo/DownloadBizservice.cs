@@ -4,11 +4,6 @@ using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using DocumentServer.Core.Model.Oupt;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Text;
 
 namespace DocmentServer.Core.BizService.FilesInfo
 {

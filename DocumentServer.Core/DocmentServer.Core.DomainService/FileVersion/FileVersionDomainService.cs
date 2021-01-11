@@ -1,9 +1,7 @@
 ﻿using DocmentServer.Core.Business.FileVersion;
 using DocumentServer.Core.Model.DbModel;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace DocmentServer.Core.DomainService.FileVersion
 {

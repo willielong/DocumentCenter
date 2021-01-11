@@ -1,8 +1,5 @@
 ﻿using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DocmentServer.Core.BizService.Personal
 {

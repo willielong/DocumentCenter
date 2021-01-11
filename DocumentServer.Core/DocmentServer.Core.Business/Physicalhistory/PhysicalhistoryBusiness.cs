@@ -1,11 +1,6 @@
-﻿using DocmentServer.Core.Business.Base;
-using DocumentServer.Core.Model.DbModel;
-using System;
-using System.Collections.Generic;
+﻿using Dapper;
+using DocmentServer.Core.Business.Base;
 using System.Data;
-using System.Text;
-using Dapper;
-using Dapper.Contrib.Extensions;
 using System.Linq;
 
 namespace DocmentServer.Core.Business.Physicalhistory

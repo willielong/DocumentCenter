@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DocmentServer.Core.BizService.BbTableInfo;
+﻿using DocmentServer.Core.BizService.BbTableInfo;
 using DocumentServer.Core.Model.DbModel;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentServer.Core.Controllers

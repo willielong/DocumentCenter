@@ -1,7 +1,5 @@
 ﻿using DocumetCenter.Core.Enum;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DocumentServer.Core.Comm
 {

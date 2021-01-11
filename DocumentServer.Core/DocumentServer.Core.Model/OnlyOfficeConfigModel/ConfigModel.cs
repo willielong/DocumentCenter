@@ -1,8 +1,5 @@
 ﻿using DocumetCenter.Core.Enum;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
 {

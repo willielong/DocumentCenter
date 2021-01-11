@@ -1,9 +1,6 @@
 ﻿using DocumentServer.Core.Model.DbModel;
-using DocumentServer.Core.Model.Oupt;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace DocmentServer.Core.DomainService.Folder
 {

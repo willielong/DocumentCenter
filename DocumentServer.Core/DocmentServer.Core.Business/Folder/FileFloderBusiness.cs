@@ -1,11 +1,8 @@
 ﻿using Dapper;
-using Dapper.Contrib.Extensions;
 using DocmentServer.Core.Business.Base;
 using DocumentServer.Core.Model.DbModel;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace DocmentServer.Core.Business.Folder
 {

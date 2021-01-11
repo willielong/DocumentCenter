@@ -10,7 +10,6 @@
 * **************************************************************************
 */
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;

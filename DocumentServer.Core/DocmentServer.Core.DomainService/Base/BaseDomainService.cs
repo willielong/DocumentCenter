@@ -1,9 +1,6 @@
-﻿using System;
+﻿using DocmentServer.Core.Business.Base;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
-using DocmentServer.Core.Business.Base;
-using DocumentServer.Core.Model.DbModel;
 
 namespace DocmentServer.Core.DomainService.Base
 {

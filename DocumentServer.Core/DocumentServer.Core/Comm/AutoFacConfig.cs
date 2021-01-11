@@ -202,8 +202,8 @@ namespace DocumentServer.Core.Comm
                 opt.IdleTimeout = TimeSpan.FromMinutes(50);
             });
             ////添加接口文档自动生成第三方键
-            SwaggerConfig.AddSwagger(services, configuration);   
-            
+            SwaggerConfig.AddSwagger(services, configuration);
+
             ///注入Session服务
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -215,7 +215,7 @@ namespace DocumentServer.Core.Comm
             //XmlConfigurator.Configure(repository, new FileInfo("Config\\log4net.config"));
 
             ///注册数据库服务
-            services.AddScoped<IDbConnection, MySqlConnection>(); 
+            services.AddScoped<IDbConnection, MySqlConnection>();
 
             ///返回数据验证器数据
             services.Configure<ApiBehaviorOptions>(opt =>
@@ -225,14 +225,14 @@ namespace DocumentServer.Core.Comm
                     //获取验证失败的模型字段 
                     var errors = actionContext.ModelState
                         .Where(e => e.Value.Errors.Count > 0)
-                        .Select(e => new { field = e.Key, err = e.Value.Errors.Select(o=>o.ErrorMessage) })
+                        .Select(e => new { field = e.Key, err = e.Value.Errors.Select(o => o.ErrorMessage) })
                         .ToList();
                     //设置返回内容
                     DTO_ResponseMessage result = new DTO_ResponseMessage
                     {
                         Status = false,
                         Message = "未通过数据验证",
-                        Body=errors 
+                        Body = errors
                     };
                     return new BadRequestObjectResult(result);
                 };
@@ -263,14 +263,14 @@ namespace DocumentServer.Core.Comm
 
             var ApiConfig = configuration.Get<ApiVersionsConfig>();
             FilePath path = ApiConfig.FilePath;
-            
+
             ///使用静态文件目录
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(path.PhysicalFilePath),
                 RequestPath = path.ApiFilePath
             });
-           
+
             ///使用swagger UI
             app.UseSwaggerUI(c =>
             {

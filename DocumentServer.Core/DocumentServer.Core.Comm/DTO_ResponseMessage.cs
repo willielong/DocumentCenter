@@ -9,11 +9,8 @@
  * 修改后的结果： 
  */
 
-using ServiceStack.Text;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
 
 namespace DocumentServer.Core.Comm
 {

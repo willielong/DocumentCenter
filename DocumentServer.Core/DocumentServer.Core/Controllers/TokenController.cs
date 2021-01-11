@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DocmentServer.Core.BizService.Login;
+﻿using DocmentServer.Core.BizService.Login;
 using DocumentServer.Core.Model.Input;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentServer.Core.Controllers

@@ -1,8 +1,5 @@
 ﻿using DocumentServer.Core.Model.ValidationAttributes;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace DocumentServer.Core.Model.DbModel
 {

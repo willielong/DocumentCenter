@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
+﻿namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
 {
     /// <summary>
     /// 配置文件实体

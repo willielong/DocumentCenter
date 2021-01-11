@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 /* * 
  * *目的：不用每个类去写创建人和修改人 
  * */

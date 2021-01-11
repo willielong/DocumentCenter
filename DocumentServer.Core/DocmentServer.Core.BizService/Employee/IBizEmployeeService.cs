@@ -1,7 +1,4 @@
 ﻿using DocumentServer.Core.Comm;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DocmentServer.Core.BizService.Employee
 {

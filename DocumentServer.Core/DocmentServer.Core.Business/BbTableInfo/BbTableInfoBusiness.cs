@@ -1,8 +1,5 @@
 ﻿using Dapper;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 /**
  * 描述：表结构信息操作类-实现
  * 

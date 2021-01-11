@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DocmentServer.Core.Business.Physicalhistory;
 using System.Data;
-using System.Text;
-using DocmentServer.Core.Business.Physicalhistory;
-using DocumentServer.Core.Model.DbModel;
 
 namespace DocmentServer.Core.DomainService.Physicalhistory
 {

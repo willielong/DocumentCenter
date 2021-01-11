@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DocumentServer.Core.Model.Oupt
+﻿namespace DocumentServer.Core.Model.Oupt
 {
     public class FilesOutput : DbModel.Files
     {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DocmentServer.Core.DomainService.Employee;
+﻿using DocmentServer.Core.DomainService.Employee;
 using DocmentServer.Core.DomainService.Personal;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.Input;

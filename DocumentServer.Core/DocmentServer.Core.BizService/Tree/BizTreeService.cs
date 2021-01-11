@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using DocmentServer.Core.DomainService.Company;
 using DocmentServer.Core.DomainService.Employee;
 using DocmentServer.Core.DomainService.Organization;
-using DocmentServer.Core.DomainService.Company;
 using DocumentServer.Core.Comm;
-using DocumentServer.Core.Model.Oupt;
-using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using System.Data;
 
 /// <summary>
 /// 进行树形构造

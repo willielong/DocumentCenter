@@ -1,9 +1,7 @@
 ﻿using DocmentServer.Core.Business.Base;
 using DocumentServer.Core.Model.Oupt;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 /**
  * 描述：人员基本信息信息操作类-接口 
  * */

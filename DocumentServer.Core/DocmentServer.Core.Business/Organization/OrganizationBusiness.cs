@@ -1,11 +1,7 @@
-﻿using DocumentServer.Core.Model.DbModel;
-using System;
+﻿using Dapper;
+using DocmentServer.Core.Business.Base;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
-using Dapper.Contrib.Extensions;
-using Dapper;
-using DocmentServer.Core.Business.Base;
 /**
 * 描述：组织信息操作类-实现* 
 * */

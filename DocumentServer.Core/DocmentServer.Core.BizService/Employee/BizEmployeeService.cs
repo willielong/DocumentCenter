@@ -1,13 +1,11 @@
-﻿using DocmentServer.Core.DomainService.Employee;
+﻿using AutoMapper;
+using DocmentServer.Core.DomainService.Employee;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.Oupt;
 using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 using System.Linq;
-using AutoMapper;
 
 namespace DocmentServer.Core.BizService.Employee
 {

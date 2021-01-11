@@ -1,4 +1,6 @@
-﻿using DocmentServer.Core.DomainService.FilesInfo;
+﻿using AutoMapper;
+using DocmentServer.Core.DomainService.Employee;
+using DocmentServer.Core.DomainService.FilesInfo;
 using DocmentServer.Core.DomainService.FileVersion;
 using DocmentServer.Core.DomainService.Folder;
 using DocmentServer.Core.DomainService.IO;
@@ -13,12 +15,8 @@ using ServiceStack.Text;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Net;
-using System.Text;
 using System.Linq;
-using DocmentServer.Core.DomainService.Employee;
-using AutoMapper;
+using System.Text;
 
 namespace DocmentServer.Core.BizService.FilesInfo
 {

@@ -1,11 +1,8 @@
 ﻿using Dapper;
-using Dapper.Contrib.Extensions;
 using DocmentServer.Core.Business.Base;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 /**
 * 描述：人员基本信息信息操作类-实现* 
 * */

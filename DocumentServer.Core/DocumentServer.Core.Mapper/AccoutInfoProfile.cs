@@ -2,9 +2,6 @@
 using DocumentServer.Core.Model.DbModel;
 using DocumentServer.Core.Model.Input;
 using DocumentServer.Core.Model.Oupt;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DocumentServer.Core.Mapper
 {
