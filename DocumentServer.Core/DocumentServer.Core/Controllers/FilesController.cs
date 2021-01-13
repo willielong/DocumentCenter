@@ -33,7 +33,7 @@ namespace DocumentServer.Core.Controllers
         /// </summary>
         /// <param name="fileid">文件ID</param>
         /// <returns></returns>
-        [HttpPost, Route("v{version:apiVersion}/track")]
+        [HttpPost, Route("track")]
         public string TrackFile([FromQuery]int fileid, [FromQuery] string token)
         {
             return service.TrackFile(fileid: fileid, token: token);

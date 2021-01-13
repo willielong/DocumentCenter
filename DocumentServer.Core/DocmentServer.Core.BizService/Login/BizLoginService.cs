@@ -8,12 +8,10 @@ namespace DocmentServer.Core.BizService.Login
 {
     public class BizLoginService : IBizLoginService
     {
-        IAccountDomainService accountDomainService;
-        IEmployeeDomainService employeeDomainService;
-        public BizLoginService(IAccountDomainService accountDomainService, IEmployeeDomainService employeeDomainService)
+        public IAccountDomainService accountDomainService { get; set; }
+        public IEmployeeDomainService employeeDomainService { get; set; }
+        public BizLoginService()
         {
-            this.accountDomainService = accountDomainService;
-            this.employeeDomainService = employeeDomainService;
         }
 
         /// <summary>
@@ -31,7 +29,7 @@ namespace DocmentServer.Core.BizService.Login
             }
             else
             {
-               
+
                 if (string.IsNullOrWhiteSpace(User.account) || User.account == "string")
                 {
                     return "用户名不能为空!".ToErrMessage().ToResponse();

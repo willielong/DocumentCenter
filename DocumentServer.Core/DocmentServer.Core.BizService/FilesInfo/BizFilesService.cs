@@ -143,13 +143,12 @@ namespace DocmentServer.Core.BizService.FilesInfo
                             var byt = Convert.FromBase64String(token);
                             string value = Encoding.Default.GetString(byt).Split(new string[] { "@@" }, StringSplitOptions.RemoveEmptyEntries)[1];
                             DocumentServer.Core.Model.DbModel.Employee employee = employeeDomainService.Get<DocumentServer.Core.Model.DbModel.Employee>(id: int.Parse(value), transaction: tran);
-                            files.currentVersion = files.currentVersion + 1;
-                            GetEmployee(httpContext: null, employee: employee);
-                            files.modifier = CurrentUser.empid;
+                            files.currentVersion = files.currentVersion + 1; 
+                            files.modifier = employee.empid;
                             files.modifdate = DateTime.Now;
                             FilesVersion filesVersion = extBizFileService.TrackFile(files: files, fileData: fileData);
-                            filesVersion.creator = CurrentUser.empid;
-                            filesVersion.modifier = CurrentUser.empid;
+                            filesVersion.creator = employee.empid;
+                            filesVersion.modifier = employee.empid;
                             service.Update<Files>(model: files, transaction: tran);
                             fileVersionDomainService.Add<FilesVersion>(filesVersion);
                             tran.Commit();

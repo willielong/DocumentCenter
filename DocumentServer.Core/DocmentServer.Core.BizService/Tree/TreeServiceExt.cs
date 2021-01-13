@@ -9,27 +9,10 @@ using System.Linq;
 
 namespace DocmentServer.Core.BizService.Tree
 {
-    public class TreeServiceExt
+    public partial class BizTreeService
     {
         Dictionary<int, Func<int, int, List<TreeModel>>> dicTreeActions;
         Dictionary<int, Func<int, int, List<TreeModel>>> dicTreeOrgActions;
-        private IEmployeeDomainService employeeDomainService;
-        private IOrganizationDomainService organizationDomainService;
-        private ICompanyDomainService companyDomainService;
-        public TreeServiceExt(IEmployeeDomainService _employeeDomainService, IOrganizationDomainService _organizationDomainService, ICompanyDomainService _companyDomainService)
-        {
-            dicTreeActions = new Dictionary<int, Func<int, int, List<TreeModel>>>();
-            dicTreeOrgActions = new Dictionary<int, Func<int, int, List<TreeModel>>>();
-            dicTreeActions.Add(0, TreesCompany);
-            dicTreeActions.Add(1, TreesOrganization);
-            dicTreeActions.Add(2, TreesPerson);
-            dicTreeActions.Add(-1, TreesPerson);
-            dicTreeOrgActions.Add(0, TreesCompany);
-            dicTreeOrgActions.Add(1, TreesOrganizationUnPerson);
-            this.employeeDomainService = _employeeDomainService;
-            this.organizationDomainService = _organizationDomainService;
-            this.companyDomainService = _companyDomainService;
-        }
         /// <summary>
         /// 获取单位
         /// </summary>

@@ -6,6 +6,14 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
     {
         public List<ApiVersion> ApiVersions { get; set; }
         public FilePath FilePath { get; set; }
+        /// <summary>
+        /// redis 服务器
+        /// </summary>
+        public string RedisAdress { get; set; }
+        /// <summary>
+        /// Redis 服务端口
+        /// </summary>
+        public  string RedisPort { get; set;}
     }
     public class ApiVersion
     {

@@ -88,6 +88,7 @@ namespace DocmentServer.Core.BizService.BaseService
             {
                 o.orgid = orgId;
                 o.fileurl = apiUrl + o.fileurl;
+                //o.filetype = o.ext.ConvertToExtInt();
             });
             return result;
         }

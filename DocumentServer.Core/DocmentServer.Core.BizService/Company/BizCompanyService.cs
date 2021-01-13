@@ -4,28 +4,30 @@ using DocmentServer.Core.DomainService.Employee;
 using DocmentServer.Core.DomainService.Organization;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Model.DbModel;
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using DocumentServer.Core.Model.Oupt;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text.Json;
 
 namespace DocmentServer.Core.BizService.Company
 {
     public class BizCompanyService : BaseService.BizBaseService, IBizCompanyService
     {
-        private ICompanyDomainService service;
+        public ICompanyDomainService service { get; set; }
         private IDbConnection dbConnection;
-        private IOrganizationDomainService organizationDomainService;
-        private IEmployeeDomainService employeeDomainService;
+        public IOrganizationDomainService organizationDomainService { get; set; }
+        public IEmployeeDomainService employeeDomainService { get; set; }
+        private ApiVersionsConfig config;
 
-        public BizCompanyService(ICompanyDomainService service, IOrganizationDomainService _organizationDomainService, IEmployeeDomainService _employeeDomainService, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizCompanyService(IConfiguration configuration, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
-            this.service = service;
-            this.organizationDomainService = _organizationDomainService;
             this.dbConnection = dbConnection;
-            this.employeeDomainService = _employeeDomainService;
-            this.service.SettingCurrentEmp(employee: CurrentUser);
+            config = configuration.Get<ApiVersionsConfig>();
         }
         /// <summary>
         /// 添加单位信息
@@ -122,6 +124,10 @@ namespace DocmentServer.Core.BizService.Company
             unitInfos.ForEach(o => { empIds.Add(o.creator.ToString()); empIds.Add(o.head.ToString()); empIds.Add(o.c_head.ToString()); });
             ///获取所有人员
             Dictionary<int, string> employees = this.employeeDomainService.GetListByEmpIds(empIds);
+            var redis = ConnectionMultiplexer.Connect($"{config.RedisAdress}:{config.RedisPort}");
+
+            var Dd = redis.GetDatabase();
+            Dd.StringSet("emp", employees.ToJsonString());
             List<TableOrgational> org = new List<TableOrgational>();
             ToViewModels<DocumentServer.Core.Model.DbModel.Organization, TableOrgational>(organizations, out org);
             org.ForEach(o =>

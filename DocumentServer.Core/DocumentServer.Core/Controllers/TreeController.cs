@@ -11,8 +11,8 @@ namespace DocumentServer.Core.Controllers
     [Authorize("CustomAuthorize")]
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/tree"), Authorize("CustomAuthorize")] 
-    public class TreeController : BaseController
+    [Route("api/tree"), Authorize("CustomAuthorize")]
+    public partial class TreeController : BaseController
     {
         private IBizTreeService service;
         public TreeController(IBizTreeService _service)
@@ -26,7 +26,7 @@ namespace DocumentServer.Core.Controllers
         /// <param name="pid">上级ID</param>
         /// <returns></returns>
         [HttpGet]
-        public virtual IActionResult Trees([FromQuery]int type, [FromQuery]int pid)
+        public virtual IActionResult Trees([FromQuery] int type, [FromQuery] int pid)
         {
             return ToResult(service.Trees(type: type, pid: pid));
         }
@@ -36,8 +36,8 @@ namespace DocumentServer.Core.Controllers
         /// <param name="type">类型</param>
         /// <param name="pid">上级ID</param>
         /// <returns></returns>
-        [HttpGet,Route("org")]
-        public virtual IActionResult TreesOrg([FromQuery]int type, [FromQuery]int pid)
+        [HttpGet, Route("org")]
+        public virtual IActionResult TreesOrg([FromQuery] int type, [FromQuery] int pid)
         {
             return ToResult(service.TreesOrg(type: type, pid: pid));
         }
@@ -48,7 +48,7 @@ namespace DocumentServer.Core.Controllers
         /// <param name="pid">上级ID</param>
         /// <returns></returns>
         [HttpGet, Route("org1")]
-        public virtual IActionResult TreesOrg1([FromQuery]int type, [FromQuery]int pid)
+        public virtual IActionResult TreesOrg1([FromQuery] int type, [FromQuery] int pid)
         {
             throw new NullReferenceException();
         }

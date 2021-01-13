@@ -4,7 +4,7 @@ using DocumetCenter.Core.Enum;
 namespace DocumentServer.Core.Model.DbModel
 {
     [Table("Bb_Fields")]
-    public class Bb_Fields
+    public class Bb_Fields:EntityBase
     {
         /// <summary>
         /// 主键ID

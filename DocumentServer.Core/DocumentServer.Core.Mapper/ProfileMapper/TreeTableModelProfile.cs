@@ -15,7 +15,13 @@ namespace DocumentServer.Core.Mapper.ProfileMapper
 
         public void InitProfile()
         {
-            CreateMap<FileFloder, TreeTableModel>().BeforeMap((data, dto) =>
+            InitFolderProfile();
+            InitFielsProfile();
+        }
+
+        private void InitFolderProfile()
+        {
+            CreateMap<FileFloder, TreeTableModel>().AfterMap((data, dto) =>
             {
                 dto.cnname = data.cnname;
                 dto.enname = data.enname;
@@ -32,7 +38,11 @@ namespace DocumentServer.Core.Mapper.ProfileMapper
                 dto.orgid = data.orgid;
                 dto.fileurl = "";
             });
-            CreateMap<Files, TreeTableModel>().BeforeMap((data, dto) =>
+        }
+
+        private void InitFielsProfile()
+        {
+            CreateMap<Files, TreeTableModel>().AfterMap((data, dto) =>
             {
                 dto.cnname = data.cnname;
                 dto.enname = data.enname;

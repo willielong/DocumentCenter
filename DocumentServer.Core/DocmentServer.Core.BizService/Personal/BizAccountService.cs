@@ -9,14 +9,12 @@ namespace DocmentServer.Core.BizService.Personal
 {
     public class BizAccountService : BaseService.BizBaseService, IBizAccountService
     {
-        private IAccountDomainService service;
+        public IAccountDomainService service { get; set; }
         private IDbConnection dbConnection;
 
-        public BizAccountService(IAccountDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizAccountService(IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
         {
-            this.service = service;
             this.dbConnection = dbConnection;
-            this.service.SettingCurrentEmp(employee: CurrentUser);
         }
         /// <summary>
         /// 添加账户信息
@@ -104,7 +102,7 @@ namespace DocmentServer.Core.BizService.Personal
         /// <returns></returns>
         public IResponseMessage QueryByEmpId(int empid)
         {
-            return service.QueryByEmpId(empid:empid).ToResponse();
+            return service.QueryByEmpId(empid: empid).ToResponse();
         }
     }
 }

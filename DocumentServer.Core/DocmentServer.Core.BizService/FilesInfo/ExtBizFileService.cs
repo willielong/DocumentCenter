@@ -173,7 +173,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
         public string GetCallbackUrl(Files file, FilePath path,DocumentServer.Core.Model.DbModel.Employee employee)
         {
             byte[] b = Encoding.Default.GetBytes(string.Format("{0}@@{1}",employee.empcode,employee.empid));
-            return string.Concat(path.ApiUrl, "/api/file/v1.0/track?fileid=", file.autoid,"&token=",Convert.ToBase64String(b));
+            return string.Concat(path.ApiUrl, "/api/file/track?fileid=", file.autoid,"&token=",Convert.ToBase64String(b));
         }
         /// <summary>
         /// 配置自定义信息

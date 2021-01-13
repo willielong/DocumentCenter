@@ -14,7 +14,7 @@ namespace DocumentServer.Core.Mapper.ProfileMapper
 
         public void InitProfile()
         {
-            CreateMap<Organization, TableOrgational>().BeforeMap((data,view)=> {
+            CreateMap<Organization, TableOrgational>().AfterMap((data,view)=> {
                 view.seq = data.sequence;
                 view.sequence = data.sequence;
                 view.cnname = data.cnname;
@@ -30,7 +30,7 @@ namespace DocumentServer.Core.Mapper.ProfileMapper
                 view.head = data.head;
                 view.c_head = data.c_head;
             });
-            CreateMap<UnitInfo, TableOrgational>().BeforeMap((data, view) => {
+            CreateMap<UnitInfo, TableOrgational>().AfterMap((data, view) => {
                 view.seq = data.sequence;
                 view.sequence = data.sequence;
                 view.cnname = data.cnname;
