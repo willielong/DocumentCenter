@@ -8,6 +8,7 @@ using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using DocumentServer.Core.Model.Oupt;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Data;
@@ -24,10 +25,13 @@ namespace DocmentServer.Core.BizService.Company
         public IEmployeeDomainService employeeDomainService { get; set; }
         private ApiVersionsConfig config;
 
-        public BizCompanyService(IConfiguration configuration, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        private ICustomDbConnection customDbConnection { get; set; }
+        public BizCompanyService(IConfiguration configuration, IHttpContextAccessor httpContext, IMapper mapper, ICustomDbConnection _customDbConnection, IDbConnection _dbConnection) : base(httpContext: httpContext, _mapper: mapper)
         {
-            this.dbConnection = dbConnection;
+
+            this.dbConnection = _dbConnection;
             config = configuration.Get<ApiVersionsConfig>();
+            customDbConnection = _customDbConnection;
         }
         /// <summary>
         /// 添加单位信息
@@ -37,8 +41,8 @@ namespace DocmentServer.Core.BizService.Company
         /// <returns></returns>
         public IResponseMessage Add(UnitInfo model)
         {
-            dbConnection.Open();
-            var transaction = dbConnection.BeginTransaction();
+           this.customDbConnection.dbConnection.Open();
+            var transaction = this.customDbConnection.dbConnection.BeginTransaction();
             model.creator = CurrentUser.empid;
             model.modifier = CurrentUser.empid;
             long id = service.Add(model: model, transaction: transaction);

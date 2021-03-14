@@ -216,6 +216,7 @@ namespace DocumentServer.Core.Comm
 
             ///注册数据库服务
             services.AddScoped<IDbConnection, MySqlConnection>();
+            services.AddScoped<ICustomDbConnection, CustomDbConnection>();
 
             ///返回数据验证器数据
             services.Configure<ApiBehaviorOptions>(opt =>
