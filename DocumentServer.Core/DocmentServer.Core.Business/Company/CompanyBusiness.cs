@@ -1,19 +1,20 @@
 ﻿using Dapper;
-using DocmentServer.Core.Business.Base;
-using DocumentServer.Core.Comm;
+
 using DocumentServer.Core.Model.DbModel;
 using System.Collections.Generic;
 using System.Data;
+using DocumentServer.Core.Infrastrure;
+using DocmentServer.Core.Business.Base;
 /**
- * 描述：单位信息操作类-实现
- * 
- * 
- * */
+* 描述：单位信息操作类-实现
+* 
+* 
+* */
 namespace DocmentServer.Core.Business.Company
 {
     public class CompanyBusiness : BaseBusiness, ICompanyBusiness
     {
-        public CompanyBusiness(ICustomDbConnection _dbConnection) : base(dbConnection: _dbConnection.dbConnection)
+        public CompanyBusiness() : base()
         {
         }
         /// <summary>

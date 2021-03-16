@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DocumentServer.Core.Infrastrure;
 using System.Data;
 /**
  * 描述：表结构信息操作类-实现
@@ -13,7 +14,7 @@ namespace DocmentServer.Core.Business.BbTableInfo
         /// 构造函数
         /// </summary>
         /// <param name="_dbConnection"></param>
-        public BbTableInfoBusiness(IDbConnection _dbConnection) : base(_dbConnection)
+        public BbTableInfoBusiness(IConnectionBase _dbConnection) : base(_dbConnection)
         {
 
         }

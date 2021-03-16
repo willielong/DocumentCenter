@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DocumentServer.Core.Infrastrure;
 using DocumentServer.Core.Model.DbModel;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace DocmentServer.Core.Business.FileVersion
 {
     public class FilesVersionBusiness : Base.BaseBusiness, IFilesVersionBusiness
     {
-        public FilesVersionBusiness(IDbConnection _dbConnection) : base(dbConnection: _dbConnection)
+        public FilesVersionBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
         {
         }
         /// <summary>

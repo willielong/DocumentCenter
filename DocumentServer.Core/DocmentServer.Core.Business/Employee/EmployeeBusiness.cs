@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using DocmentServer.Core.Business.Base;
+using DocumentServer.Core.Infrastrure;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace DocmentServer.Core.Business.Employee
 {
     public class EmployeeBusiness : BaseBusiness, IEmployeeBusiness
     {
-        public EmployeeBusiness(IDbConnection _dbConnection) : base(dbConnection: _dbConnection)
+        public EmployeeBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
         {
         }
 

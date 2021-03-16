@@ -38,6 +38,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DocmentServer.Core.BizService\DocmentServer.Core.BizService.csproj" />
     <ProjectReference Include="..\DocumentServer.Core.Comm\DocumentServer.Core.Comm.csproj" />
+    <ProjectReference Include="..\DocumentServer.Core.Infrastrure\DocumentServer.Core.Infrastrure.csproj" />
     <ProjectReference Include="..\DocumentServer.Core.Mapper\DocumentServer.Core.Mapper.csproj" />
   </ItemGroup>
 

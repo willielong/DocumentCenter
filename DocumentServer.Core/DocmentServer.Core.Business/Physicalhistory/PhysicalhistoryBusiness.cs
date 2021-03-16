@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using DocmentServer.Core.Business.Base;
+using DocumentServer.Core.Infrastrure;
 using System.Data;
 using System.Linq;
 
@@ -7,7 +8,7 @@ namespace DocmentServer.Core.Business.Physicalhistory
 {
     public class PhysicalhistoryBusiness : BaseBusiness, IPhysicalhistoryBusiness
     {
-        public PhysicalhistoryBusiness(IDbConnection _dbConnection) : base(dbConnection: _dbConnection)
+        public PhysicalhistoryBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
         {
         }
         /// <summary>

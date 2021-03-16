@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DocumentServer.Core.Infrastrure;
 using DocumentServer.Core.Model.DbModel;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,7 @@ namespace DocmentServer.Core.Business.FilesInfo
 {
     public class FilesBusiness : Base.BaseBusiness, IFilesBusiness
     {
-        public FilesBusiness(IDbConnection _dbConnection) : base(dbConnection: _dbConnection)
+        public FilesBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
         {
         }
         /// <summary>

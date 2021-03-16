@@ -1,0 +1,15 @@
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\bin\Debug\netcoreapp3.1\DocumentServer.Core.Infrastrure.deps.json
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\bin\Debug\netcoreapp3.1\DocumentServer.Core.Infrastrure.dll
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\bin\Debug\netcoreapp3.1\DocumentServer.Core.Infrastrure.pdb
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\bin\Debug\netcoreapp3.1\DocumentServer.Core.Comm.dll
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\bin\Debug\netcoreapp3.1\DocumentServer.Core.Model.dll
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\bin\Debug\netcoreapp3.1\DocumetCenter.Core.Enum.dll
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\bin\Debug\netcoreapp3.1\DocumentServer.Core.Comm.pdb
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\bin\Debug\netcoreapp3.1\DocumentServer.Core.Model.pdb
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\bin\Debug\netcoreapp3.1\DocumetCenter.Core.Enum.pdb
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\obj\Debug\netcoreapp3.1\DocumentServer.Core.Infrastrure.csprojAssemblyReference.cache
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\obj\Debug\netcoreapp3.1\DocumentServer.Core.Infrastrure.AssemblyInfoInputs.cache
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\obj\Debug\netcoreapp3.1\DocumentServer.Core.Infrastrure.AssemblyInfo.cs
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\obj\Debug\netcoreapp3.1\DocumentServer.Core.Infrastrure.csproj.CopyComplete
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\obj\Debug\netcoreapp3.1\DocumentServer.Core.Infrastrure.dll
+F:\Project\DocumentCenter\DocumentServer.Core\DocumentServer.Core.Infrastrure\obj\Debug\netcoreapp3.1\DocumentServer.Core.Infrastrure.pdb

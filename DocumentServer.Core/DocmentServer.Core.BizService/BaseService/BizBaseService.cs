@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DocumentServer.Core.Comm;
+using DocumentServer.Core.Infrastrure;
 using DocumentServer.Core.Model.DbModel;
 using DocumentServer.Core.Model.Oupt;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +13,7 @@ namespace DocmentServer.Core.BizService.BaseService
         public HttpContext context;
         public DocumentServer.Core.Model.DbModel.Employee CurrentUser;
         public IMapper mapper;
+        public IConnectionBase customDbConnection { get; set; }
         public BizBaseService(IHttpContextAccessor httpContext, IMapper _mapper)
         {
             context = httpContext.HttpContext;

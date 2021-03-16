@@ -3,6 +3,7 @@ using DocmentServer.Core.DomainService.Company;
 using DocmentServer.Core.DomainService.Employee;
 using DocmentServer.Core.DomainService.Organization;
 using DocumentServer.Core.Comm;
+using DocumentServer.Core.Infrastrure;
 using DocumentServer.Core.Model.DbModel;
 using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using DocumentServer.Core.Model.Oupt;
@@ -20,18 +21,14 @@ namespace DocmentServer.Core.BizService.Company
     public class BizCompanyService : BaseService.BizBaseService, IBizCompanyService
     {
         public ICompanyDomainService service { get; set; }
-        private IDbConnection dbConnection;
         public IOrganizationDomainService organizationDomainService { get; set; }
         public IEmployeeDomainService employeeDomainService { get; set; }
         private ApiVersionsConfig config;
 
-        private ICustomDbConnection customDbConnection { get; set; }
-        public BizCompanyService(IConfiguration configuration, IHttpContextAccessor httpContext, IMapper mapper, ICustomDbConnection _customDbConnection, IDbConnection _dbConnection) : base(httpContext: httpContext, _mapper: mapper)
-        {
 
-            this.dbConnection = _dbConnection;
+        public BizCompanyService(IConfiguration configuration, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        {
             config = configuration.Get<ApiVersionsConfig>();
-            customDbConnection = _customDbConnection;
         }
         /// <summary>
         /// 添加单位信息
@@ -41,7 +38,7 @@ namespace DocmentServer.Core.BizService.Company
         /// <returns></returns>
         public IResponseMessage Add(UnitInfo model)
         {
-           this.customDbConnection.dbConnection.Open();
+            this.customDbConnection.dbConnection.Open();
             var transaction = this.customDbConnection.dbConnection.BeginTransaction();
             model.creator = CurrentUser.empid;
             model.modifier = CurrentUser.empid;

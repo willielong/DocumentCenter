@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using DocmentServer.Core.Business.Base;
+using DocumentServer.Core.Infrastrure;
 using DocumentServer.Core.Model.DbModel;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ namespace DocmentServer.Core.Business.Folder
 {
     public class FileFloderBusiness : BaseBusiness, IFileFloderBusiness
     {
-        public FileFloderBusiness(IDbConnection _dbConnection) : base(dbConnection: _dbConnection)
+        public FileFloderBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
         {
         }
 

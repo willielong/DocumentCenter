@@ -5,7 +5,6 @@ namespace DocmentServer.Core.Business.Base
 {
     public interface IBaseBusiness
     {
-        DocumentServer.Core.Model.DbModel.Employee CurrentUser { get; set; }
         /// <summary>
         /// 设置当前账号
         /// </summary>

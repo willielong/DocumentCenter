@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DocumentServer.Core.Comm\DocumentServer.Core.Comm.csproj" />
+    <ProjectReference Include="..\DocumentServer.Core.Infrastrure\DocumentServer.Core.Infrastrure.csproj" />
     <ProjectReference Include="..\DocumentServer.Core.Model\DocumentServer.Core.Model.csproj" />
     <ProjectReference Include="..\DocumetCenter.Core.Enum\DocumetCenter.Core.Enum.csproj" />
   </ItemGroup>

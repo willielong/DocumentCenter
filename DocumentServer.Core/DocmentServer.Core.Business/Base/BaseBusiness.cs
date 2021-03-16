@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
+using DocumentServer.Core.Infrastrure;
 using System.Collections.Generic;
 using System.Data;
 
@@ -7,18 +8,22 @@ namespace DocmentServer.Core.Business.Base
 {
     public class BaseBusiness : IBaseBusiness
     {
+
+        public IConnectionBase connectionBase { get; set; }
         /// <summary>
         /// 当前用户
         /// </summary>
-        public DocumentServer.Core.Model.DbModel.Employee CurrentUser { get; set; }
+        public DocumentServer.Core.Model.DbModel.Employee CurrentUser { get { return connectionBase.CurrentUser; } }
         /// <summary>
         /// 数据库链接
         /// </summary>
-        public IDbConnection dbConnection;
+        public IDbConnection dbConnection { get { return connectionBase.tenantConnection; } }
 
-        public BaseBusiness(IDbConnection dbConnection)
+        public BaseBusiness(IConnectionBase dbConnection)
         {
-            this.dbConnection = dbConnection;
+        }
+        public BaseBusiness()
+        {
         }
 
         /// <summary>
@@ -27,7 +32,7 @@ namespace DocmentServer.Core.Business.Base
         /// <param name="employee"></param>
         public void SettingCurrentEmp(DocumentServer.Core.Model.DbModel.Employee CurrentUser)
         {
-            this.CurrentUser = CurrentUser;
+            //this.CurrentUser = CurrentUser;
         }
 
         /// <summary>

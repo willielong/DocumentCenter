@@ -4,4 +4,5 @@
   <CHILDS>DocmentServer.Core.Business</CHILDS>
   <!--<CHILDS>Bbface.WF.Entity</CHILDS>-->
   <CHILDS>DocmentServer.Core.DomainService</CHILDS>
+  <CHILDS>DocumentServer.Core.Infrastrure</CHILDS>
 </ASSEMBLYS>
