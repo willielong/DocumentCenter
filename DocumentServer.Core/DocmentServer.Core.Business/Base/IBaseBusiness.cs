@@ -1,10 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using DocumentServer.Core.Infrastrure;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DocmentServer.Core.Business.Base
 {
     public interface IBaseBusiness
     {
+        IConnectionBase connectionBase { get; set; }
+        /// <summary>
+        /// 当前用户
+        /// </summary>
+        DocumentServer.Core.Model.DbModel.Employee CurrentUser { get; }
         /// <summary>
         /// 设置当前账号
         /// </summary>

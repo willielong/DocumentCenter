@@ -12,11 +12,9 @@ namespace DocmentServer.Core.BizService.Employee
     public class BizEmployeeService : BaseService.BizBaseService, IBizEmployeeService
     {
         public IEmployeeDomainService service { get; set; }
-        private IDbConnection dbConnection;
 
-        public BizEmployeeService(IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizEmployeeService(IMapper mapper) : base(_mapper: mapper)
         {
-            this.dbConnection = dbConnection;
         }
         /// <summary>
         /// 添加人员基本信息信息

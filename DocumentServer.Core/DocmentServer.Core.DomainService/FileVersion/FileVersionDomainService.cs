@@ -7,10 +7,9 @@ namespace DocmentServer.Core.DomainService.FileVersion
 {
     public class FileVersionDomainService : Base.BaseDomainService, IFileVersionDomainService
     {
-        private IFilesVersionBusiness business;
-        public FileVersionDomainService(IFilesVersionBusiness business) : base(business)
+        public IFilesVersionBusiness business { get; set; }
+        public FileVersionDomainService()
         {
-            this.business = business;
         }
         /// <summary>
         /// 删除版本信息

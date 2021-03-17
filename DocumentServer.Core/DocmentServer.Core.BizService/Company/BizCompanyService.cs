@@ -26,7 +26,7 @@ namespace DocmentServer.Core.BizService.Company
         private ApiVersionsConfig config;
 
 
-        public BizCompanyService(IConfiguration configuration, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizCompanyService(IConfiguration configuration, IMapper mapper) : base(_mapper: mapper)
         {
             config = configuration.Get<ApiVersionsConfig>();
         }
@@ -38,8 +38,8 @@ namespace DocmentServer.Core.BizService.Company
         /// <returns></returns>
         public IResponseMessage Add(UnitInfo model)
         {
-            this.customDbConnection.dbConnection.Open();
-            var transaction = this.customDbConnection.dbConnection.BeginTransaction();
+            this.dbConnection.Open();
+            var transaction = this.dbConnection.BeginTransaction();
             model.creator = CurrentUser.empid;
             model.modifier = CurrentUser.empid;
             long id = service.Add(model: model, transaction: transaction);

@@ -8,10 +8,9 @@ namespace DocmentServer.Core.DomainService.Personal
 {
     public class AccountDomainService : BaseDomainService, IAccountDomainService
     {
-        private IAccountBusiness business;
-        public AccountDomainService(IAccountBusiness business) : base(_business: business)
+        public IAccountBusiness business { get; set; }
+        public AccountDomainService()
         {
-            this.business = business;
         }
 
         /// <summary>

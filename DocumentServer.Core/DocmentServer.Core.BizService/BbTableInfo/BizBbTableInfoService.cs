@@ -18,17 +18,15 @@ namespace DocmentServer.Core.BizService.BbTableInfo
     public class BizBbTableInfoService : BaseService.BizBaseService, IBizBbTableInfoService
     {
         public IBbTableInfoDomainService domainService { get; set; }
-        private IDbConnection dbConnection;
-        private IEmployeeDomainService employeeDomainService { get; set; }
+        public IEmployeeDomainService employeeDomainService { get; set; }
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="httpContext"></param>
         /// <param name="_domainService">domain层</param>
         /// <param name="_dbConnection">数据库连接</param>
-        public BizBbTableInfoService(IHttpContextAccessor httpContext, IDbConnection _dbConnection, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizBbTableInfoService(IMapper mapper) : base(_mapper: mapper)
         {
-            this.dbConnection = _dbConnection;
         }
         /// <summary>
         /// 添加数据表信息

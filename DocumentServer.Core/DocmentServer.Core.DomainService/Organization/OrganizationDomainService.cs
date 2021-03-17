@@ -7,10 +7,9 @@ namespace DocmentServer.Core.DomainService.Organization
 {
     public class OrganizationDomainService : BaseDomainService, IOrganizationDomainService
     {
-        private IOrganizationBusiness business;
-        public OrganizationDomainService(IOrganizationBusiness business) : base(business)
+        public IOrganizationBusiness business { get; set; }
+        public OrganizationDomainService()
         {
-            this.business = business;
         }
         /// <summary>
         /// 删除组织信息

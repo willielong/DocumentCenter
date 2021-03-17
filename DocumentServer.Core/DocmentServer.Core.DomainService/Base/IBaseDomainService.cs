@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using DocmentServer.Core.Business.Base;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DocmentServer.Core.DomainService.Base
 {
     public interface IBaseDomainService
     {
-        DocumentServer.Core.Model.DbModel.Employee CurrentUser { get; set; }
+        IBaseBusiness baseBusiness { get; set; }
         /// <summary>
         /// 设置当前账号
         /// </summary>

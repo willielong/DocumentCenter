@@ -15,13 +15,11 @@ namespace DocmentServer.Core.BizService.Folder
     public class BizFolderService : BaseService.BizBaseService, IBizFolderService
     {
         private IFolderDomainService service;
-        private IDbConnection dbConnection;
         private IFilesDomainService fileDomainService;
         public FilePath filePath;
-        public BizFolderService(IConfiguration configuration, IFolderDomainService service, IDbConnection dbConnection, IHttpContextAccessor httpContext, IFilesDomainService _filesDomainService, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizFolderService(IConfiguration configuration, IFolderDomainService service,IFilesDomainService _filesDomainService, IMapper mapper) : base( _mapper: mapper)
         {
             this.service = service;
-            this.dbConnection = dbConnection;
             this.service.SettingCurrentEmp(employee: CurrentUser);
             this.fileDomainService = _filesDomainService;
             ///获取配置文件中的数据

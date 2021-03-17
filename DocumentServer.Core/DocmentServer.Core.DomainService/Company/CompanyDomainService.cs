@@ -8,12 +8,10 @@ namespace DocmentServer.Core.DomainService.Company
 {
     public class CompanyDomainService : BaseDomainService, ICompanyDomainService
     {
-        private ICompanyBusiness business;
-        public CompanyDomainService(ICompanyBusiness business) : base(_business: business)
+        public ICompanyBusiness business { get; set; }
+        public CompanyDomainService()
         {
-            this.business = business;
         }
-
 
         /// <summary>
         /// 删除单位信息

@@ -10,10 +10,9 @@ namespace DocmentServer.Core.DomainService.BbTableInfo
     public class BbTableInfoDomainService : Base.BaseDomainService, IBbTableInfoDomainService
     {
 
-        private IBbTableInfoBusiness business;
-        public BbTableInfoDomainService(IBbTableInfoBusiness _business) : base(_business)
+        public IBbTableInfoBusiness business { get; set; }
+        public BbTableInfoDomainService()
         {
-            this.business = _business;
         }
 
         /// <summary>

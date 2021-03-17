@@ -1,33 +1,25 @@
 ﻿using AutoMapper;
+using DocmentServer.Core.DomainService.Base;
 using DocumentServer.Core.Comm;
 using DocumentServer.Core.Infrastrure;
 using DocumentServer.Core.Model.DbModel;
 using DocumentServer.Core.Model.Oupt;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using System.Data;
 
 namespace DocmentServer.Core.BizService.BaseService
 {
     public class BizBaseService
     {
         public HttpContext context;
-        public DocumentServer.Core.Model.DbModel.Employee CurrentUser;
+        public DocumentServer.Core.Model.DbModel.Employee CurrentUser { get => baseDomainService.baseBusiness.connectionBase.CurrentUser; }
         public IMapper mapper;
-        public IConnectionBase customDbConnection { get; set; }
-        public BizBaseService(IHttpContextAccessor httpContext, IMapper _mapper)
+        protected IBaseDomainService baseDomainService { get; set; }
+        public IDbConnection dbConnection { get => baseDomainService.baseBusiness.connectionBase.tenantConnection; }
+        public BizBaseService(IMapper _mapper)
         {
-            context = httpContext.HttpContext;
-            GetEmployee(httpContext: httpContext);
             mapper = _mapper;
-        } 
-        /// <summary>
-        /// 根据token获取员工基本信息
-        /// </summary>
-        /// <param name="httpContext"></param>
-        public void GetEmployee(IHttpContextAccessor httpContext, DocumentServer.Core.Model.DbModel.Employee employee = null)
-        {
-            CurrentUser = new DocumentServer.Core.Model.DbModel.Employee();
-            CurrentUser = httpContext != null ? (httpContext.HttpContext.User.ToUser<DocumentServer.Core.Model.DbModel.Employee>() ?? employee) : employee;
         }
 
         /// <summary>
@@ -83,9 +75,9 @@ namespace DocmentServer.Core.BizService.BaseService
         /// <typeparam name="TViewModel">输出实体</typeparam>
         /// <param name="model">数据</param>
         /// <param name="t2">输出数据</param>
-        public List<TreeTableModel> ToFileViewModels(List<Files> model,  int orgId, string apiUrl)
+        public List<TreeTableModel> ToFileViewModels(List<Files> model, int orgId, string apiUrl)
         {
-            List<TreeTableModel> result= mapper.Map<List<Files>, List<TreeTableModel>>(model);            
+            List<TreeTableModel> result = mapper.Map<List<Files>, List<TreeTableModel>>(model);
             result.ForEach(o =>
             {
                 o.orgid = orgId;

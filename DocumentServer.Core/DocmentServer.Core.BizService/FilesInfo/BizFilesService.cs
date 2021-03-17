@@ -24,16 +24,14 @@ namespace DocmentServer.Core.BizService.FilesInfo
     {
         private IFilesDomainService service { get; set; }
         public IFolderDomainService folderDomainService { get; set; }
-        private IDbConnection dbConnection;
         private ExtBizFileService extBizFileService;
         public IFileVersionDomainService fileVersionDomainService { get; set; }
         public IEmployeeDomainService employeeDomainService { get; set; }
         public FilePath filePath;
 
-        public BizFilesService(IConfiguration configuration, IDbConnection dbConnection, IHttpContextAccessor httpContext, IPhysicalhistoryDomainService _physicalhistoryDomainService, ISystemIODomainService _systemIODomainService, IFilesDomainService _service, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizFilesService(IConfiguration configuration, IPhysicalhistoryDomainService _physicalhistoryDomainService, ISystemIODomainService _systemIODomainService, IFilesDomainService _service, IMapper mapper) : base(_mapper: mapper)
         {
             this.service = _service;
-            this.dbConnection = dbConnection;
             this.service.SettingCurrentEmp(employee: CurrentUser);
             extBizFileService = new ExtBizFileService(_CurrentUser: CurrentUser, _physicalhistoryDomainService: _physicalhistoryDomainService, _systemIODomainService: _systemIODomainService);
             ///获取配置文件中的数据
@@ -143,7 +141,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
                             var byt = Convert.FromBase64String(token);
                             string value = Encoding.Default.GetString(byt).Split(new string[] { "@@" }, StringSplitOptions.RemoveEmptyEntries)[1];
                             DocumentServer.Core.Model.DbModel.Employee employee = employeeDomainService.Get<DocumentServer.Core.Model.DbModel.Employee>(id: int.Parse(value), transaction: tran);
-                            files.currentVersion = files.currentVersion + 1; 
+                            files.currentVersion = files.currentVersion + 1;
                             files.modifier = employee.empid;
                             files.modifdate = DateTime.Now;
                             FilesVersion filesVersion = extBizFileService.TrackFile(files: files, fileData: fileData);

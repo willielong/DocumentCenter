@@ -8,7 +8,7 @@ namespace DocmentServer.Core.Business.FilesInfo
 {
     public class FilesBusiness : Base.BaseBusiness, IFilesBusiness
     {
-        public FilesBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
+        public FilesBusiness()
         {
         }
         /// <summary>

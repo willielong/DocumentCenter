@@ -8,7 +8,7 @@ namespace DocmentServer.Core.Business.Physicalhistory
 {
     public class PhysicalhistoryBusiness : BaseBusiness, IPhysicalhistoryBusiness
     {
-        public PhysicalhistoryBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
+        public PhysicalhistoryBusiness()
         {
         }
         /// <summary>
@@ -28,7 +28,7 @@ namespace DocmentServer.Core.Business.Physicalhistory
         /// <returns></returns>
         public DocumentServer.Core.Model.DbModel.Physicalhistory SingleByEnable(IDbTransaction transaction = null)
         {
-            var List= dbConnection.Query<DocumentServer.Core.Model.DbModel.Physicalhistory> (sql: "SELECT * FROM Physicalhistory where `enable`=1", transaction: transaction).AsList();
+            var List = dbConnection.Query<DocumentServer.Core.Model.DbModel.Physicalhistory>(sql: "SELECT * FROM Physicalhistory where `enable`=1", transaction: transaction).AsList();
             if (List.Any())
             {
                 return List.FirstOrDefault();

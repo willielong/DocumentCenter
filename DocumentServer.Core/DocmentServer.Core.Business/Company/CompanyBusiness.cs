@@ -14,7 +14,7 @@ namespace DocmentServer.Core.Business.Company
 {
     public class CompanyBusiness : BaseBusiness, ICompanyBusiness
     {
-        public CompanyBusiness() : base()
+        public CompanyBusiness()
         {
         }
         /// <summary>

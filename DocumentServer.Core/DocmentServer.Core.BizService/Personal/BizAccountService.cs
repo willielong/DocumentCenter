@@ -10,11 +10,9 @@ namespace DocmentServer.Core.BizService.Personal
     public class BizAccountService : BaseService.BizBaseService, IBizAccountService
     {
         public IAccountDomainService service { get; set; }
-        private IDbConnection dbConnection;
 
-        public BizAccountService(IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizAccountService(IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base( _mapper: mapper)
         {
-            this.dbConnection = dbConnection;
         }
         /// <summary>
         /// 添加账户信息

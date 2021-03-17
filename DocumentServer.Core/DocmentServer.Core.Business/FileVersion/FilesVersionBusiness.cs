@@ -9,7 +9,7 @@ namespace DocmentServer.Core.Business.FileVersion
 {
     public class FilesVersionBusiness : Base.BaseBusiness, IFilesVersionBusiness
     {
-        public FilesVersionBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
+        public FilesVersionBusiness()
         {
         }
         /// <summary>

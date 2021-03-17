@@ -5,10 +5,9 @@ namespace DocmentServer.Core.DomainService.Physicalhistory
 {
     public class PhysicalhistoryDomainService : Base.BaseDomainService, IPhysicalhistoryDomainService
     {
-        private IPhysicalhistoryBusiness business;
-        public PhysicalhistoryDomainService(IPhysicalhistoryBusiness business) : base(_business: business)
+        public IPhysicalhistoryBusiness business { get; set; }
+        public PhysicalhistoryDomainService()
         {
-            this.business = business;
         }
         public bool Edit(IDbTransaction transaction = null)
         {

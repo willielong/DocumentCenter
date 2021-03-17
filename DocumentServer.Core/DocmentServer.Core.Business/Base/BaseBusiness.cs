@@ -15,13 +15,13 @@ namespace DocmentServer.Core.Business.Base
         /// </summary>
         public DocumentServer.Core.Model.DbModel.Employee CurrentUser { get { return connectionBase.CurrentUser; } }
         /// <summary>
-        /// 数据库链接
+        /// 租户数据库链接
         /// </summary>
-        public IDbConnection dbConnection { get { return connectionBase.tenantConnection; } }
-
-        public BaseBusiness(IConnectionBase dbConnection)
-        {
-        }
+        public IDbConnection dbConnection { get => connectionBase.tenantConnection; }
+        /// <summary>
+        /// 公有数据库
+        /// </summary>
+        public IDbConnection mainConnenctio { get => connectionBase.dbConnection; }
         public BaseBusiness()
         {
         }

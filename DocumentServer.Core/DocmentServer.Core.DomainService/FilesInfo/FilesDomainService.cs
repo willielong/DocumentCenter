@@ -7,10 +7,9 @@ namespace DocmentServer.Core.DomainService.FilesInfo
 {
     public class FilesDomainService : Base.BaseDomainService, IFilesDomainService
     {
-        private IFilesBusiness business;
-        public FilesDomainService(IFilesBusiness business) : base(business)
+        public IFilesBusiness business { get; set; }
+        public FilesDomainService()
         {
-            this.business = business;
         }
         /// <summary>
         /// 删除文件夹信息

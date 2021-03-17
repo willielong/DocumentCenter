@@ -13,12 +13,10 @@ namespace DocmentServer.Core.BizService.Organization
     public class BizOrganizationService : BaseService.BizBaseService, IBizOrganizationService
     {
         public IOrganizationDomainService service { get; set; }
-        private IDbConnection dbConnection;
         public IEmployeeDomainService employeeDomainService { get; set; }
 
-        public BizOrganizationService(IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizOrganizationService(IMapper mapper) : base( _mapper: mapper)
         {
-            this.dbConnection = dbConnection;
         }
         /// <summary>
         /// 添加组织信息

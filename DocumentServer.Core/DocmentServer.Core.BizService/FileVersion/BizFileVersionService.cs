@@ -15,16 +15,14 @@ namespace DocmentServer.Core.BizService.FileVersion
     class BizFileVersionService : BaseService.BizBaseService, IBizFileVersionService
     {
         private IFileVersionDomainService service { get; set; }
-        private IDbConnection dbConnection;
         public IEmployeeDomainService employeeDomainService { get; set; }
         private FilePath filePath;
         public IFilesDomainService filesDomainService { get; set; }
         private ExtBizFileVersionService extBizFileVersion;
 
-        public BizFileVersionService(IFileVersionDomainService _service,IConfiguration configuration, IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizFileVersionService(IFileVersionDomainService _service, IConfiguration configuration, IMapper mapper) : base(_mapper: mapper)
         {
             this.service = _service;
-            this.dbConnection = dbConnection;
             this.service.SettingCurrentEmp(employee: CurrentUser);
             ///获取配置文件中的数据
             filePath = configuration.Get<ApiVersionsConfig>().FilePath;
@@ -126,7 +124,7 @@ namespace DocmentServer.Core.BizService.FileVersion
             ///获取文件
             Files file = filesDomainService.Get<Files>(id: fileid);
             List<DocumentServer.Core.Model.DbModel.Employee> employees = employeeDomainService.All<DocumentServer.Core.Model.DbModel.Employee>();
-            return extBizFileVersion.setHistoryData(file: file, versions: versions, employees: employees, filePath: filePath,version:version).ToResponse();
+            return extBizFileVersion.setHistoryData(file: file, versions: versions, employees: employees, filePath: filePath, version: version).ToResponse();
         }
     }
 }

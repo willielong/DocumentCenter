@@ -11,7 +11,7 @@ namespace DocmentServer.Core.Business.Employee
 {
     public class EmployeeBusiness : BaseBusiness, IEmployeeBusiness
     {
-        public EmployeeBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
+        public EmployeeBusiness() 
         {
         }
 

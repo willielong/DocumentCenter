@@ -14,7 +14,7 @@ namespace DocmentServer.Core.Business.BbTableInfo
         /// 构造函数
         /// </summary>
         /// <param name="_dbConnection"></param>
-        public BbTableInfoBusiness(IConnectionBase _dbConnection) : base(_dbConnection)
+        public BbTableInfoBusiness() 
         {
 
         }

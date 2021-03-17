@@ -9,7 +9,7 @@ namespace DocmentServer.Core.Business.Folder
 {
     public class FileFloderBusiness : BaseBusiness, IFileFloderBusiness
     {
-        public FileFloderBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
+        public FileFloderBusiness()
         {
         }
 
@@ -53,7 +53,7 @@ namespace DocmentServer.Core.Business.Folder
         /// <returns></returns>
         public List<FileFloder> GetFolders(int pid, IDbTransaction transaction = null)
         {
-            return dbConnection.Query<FileFloder>(sql: "SELECT *  FROM   FileFloder WHERE   parentId=@parentId", param: new FileFloder() { parentId=pid }, transaction: transaction).AsList();
+            return dbConnection.Query<FileFloder>(sql: "SELECT *  FROM   FileFloder WHERE   parentId=@parentId", param: new FileFloder() { parentId = pid }, transaction: transaction).AsList();
         }
     }
 }

@@ -16,11 +16,11 @@ namespace DocmentServer.Core.BizService.Tree
 {
     public partial class BizTreeService : BaseService.BizBaseService, IBizTreeService
     {
-        
+
         public IEmployeeDomainService employeeDomainService { get; set; }
         public IOrganizationDomainService organizationDomainService { get; set; }
         public ICompanyDomainService companyDomainService { get; set; }
-        public BizTreeService(IHttpContextAccessor httpContext, IDbConnection dbConnection, IMapper mapper) : base(httpContext: httpContext, _mapper: mapper)
+        public BizTreeService(IMapper mapper) : base(_mapper: mapper)
         {
             dicTreeActions = new Dictionary<int, Func<int, int, List<TreeModel>>>();
             dicTreeOrgActions = new Dictionary<int, Func<int, int, List<TreeModel>>>();

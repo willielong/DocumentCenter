@@ -7,10 +7,9 @@ namespace DocmentServer.Core.DomainService.Employee
 {
     public class EmployeeDomainService : BaseDomainService, IEmployeeDomainService
     {
-        private IEmployeeBusiness business;
-        public EmployeeDomainService(IEmployeeBusiness business) : base(business)
+        public IEmployeeBusiness business { get; set; }
+        public EmployeeDomainService()
         {
-            this.business = business;
         }
 
 

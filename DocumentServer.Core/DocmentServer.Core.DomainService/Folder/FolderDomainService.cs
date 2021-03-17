@@ -7,10 +7,9 @@ namespace DocmentServer.Core.DomainService.Folder
 {
     public class FolderDomainService : Base.BaseDomainService, IFolderDomainService
     {
-        private IFileFloderBusiness business;
-        public FolderDomainService(IFileFloderBusiness business) : base(business)
+        public IFileFloderBusiness business { get; set; }
+        public FolderDomainService()
         {
-            this.business = business;
         }
         /// <summary>
         /// 删除文件夹信息
@@ -42,7 +41,7 @@ namespace DocmentServer.Core.DomainService.Folder
         /// <returns></returns>
         public List<FileFloder> GetListOrgID(int orgId, int type, IDbTransaction transaction = null)
         {
-            return business.GetListOrgID(orgId: orgId,type:type, transaction: transaction);
+            return business.GetListOrgID(orgId: orgId, type: type, transaction: transaction);
         }
         /// <summary>
         /// 获取文件列表-按组织-按上级Id

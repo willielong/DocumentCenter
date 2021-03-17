@@ -10,7 +10,7 @@ namespace DocmentServer.Core.Business.Organization
 {
     public class OrganizationBusiness : BaseBusiness, IOrganizationBusiness
     {
-        public OrganizationBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
+        public OrganizationBusiness()
         {
         }
 

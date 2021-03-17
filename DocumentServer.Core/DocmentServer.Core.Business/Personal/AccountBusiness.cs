@@ -11,7 +11,7 @@ namespace DocmentServer.Core.Business.Personal
 {
     public class AccountBusiness : BaseBusiness, IAccountBusiness
     {
-        public AccountBusiness(IConnectionBase _dbConnection) : base(dbConnection: _dbConnection)
+        public AccountBusiness()
         {
         }
 
