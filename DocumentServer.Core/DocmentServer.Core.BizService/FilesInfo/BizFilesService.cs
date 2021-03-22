@@ -27,12 +27,12 @@ namespace DocmentServer.Core.BizService.FilesInfo
         private ExtBizFileService extBizFileService;
         public IFileVersionDomainService fileVersionDomainService { get; set; }
         public IEmployeeDomainService employeeDomainService { get; set; }
+        public IPhysicalhistoryDomainService _physicalhistoryDomainService { get; set; }
+        public ISystemIODomainService _systemIODomainService { get; set; }
         public FilePath filePath;
 
-        public BizFilesService(IConfiguration configuration, IPhysicalhistoryDomainService _physicalhistoryDomainService, ISystemIODomainService _systemIODomainService, IFilesDomainService _service, IMapper mapper) : base(_mapper: mapper)
+        public BizFilesService(IConfiguration configuration, IMapper mapper) : base(_mapper: mapper)
         {
-            this.service = _service;
-            this.service.SettingCurrentEmp(employee: CurrentUser);
             extBizFileService = new ExtBizFileService(_CurrentUser: CurrentUser, _physicalhistoryDomainService: _physicalhistoryDomainService, _systemIODomainService: _systemIODomainService);
             ///获取配置文件中的数据
             filePath = configuration.Get<ApiVersionsConfig>().FilePath;

@@ -14,16 +14,14 @@ namespace DocmentServer.Core.BizService.FileVersion
 {
     class BizFileVersionService : BaseService.BizBaseService, IBizFileVersionService
     {
-        private IFileVersionDomainService service { get; set; }
+        public IFileVersionDomainService service { get; set; }
         public IEmployeeDomainService employeeDomainService { get; set; }
         private FilePath filePath;
         public IFilesDomainService filesDomainService { get; set; }
         private ExtBizFileVersionService extBizFileVersion;
 
-        public BizFileVersionService(IFileVersionDomainService _service, IConfiguration configuration, IMapper mapper) : base(_mapper: mapper)
+        public BizFileVersionService(IConfiguration configuration, IMapper mapper) : base(_mapper: mapper)
         {
-            this.service = _service;
-            this.service.SettingCurrentEmp(employee: CurrentUser);
             ///获取配置文件中的数据
             filePath = configuration.Get<ApiVersionsConfig>().FilePath;
             extBizFileVersion = new ExtBizFileVersionService();

@@ -27,15 +27,6 @@ namespace DocmentServer.Core.Business.Base
         }
 
         /// <summary>
-        /// 设置当前用户信息
-        /// </summary>
-        /// <param name="employee"></param>
-        public void SettingCurrentEmp(DocumentServer.Core.Model.DbModel.Employee CurrentUser)
-        {
-            //this.CurrentUser = CurrentUser;
-        }
-
-        /// <summary>
         /// 添加信息
         /// </summary>
         /// </summary>

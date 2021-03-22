@@ -36,7 +36,7 @@ namespace DocumentServer.Core.Controllers
         /// <param name="type">类型</param>
         /// <param name="pid">上级ID</param>
         /// <returns></returns>
-        [HttpGet, Route("org")]
+        [HttpGet, Route("org1")]
         public virtual IActionResult TreesOrg([FromQuery] int type, [FromQuery] int pid)
         {
             return ToResult(service.TreesOrg(type: type, pid: pid));
@@ -47,7 +47,7 @@ namespace DocumentServer.Core.Controllers
         /// <param name="type">类型</param>
         /// <param name="pid">上级ID</param>
         /// <returns></returns>
-        [HttpGet, Route("org1")]
+        [HttpGet, Route("org2")]
         public virtual IActionResult TreesOrg1([FromQuery] int type, [FromQuery] int pid)
         {
             throw new NullReferenceException();

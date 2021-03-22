@@ -9,21 +9,18 @@ namespace DocmentServer.Core.DomainService.Base
 {
     public class BaseDomainService : IBaseDomainService
     {
+        /// <summary>
+        /// 数据业务访问层调用
+        /// </summary>
         public IBaseBusiness baseBusiness { get; set; }
+        /// <summary>
+        /// 当前会话的信息中的当前用户
+        /// </summary>
+        internal DocumentServer.Core.Model.DbModel.Employee CurrentUser { get => baseBusiness.CurrentUser; }
 
         public BaseDomainService()
-        { 
-        }
-        /// <summary>
-        /// 设置当前用户信息
-        /// </summary>
-        /// <param name="employee"></param>
-        public void SettingCurrentEmp(DocumentServer.Core.Model.DbModel.Employee CurrentUser)
         {
-            //this.CurrentUser = CurrentUser;
-            baseBusiness.SettingCurrentEmp(CurrentUser);
         }
-
         /// <summary>
         /// 新增数据
         /// </summary>

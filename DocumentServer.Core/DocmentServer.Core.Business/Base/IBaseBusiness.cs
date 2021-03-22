@@ -6,16 +6,7 @@ namespace DocmentServer.Core.Business.Base
 {
     public interface IBaseBusiness
     {
-        IConnectionBase connectionBase { get; set; }
-        /// <summary>
-        /// 当前用户
-        /// </summary>
-        DocumentServer.Core.Model.DbModel.Employee CurrentUser { get; }
-        /// <summary>
-        /// 设置当前账号
-        /// </summary>
-        /// <param name="employee"></param>
-        void SettingCurrentEmp(DocumentServer.Core.Model.DbModel.Employee employee);
+        DocumentServer.Core.Model.DbModel.Employee CurrentUser { get; } 
 
         /// <summary>
         /// 添加信息

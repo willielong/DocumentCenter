@@ -12,11 +12,17 @@ namespace DocmentServer.Core.BizService.BaseService
 {
     public class BizBaseService
     {
+        /// <summary>
+        /// 属性注入数据库链接
+        /// </summary>
+        public IConnectionBase connectionBase { get; set; }
+        /// <summary>
+        /// 请求类型
+        /// </summary>
         public HttpContext context;
-        public DocumentServer.Core.Model.DbModel.Employee CurrentUser { get => baseDomainService.baseBusiness.connectionBase.CurrentUser; }
-        public IMapper mapper;
-        protected IBaseDomainService baseDomainService { get; set; }
-        public IDbConnection dbConnection { get => baseDomainService.baseBusiness.connectionBase.tenantConnection; }
+        public DocumentServer.Core.Model.DbModel.Employee CurrentUser { get => connectionBase.CurrentUser; }
+        public IMapper mapper; 
+        public IDbConnection dbConnection { get => connectionBase.tenantConnection; }
         public BizBaseService(IMapper _mapper)
         {
             mapper = _mapper;

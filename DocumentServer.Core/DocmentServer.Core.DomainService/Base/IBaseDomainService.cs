@@ -6,12 +6,6 @@ namespace DocmentServer.Core.DomainService.Base
 {
     public interface IBaseDomainService
     {
-        IBaseBusiness baseBusiness { get; set; }
-        /// <summary>
-        /// 设置当前账号
-        /// </summary>
-        /// <param name="employee"></param>
-        void SettingCurrentEmp(DocumentServer.Core.Model.DbModel.Employee employee);
         /// <summary>
         /// 添加信息
         /// </summary>
