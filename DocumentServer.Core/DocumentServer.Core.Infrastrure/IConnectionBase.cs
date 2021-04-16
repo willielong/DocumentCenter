@@ -1,4 +1,6 @@
-﻿using DocumentServer.Core.Model.DbModel;
+﻿using AutoMapper;
+using DocumentServer.Core.Model.DbModel;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,5 +22,7 @@ namespace DocumentServer.Core.Infrastrure
         /// 用户信息
         /// </summary>
         Employee CurrentUser { get; set; }
+        IHttpContextAccessor httpContextAccessor { get; set; }
+        IMapper mapper { get; set; }
     }
 }

@@ -6,12 +6,13 @@ using System.Data;
 using System.Text;
 using DocumentServer.Core.Comm;
 using MySql.Data.MySqlClient;
+using AutoMapper;
 
 namespace DocumentServer.Core.Infrastrure
 {
     public class ConnectionBase : IConnectionBase
     {
-        public ConnectionBase(IDbConnection _dbConnection, IHttpContextAccessor httpContext)
+        public ConnectionBase(IDbConnection _dbConnection, IHttpContextAccessor httpContext,IMapper _mapper)
         {
             CurrentUser = new DocumentServer.Core.Model.DbModel.Employee();
             CurrentUser = httpContext != null ? (httpContext.HttpContext.User.ToUser<Employee>() ?? CurrentUser) : CurrentUser;
@@ -19,6 +20,8 @@ namespace DocumentServer.Core.Infrastrure
                 dbConnection = _dbConnection;
             if (tenantConnection == null)
                 tenantConnection = new MySqlConnection("Database=DocumentServerDb;Data Source=127.0.0.1;User Id=root;Password=123456Aa;CharSet=utf8;port=3306");
+            httpContextAccessor = httpContext;
+            mapper = _mapper;
         }
 
         /// <summary>
@@ -33,5 +36,13 @@ namespace DocumentServer.Core.Infrastrure
         /// 用户信息
         /// </summary>
         public Employee CurrentUser { get; set; }
+        /// <summary>
+        /// 请求信息
+        /// </summary>
+        public IHttpContextAccessor httpContextAccessor { get; set; }
+        /// <summary>
+        /// 数据映射
+        /// </summary>
+        public IMapper mapper { get; set; }
     }
 }

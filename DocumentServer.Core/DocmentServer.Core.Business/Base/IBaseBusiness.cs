@@ -6,7 +6,7 @@ namespace DocmentServer.Core.Business.Base
 {
     public interface IBaseBusiness
     {
-        DocumentServer.Core.Model.DbModel.Employee CurrentUser { get; } 
+
 
         /// <summary>
         /// 添加信息

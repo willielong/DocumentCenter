@@ -13,10 +13,12 @@ namespace DocmentServer.Core.DomainService.Base
         /// 数据业务访问层调用
         /// </summary>
         public IBaseBusiness baseBusiness { get; set; }
+
+        public IConnectionBase connectionBase { get; set; }
         /// <summary>
         /// 当前会话的信息中的当前用户
         /// </summary>
-        internal DocumentServer.Core.Model.DbModel.Employee CurrentUser { get => baseBusiness.CurrentUser; }
+        internal DocumentServer.Core.Model.DbModel.Employee CurrentUser { get => connectionBase.CurrentUser; }
 
         public BaseDomainService()
         {
