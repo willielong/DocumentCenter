@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\DocumentServer.Core.Infrastrure.csproj": {}
+    "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\DocumentServer.Core.Infrastrure.csproj": {}
   },
   "projects": {
-    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj": {
+    "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj",
+        "projectUniqueName": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj",
         "projectName": "DocumentServer.Core.Comm",
-        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj",
-        "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\obj\\",
+        "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj",
+        "packagesPath": "C:\\Users\\wlli\\.nuget\\packages\\",
+        "outputPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wenlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,10 +30,9 @@
         },
         "frameworks": {
           "netcoreapp3.0": {
-            "targetAlias": "netcoreapp3.0",
             "projectReferences": {
-              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
-                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj"
+              "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
+                "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj"
               }
             }
           }
@@ -46,7 +45,6 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "targetAlias": "netcoreapp3.0",
           "dependencies": {
             "JWT": {
               "target": "Package",
@@ -91,14 +89,6 @@
             {
               "name": "Microsoft.AspNetCore.App.Ref",
               "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
@@ -106,24 +96,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\DocumentServer.Core.Infrastrure.csproj": {
+    "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\DocumentServer.Core.Infrastrure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\DocumentServer.Core.Infrastrure.csproj",
+        "projectUniqueName": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\DocumentServer.Core.Infrastrure.csproj",
         "projectName": "DocumentServer.Core.Infrastrure",
-        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\DocumentServer.Core.Infrastrure.csproj",
-        "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\obj\\",
+        "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\DocumentServer.Core.Infrastrure.csproj",
+        "packagesPath": "C:\\Users\\wlli\\.nuget\\packages\\",
+        "outputPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wenlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -136,13 +126,12 @@
         },
         "frameworks": {
           "netcoreapp3.0": {
-            "targetAlias": "netcoreapp3.0",
             "projectReferences": {
-              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj": {
-                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj"
+              "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj": {
+                "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj"
               },
-              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {
-                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj"
+              "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {
+                "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj"
               }
             }
           }
@@ -155,7 +144,6 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "targetAlias": "netcoreapp3.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -176,14 +164,6 @@
             {
               "name": "Microsoft.AspNetCore.App.Ref",
               "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
@@ -191,24 +171,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {
+    "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
+        "projectUniqueName": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
         "projectName": "DocumentServer.Core.Model",
-        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
-        "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\obj\\",
+        "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\DocumentServer.Core.Model.csproj",
+        "packagesPath": "C:\\Users\\wlli\\.nuget\\packages\\",
+        "outputPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wenlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -221,10 +201,9 @@
         },
         "frameworks": {
           "netcoreapp3.0": {
-            "targetAlias": "netcoreapp3.0",
             "projectReferences": {
-              "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
-                "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj"
+              "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
+                "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj"
               }
             }
           }
@@ -237,7 +216,6 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "targetAlias": "netcoreapp3.0",
           "dependencies": {
             "Dapper": {
               "target": "Package",
@@ -266,14 +244,6 @@
             {
               "name": "Microsoft.AspNetCore.App.Ref",
               "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
@@ -281,24 +251,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
+    "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj",
+        "projectUniqueName": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj",
         "projectName": "DocumetCenter.Core.Enum",
-        "projectPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj",
-        "packagesPath": "C:\\Users\\wenlli\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\obj\\",
+        "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj",
+        "packagesPath": "C:\\Users\\wlli\\.nuget\\packages\\",
+        "outputPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wenlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wlli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -311,7 +281,6 @@
         },
         "frameworks": {
           "netcoreapp3.0": {
-            "targetAlias": "netcoreapp3.0",
             "projectReferences": {}
           }
         },
@@ -323,7 +292,6 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "targetAlias": "netcoreapp3.0",
           "imports": [
             "net461",
             "net462",
@@ -338,14 +306,6 @@
             {
               "name": "Microsoft.AspNetCore.App.Ref",
               "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
@@ -353,7 +313,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
