@@ -20,8 +20,7 @@ drop table if exists RoleInfo;
 drop table if exists RolePermission;
 
 drop table if exists RolePersonInfo;
-
-drop table if exists TenantInformation;
+ 
 
 drop table if exists UnitInfo;
 
@@ -215,25 +214,7 @@ create table RolePersonInfo
    modifdate            datetime,
    primary key (autoid)
 );
-
-/*==============================================================*/
-/* Table: TenantInformation                                     */
-/*==============================================================*/
-create table TenantInformation
-(
-   autoid               int not null auto_increment,
-   cnnme                varchar(200),
-   phone                varchar(200),
-   code                 varchar(200),
-   dbconnection         text,
-   enable               bit,
-   wf_dbconnection      text,
-   wf_form_dbconnection text,
-   files_dbconnection   text,
-   creatdate            datetime,
-   expirationdate       datetime,
-   primary key (autoid)
-);
+ 
 
 /*==============================================================*/
 /* Table: UnitInfo                                              */
@@ -301,5 +282,78 @@ create table position
    creatdate            datetime,
    modifdate            datetime,
    primary key (postionId)
+);
+
+
+drop table if exists buttons_permission;
+
+/*==============================================================*/
+/* Table: buttons_permission                                    */
+/*==============================================================*/
+create table buttons_permission
+(
+   btnid                bigint,
+   permissionid         int,
+   autoid               int not null auto_increment,
+   primary key (autoid)
+);
+
+drop table if exists buttons;
+
+/*==============================================================*/
+/* Table: buttons                                               */
+/*==============================================================*/
+create table buttons
+(
+   btnid                bigint,
+   enname               varchar(200),
+   cnname               varchar(200),
+   icon                 varchar(200),
+   style                varchar(200),
+   tooltips             varchar(200),
+   btncode              varchar(20),
+   sequence             double,
+   creator              int,
+   modifier             int,
+   creatdate            datetime,
+   modifdate            datetime,
+   isuseflow            bit
+);
+
+
+drop table if exists menus;
+
+/*==============================================================*/
+/* Table: menus                                                 */
+/*==============================================================*/
+create table menus
+(
+   menuid               bigint not null,
+   code                 varchar(20),
+   cnname               varchar(20),
+   enname               varchar(20),
+   address              text,
+   icon                 varchar(20),
+   parentcode           varchar(20),
+   status               bit,
+   sequence             double,
+   creator              int,
+   creatdate            datetime,
+   primary key (menuid)
+);
+drop table if exists Menus_Roles;
+
+/*==============================================================*/
+/* Table: Menus_Roles                                           */
+/*==============================================================*/
+create table Menus_Roles
+(
+   menuid               bigint not null,
+   roleid               int,
+   status               bit,
+   sequence             double,
+   creator              int,
+   creatdate            datetime,
+   primary key (menuid)
 );
 
