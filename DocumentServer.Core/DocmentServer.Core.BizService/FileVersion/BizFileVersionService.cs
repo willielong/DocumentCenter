@@ -20,7 +20,7 @@ namespace DocmentServer.Core.BizService.FileVersion
         public IFilesDomainService filesDomainService { get; set; }
         private ExtBizFileVersionService extBizFileVersion;
 
-        public BizFileVersionService(IConfiguration configuration, IMapper mapper) : base(_mapper: mapper)
+        public BizFileVersionService(IConfiguration configuration) : base()
         {
             ///获取配置文件中的数据
             filePath = configuration.Get<ApiVersionsConfig>().FilePath;

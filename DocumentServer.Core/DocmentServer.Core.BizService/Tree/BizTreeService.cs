@@ -20,7 +20,7 @@ namespace DocmentServer.Core.BizService.Tree
         public IEmployeeDomainService employeeDomainService { get; set; }
         public IOrganizationDomainService organizationDomainService { get; set; }
         public ICompanyDomainService companyDomainService { get; set; }
-        public BizTreeService(IMapper mapper) : base(_mapper: mapper)
+        public BizTreeService() : base()
         {
             dicTreeActions = new Dictionary<int, Func<int, int, List<TreeModel>>>();
             dicTreeOrgActions = new Dictionary<int, Func<int, int, List<TreeModel>>>();

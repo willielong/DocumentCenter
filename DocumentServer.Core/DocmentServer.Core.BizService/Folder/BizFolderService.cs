@@ -17,7 +17,7 @@ namespace DocmentServer.Core.BizService.Folder
         public IFolderDomainService service { get; set; }
         public IFilesDomainService fileDomainService { get; set; }
         public FilePath filePath;
-        public BizFolderService(IConfiguration configuration, IMapper mapper) : base( _mapper: mapper)
+        public BizFolderService(IConfiguration configuration) : base()
         {
             ///获取配置文件中的数据
             filePath = configuration.Get<ApiVersionsConfig>().FilePath;

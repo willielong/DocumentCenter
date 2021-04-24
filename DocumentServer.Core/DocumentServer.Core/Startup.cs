@@ -1,5 +1,6 @@
 using Autofac;
 using DocumentServer.Core.Comm;
+using DocumentServer.Core.Model.OnlyOfficeConfigModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,9 +26,10 @@ namespace DocumentServer.Core
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApplicationLifetime lifetime)
         {
             AutoFacConfig.RegisterConfigure(app: app, env: env,configuration:Configuration);
+            app.RegisterConsul(lifetime, Configuration.Get<ApiVersionsConfig>().Consul);
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {

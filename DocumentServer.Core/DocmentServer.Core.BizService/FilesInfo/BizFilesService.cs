@@ -31,7 +31,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
         public ISystemIODomainService _systemIODomainService { get; set; }
         public FilePath filePath;
 
-        public BizFilesService(IConfiguration configuration, IMapper mapper) : base(_mapper: mapper)
+        public BizFilesService(IConfiguration configuration) : base()
         {
             extBizFileService = new ExtBizFileService(_CurrentUser: CurrentUser, _physicalhistoryDomainService: _physicalhistoryDomainService, _systemIODomainService: _systemIODomainService);
             ///获取配置文件中的数据

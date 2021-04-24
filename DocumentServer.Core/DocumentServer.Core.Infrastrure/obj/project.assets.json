@@ -2965,6 +2965,7 @@
         "dependencies": {
           "Dapper": "2.0.35",
           "Dapper.Contrib": "2.0.35",
+          "DocumentServer.Core.Comm": "1.0.0",
           "DocumetCenter.Core.Enum": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
         },

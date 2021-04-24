@@ -13,7 +13,7 @@ namespace DocmentServer.Core.BizService.Employee
     {
         public IEmployeeDomainService service { get; set; }
 
-        public BizEmployeeService(IMapper mapper) : base(_mapper: mapper)
+        public BizEmployeeService() : base()
         {
         }
         /// <summary>

@@ -202,6 +202,9 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
+              "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj": {
+                "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Comm\\DocumentServer.Core.Comm.csproj"
+              },
               "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj": {
                 "projectPath": "F:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumetCenter.Core.Enum\\DocumetCenter.Core.Enum.csproj"
               }

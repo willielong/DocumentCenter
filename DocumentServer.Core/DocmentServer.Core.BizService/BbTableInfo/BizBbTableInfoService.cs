@@ -25,7 +25,7 @@ namespace DocmentServer.Core.BizService.BbTableInfo
         /// <param name="httpContext"></param>
         /// <param name="_domainService">domain层</param>
         /// <param name="_dbConnection">数据库连接</param>
-        public BizBbTableInfoService(IMapper mapper) : base(_mapper: mapper)
+        public BizBbTableInfoService() : base()
         {
         }
         /// <summary>

@@ -11,7 +11,7 @@ namespace DocmentServer.Core.BizService.Personal
     {
         public IAccountDomainService service { get; set; }
 
-        public BizAccountService(IDbConnection dbConnection, IHttpContextAccessor httpContext, IMapper mapper) : base( _mapper: mapper)
+        public BizAccountService() : base()
         {
         }
         /// <summary>

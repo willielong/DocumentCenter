@@ -15,7 +15,7 @@ namespace DocmentServer.Core.BizService.Organization
         public IOrganizationDomainService service { get; set; }
         public IEmployeeDomainService employeeDomainService { get; set; }
 
-        public BizOrganizationService(IMapper mapper) : base( _mapper: mapper)
+        public BizOrganizationService() : base()
         {
         }
         /// <summary>
@@ -105,7 +105,7 @@ namespace DocmentServer.Core.BizService.Organization
         {
             List<TableOrgational> tables = new List<TableOrgational>();
             ///获取单位
-            List<DocumentServer.Core.Model.DbModel.Organization> organizations = this.service.GetListByParentId(pid); 
+            List<DocumentServer.Core.Model.DbModel.Organization> organizations = this.service.GetListByParentId(pid);
             ///获取所有人员
             Dictionary<int, string> employees = this.employeeDomainService.GetAll();
             List<TableOrgational> org = new List<TableOrgational>();

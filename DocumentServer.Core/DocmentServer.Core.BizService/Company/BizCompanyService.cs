@@ -26,7 +26,7 @@ namespace DocmentServer.Core.BizService.Company
         private ApiVersionsConfig config;
 
 
-        public BizCompanyService(IConfiguration configuration, IMapper mapper) : base(_mapper: mapper)
+        public BizCompanyService(IConfiguration configuration) : base()
         {
             config = configuration.Get<ApiVersionsConfig>();
         }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿
+using DocumentServer.Core.Comm;
+using System.Collections.Generic;
 
 namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
 {
@@ -14,6 +16,7 @@ namespace DocumentServer.Core.Model.OnlyOfficeConfigModel
         /// Redis 服务端口
         /// </summary>
         public  string RedisPort { get; set;}
+        public Consul Consul { get; set; }
     }
     public class ApiVersion
     {

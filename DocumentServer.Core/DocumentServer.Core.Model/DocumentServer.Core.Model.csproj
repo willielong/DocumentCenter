@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DocumentServer.Core.Comm\DocumentServer.Core.Comm.csproj" />
     <ProjectReference Include="..\DocumetCenter.Core.Enum\DocumetCenter.Core.Enum.csproj" />
   </ItemGroup>
 
