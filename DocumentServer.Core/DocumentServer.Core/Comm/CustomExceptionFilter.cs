@@ -40,7 +40,7 @@ namespace DocumentServer.Core.Comm
             }
             JsonResult result = new JsonResult(msg)
             { 
-                StatusCode = 500
+                StatusCode = 200
             };
             context.Result = result;
         }
