@@ -348,12 +348,12 @@ drop table if exists Menus_Roles;
 /*==============================================================*/
 create table Menus_Roles
 (
-   menuid               bigint not null,
+   menuid               bigint,
    roleid               int,
    status               bit,
    sequence             double,
    creator              int,
-   creatdate            datetime,
-   primary key (menuid)
+   creatdate            datetime
 );
+
 

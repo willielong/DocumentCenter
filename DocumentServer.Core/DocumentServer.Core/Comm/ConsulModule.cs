@@ -13,6 +13,13 @@ namespace DocumentServer.Core.Comm
     /// </summary>
     public static class ConsulModule
     {
+        /// <summary>
+        /// 进行注册
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="lifetime"></param>
+        /// <param name="consul"></param>
+        /// <returns></returns>
         public static IApplicationBuilder RegisterConsul(this IApplicationBuilder app, IApplicationLifetime lifetime, Consul  consul)
         {
             var consulClient = new ConsulClient(x => x.Address = new Uri($"http://{consul.Service.Address}:{consul.Service.Port}"));//请求注册的 Consul 地址
