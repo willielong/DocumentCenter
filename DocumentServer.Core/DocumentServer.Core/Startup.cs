@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace DocumentServer.Core
 {
@@ -12,24 +13,26 @@ namespace DocumentServer.Core
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration; 
         }
 
         public IConfiguration Configuration { get; }
+        public ILoggerFactory loggerFactory { get; set; }
         /// <summary>
         /// ЗўЮёзЂВс
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            AutoFacConfig.RegisterService(services: services,configuration:this.Configuration);
+            AutoFacConfig.RegisterService(services: services, configuration: this.Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApplicationLifetime lifetime)
         {
-            AutoFacConfig.RegisterConfigure(app: app, env: env,configuration:Configuration);
+            AutoFacConfig.RegisterConfigure(app: app, env: env, configuration: Configuration);
             app.RegisterConsul(lifetime, Configuration.Get<ApiVersionsConfig>().Consul);
+            app.RegisterZipKinTrace(new LoggerFactory(), lifetime);
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {

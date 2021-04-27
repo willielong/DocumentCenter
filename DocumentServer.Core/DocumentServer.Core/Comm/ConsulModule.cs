@@ -1,10 +1,15 @@
 ﻿using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using zipkin4net;
+using zipkin4net.Middleware;
+using zipkin4net.Tracers.Zipkin;
+using zipkin4net.Transport.Http;
 
 namespace DocumentServer.Core.Comm
 {
@@ -49,6 +54,23 @@ namespace DocumentServer.Core.Comm
             });
 
             return app;
+        }
+
+        public static void RegisterZipKinTrace(this IApplicationBuilder app, ILoggerFactory loggerFactory, IApplicationLifetime lifetime)
+        {
+
+            lifetime.ApplicationStarted.Register(() => {
+                TraceManager.SamplingRate = 1.0f;
+                var httpSender = new HttpZipkinSender("http://10.55.165.222:9411/","application/json");
+                var logger = new TracingLogger(loggerFactory, "zipkin4net");
+                var tracer = new ZipkinTracer(httpSender, new JSONSpanSerializer(), new Statistics());
+                var conloseTracer = new zipkin4net.Tracers.ConsoleTracer();
+                TraceManager.RegisterTracer(tracer);
+                TraceManager.RegisterTracer(conloseTracer);
+                TraceManager.Start(logger);
+            });
+            lifetime.ApplicationStopped.Register(() => TraceManager.Stop());
+            app.UseTracing("de1");
         }
     }
 }
