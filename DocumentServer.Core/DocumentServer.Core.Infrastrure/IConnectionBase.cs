@@ -24,5 +24,9 @@ namespace DocumentServer.Core.Infrastrure
         Employee CurrentUser { get; set; }
         IHttpContextAccessor httpContextAccessor { get; set; }
         IMapper mapper { get; set; }
+        /// <summary>
+        /// 调用服务器组件
+        /// </summary>
+        Dictionary<string,string> consulClents { get; set; }
     }
 }

@@ -19,11 +19,11 @@ namespace DocmentServer.Core.BizService.BaseService
         /// <summary>
         /// 请求类型
         /// </summary>
-        public HttpContext context { get => connectionBase.httpContextAccessor.HttpContext; }
+        public HttpContext context { get => connectionBase == null ? null : connectionBase.httpContextAccessor.HttpContext; }
 
-        public DocumentServer.Core.Model.DbModel.Employee CurrentUser { get => connectionBase.CurrentUser; }
-        public IMapper mapper { get => connectionBase.mapper; }
-        public IDbConnection dbConnection { get => connectionBase.tenantConnection; }
+        public DocumentServer.Core.Model.DbModel.Employee CurrentUser { get => connectionBase == null ? null : connectionBase.CurrentUser; }
+        public IMapper mapper { get => connectionBase == null ? null : connectionBase.mapper; }
+        public IDbConnection dbConnection { get => connectionBase == null ? null : connectionBase.tenantConnection; }
 
         public BizBaseService()
         {

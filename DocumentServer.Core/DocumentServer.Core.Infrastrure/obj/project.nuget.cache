@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "xSaQJBgofPLCyk3ssRd9MXvPS+VwohSsP5jRD8uqO5cFbnksOZAw3Ani6yLd8a5odW0nQTQb5HcRjVLy0RcCvA==",
+  "dgSpecHash": "6ictzvdDAT7OOiewIWkyzmQ8XETaySKrju6FotcfiCcx2ytHSA3Djk2esecnrq3zvytzKwM4GJZ7hB73MkFoGg==",
   "success": true,
   "projectFilePath": "E:\\Project\\DocumentCenter\\DocumentServer.Core\\DocumentServer.Core.Infrastrure\\DocumentServer.Core.Infrastrure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wenlli\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\wenlli\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
+    "C:\\Users\\wenlli\\.nuget\\packages\\consul\\1.6.1.1\\consul.1.6.1.1.nupkg.sha512",
     "C:\\Users\\wenlli\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\wenlli\\.nuget\\packages\\dapper.contrib\\2.0.35\\dapper.contrib.2.0.35.nupkg.sha512",
     "C:\\Users\\wenlli\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",

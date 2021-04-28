@@ -22,7 +22,7 @@ namespace DocmentServer.Core.BizService.FilesInfo
 {
     public class BizFilesService : BaseService.BizBaseService, IBizFilesService
     {
-        private IFilesDomainService service { get; set; }
+        public IFilesDomainService service { get; set; }
         public IFolderDomainService folderDomainService { get; set; }
         private ExtBizFileService extBizFileService;
         public IFileVersionDomainService fileVersionDomainService { get; set; }
