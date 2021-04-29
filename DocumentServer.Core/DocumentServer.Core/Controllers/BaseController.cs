@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using zipkin4net.Transport.Http;
 
 namespace DocumentServer.Core.Controllers
 {
@@ -17,7 +19,10 @@ namespace DocumentServer.Core.Controllers
         /// <returns></returns>
         public JsonResult ToResult(object data)
         {
-            return new JsonResult(data);
+            using (HttpClient client = new HttpClient(new TracingHandler("demo1")))
+            {
+                return new JsonResult(data);
+            }
         }
     }
 }

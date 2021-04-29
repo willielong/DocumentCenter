@@ -29,10 +29,8 @@ namespace DocumentServer.Core
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApplicationLifetime lifetime)
-        {
-            AutoFacConfig.RegisterConfigure(app: app, env: env, configuration: Configuration);
-            app.RegisterConsul(lifetime, Configuration.Get<ApiVersionsConfig>().Consul);
-            app.RegisterZipKinTrace(new LoggerFactory(), lifetime);
+        { 
+            AutoFacConfig.RegisterConfigure(app: app, env: env, configuration: Configuration,lifetime:lifetime);           
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {

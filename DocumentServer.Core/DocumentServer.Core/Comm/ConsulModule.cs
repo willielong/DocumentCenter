@@ -70,7 +70,7 @@ namespace DocumentServer.Core.Comm
                 TraceManager.Start(logger);
             });
             lifetime.ApplicationStopped.Register(() => TraceManager.Stop());
-            app.UseTracing("de1");
+            app.UseTracing("demo1");
         }
     }
 }

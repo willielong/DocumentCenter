@@ -32,6 +32,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
 using System;
@@ -240,13 +241,17 @@ namespace DocumentServer.Core.Comm
             });
         }
 
-        public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env, IConfiguration configuration)
+        public static void RegisterConfigure(IApplicationBuilder app, IHostEnvironment env, IConfiguration configuration, Microsoft.AspNetCore.Hosting.IApplicationLifetime lifetime)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            var ApiConfig = configuration.Get<ApiVersionsConfig>();
+            FilePath path = ApiConfig.FilePath;
 
+            app.RegisterConsul(lifetime, ApiConfig.Consul);
+            app.RegisterZipKinTrace(new LoggerFactory(), lifetime);
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -262,8 +267,6 @@ namespace DocumentServer.Core.Comm
             app.UseAuthorization();
             app.UseSwagger();
 
-            var ApiConfig = configuration.Get<ApiVersionsConfig>();
-            FilePath path = ApiConfig.FilePath;
 
             ///使用静态文件目录
             app.UseStaticFiles(new StaticFileOptions()
